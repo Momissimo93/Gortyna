@@ -10,13 +10,17 @@ public class Enemy : Character
     void Awake()
     {
         moveLeft = new MoveLeft();
+        moveRight = new MoveRight();
     }
 
     public void MoveLeft()
     {
-        if(moveLeft != null && trans != null)
-        {
-            moveLeft.Execute(trans, direction);
-        }
+        moveLeft.Execute(trans, -1);
     }
+
+    public void MoveRight()
+    {
+        moveRight.Execute(trans, 1);
+    }
+
 }

@@ -7,9 +7,9 @@ public class Character : MonoBehaviour
     [SerializeField] public float speed;
     [SerializeField] protected float direction;
 
-    public Transform trans;
+    protected Transform trans;
     protected BoxCollider2D boxCollider2D;
-    public Rigidbody2D rigidBody;
+    protected Rigidbody2D rigidBody;
     protected Animator animator;
 
     //protected Input moveLeft;

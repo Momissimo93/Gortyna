@@ -10,6 +10,7 @@ public abstract class Command
 
     //The extention classes are expected to execute this method
     public abstract void Execute(Transform trans, float direction);
+
     // Start is called before the first frame update
 
     //The extention classes are expected to supply the logic for this methods

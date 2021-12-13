@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveLeft: Command
+public class MoveRight : Command
 {
     public override void Execute(Transform trans, float direction)
     {
@@ -11,7 +11,7 @@ public class MoveLeft: Command
 
     public override void Move(Transform trans, float direction)
     {
-        if(trans.gameObject.GetComponent<Character>())
+        if (trans.gameObject.GetComponent<Character>())
         {
             Debug.Log("Is a character");
             character = trans.gameObject.GetComponent<Character>();
