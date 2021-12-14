@@ -25,42 +25,47 @@ public class InputsHandler: MonoBehaviour
         moveRight = new MoveRight();
         hero_Attack = new Hero_Attack();
         canMove = true;
+
+        hero = GameObject.FindObjectOfType <HumanForm>();
     }
     // Update is called once per frame
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal");
-
-        if (Input.GetButtonDown("Jump") && (hero.isOnGround) && canMove)
+        if (hero)
         {
-            hero.isMoving = true;
-            direction = horizontalMove;
-            jump.Execute(hero.transform, direction);
-            //Debug.Log("Jump animation activated");
-            hero.animator.SetTrigger("IsJumping");
-        }
-        else if (hero.isOnGround == true)
-        {
-            //Debug.Log("Jump animation De-activated");
-            hero.animator.ResetTrigger("IsJumping");
-        }
+            horizontalMove = Input.GetAxisRaw("Horizontal");
 
-        if(Input.GetButtonDown("Fire1") && canMove)
-        {
-
-            StartCoroutine(Stop(0.35f));
-            hero.rigidBody.velocity = new Vector2(0, hero.rigidBody.velocity.y);
-            hero.animator.SetTrigger("Human_Attack");
-        }
-
-        if (Input.GetButtonDown("Fire2") && canMove)
-        {
-            if(!hero.isDashing && canMove)
+            if (Input.GetButtonDown("Jump") && (hero.isOnGround) && canMove)
             {
-                hero.isDashing = true;
-                StartCoroutine(hero.Dash());
-                hero.animator.SetTrigger("Dash");
-                hero.isDashing = false;
+                hero.isMoving = true;
+                direction = horizontalMove;
+                jump.Execute(hero.transform, direction);
+                //Debug.Log("Jump animation activated");
+                hero.animator.SetTrigger("IsJumping");
+            }
+            else if (hero.isOnGround == true)
+            {
+                //Debug.Log("Jump animation De-activated");
+                hero.animator.ResetTrigger("IsJumping");
+            }
+
+            if (Input.GetButtonDown("Fire1") && canMove)
+            {
+
+                StartCoroutine(Stop(0.35f));
+                hero.rigidBody.velocity = new Vector2(0, hero.rigidBody.velocity.y);
+                hero.animator.SetTrigger("Human_Attack");
+            }
+
+            if (Input.GetButtonDown("Fire2") && canMove)
+            {
+                if (!hero.isDashing && canMove)
+                {
+                    hero.isDashing = true;
+                    StartCoroutine(hero.Dash());
+                    hero.animator.SetTrigger("Dash");
+                    hero.isDashing = false;
+                }
             }
         }
     }
@@ -77,33 +82,36 @@ public class InputsHandler: MonoBehaviour
 
     private void FixedUpdate()
     {
-        direction = horizontalMove;
-
-        if (horizontalMove > 0 && canMove == true)
+        if(hero)
         {
-            if (hero)
+            direction = horizontalMove;
+
+            if (horizontalMove > 0 && canMove == true)
+            {
+                if (hero)
+                {
+                    hero.isMoving = true;
+                    MoveRight(hero.transform, direction);
+                    hero.SetRotation("right");
+                }
+            }
+            else if (horizontalMove < 0 && canMove == true)
             {
                 hero.isMoving = true;
-                MoveRight(hero.transform, direction);
-                hero.SetRotation("right");
+                if (hero)
+                {
+                    MoveLeft(hero.transform, direction);
+                    hero.SetRotation("left");
+                }
             }
-        }
-        else if (horizontalMove < 0 && canMove == true)
-        {
-            hero.isMoving = true;
-            if (hero)
+            else if (horizontalMove == 0)
             {
-                MoveLeft(hero.transform, direction);
-                hero.SetRotation("left");
-            }
-        }
-        else if (horizontalMove == 0)
-        {
-            hero.isMoving = false;
-            if (hero.rigidBody)
-            {
-                hero.rigidBody.velocity = new Vector2(0, hero.rigidBody.velocity.y);
-                hero.animator.SetFloat("Human_Speed", 0);
+                hero.isMoving = false;
+                if (hero.rigidBody)
+                {
+                    hero.rigidBody.velocity = new Vector2(0, hero.rigidBody.velocity.y);
+                    hero.animator.SetFloat("Human_Speed", 0);
+                }
             }
         }
     }

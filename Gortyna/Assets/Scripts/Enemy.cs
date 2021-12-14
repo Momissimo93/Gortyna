@@ -22,5 +22,4 @@ public class Enemy : Character
     {
         moveRight.Execute(trans, 1);
     }
-
 }
