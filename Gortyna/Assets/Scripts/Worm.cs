@@ -7,7 +7,6 @@ public class Worm: Enemy
     public LeftFoot leftFoot;
     public RightFoot rightFoot;
 
-
     void Update()
     {
         leftFoot.EmittingRay();
@@ -26,11 +25,6 @@ public class Worm: Enemy
         {
             transform.Rotate(0f, 180f, 0f);
             direction = direction * -1;
-            Debug.Log("Change Direction");
-        }
-        else
-        {
-            Debug.Log("is on ground");
         }
     }
 

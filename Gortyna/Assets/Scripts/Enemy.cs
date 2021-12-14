@@ -7,7 +7,7 @@ public class Enemy : Character
     Command moveLeft;
     Command moveRight;
 
-    void Awake()
+    void Start()
     {
         moveLeft = new MoveLeft();
         moveRight = new MoveRight();

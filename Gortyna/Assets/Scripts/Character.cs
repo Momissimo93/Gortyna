@@ -9,26 +9,23 @@ public class Character : MonoBehaviour
 
     protected Transform trans;
     protected BoxCollider2D boxCollider2D;
-    protected Rigidbody2D rigidBody;
-    protected Animator animator;
+    public Rigidbody2D rigidBody;
+    public Animator animator;
 
     //protected Input moveLeft;
 
-    void Start()
+    void Awake()
     {
         SetAnimator();
         SetBoxCollider();
         SetTransform();
         SetRigidBody2D();
-        //InputsHandler NP = new InputsHandler();
-        //moveLeft = new MoveLeft();
     }
     protected void SetAnimator()
     {
         if (GetComponent<Animator>())
         {
             animator = gameObject.GetComponent<Animator>();
-            Debug.Log("I have got the Animator");
         }
     }
     protected void SetBoxCollider()
@@ -36,7 +33,6 @@ public class Character : MonoBehaviour
         if (GetComponent<BoxCollider2D>())
         {
             boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
-            Debug.Log("I have got the BoxCollider");
         }
     }
 
@@ -45,11 +41,6 @@ public class Character : MonoBehaviour
         if(GetComponent<Transform>())
         {
             trans = gameObject.GetComponent<Transform>();
-            Debug.Log("I have got the Transform");
-        }
-        else
-        {
-            Debug.Log("I have NOT got the Transform");
         }
     }
 
@@ -58,11 +49,6 @@ public class Character : MonoBehaviour
         if (GetComponent<Rigidbody2D>())
         {
             rigidBody = gameObject.GetComponent<Rigidbody2D>();
-            Debug.Log("I have got the RigidBody");
-        }
-        else
-        {
-            Debug.Log("I have NOT got the RigidBody");
         }
     }
 }

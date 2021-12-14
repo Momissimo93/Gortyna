@@ -13,7 +13,6 @@ public class MoveLeft: Command
     {
         if(trans.gameObject.GetComponent<Character>())
         {
-            Debug.Log("Is a character");
             character = trans.gameObject.GetComponent<Character>();
 
             if (trans.gameObject.GetComponent<Rigidbody2D>())

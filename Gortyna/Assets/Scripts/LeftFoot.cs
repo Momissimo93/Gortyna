@@ -19,4 +19,10 @@ public class LeftFoot: MonoBehaviour
     {
         Debug.DrawRay(leftFoot, Vector2.down * rayLenghtFromFeet, Color.blue);
     }
+
+    public bool IsOnGround()
+    {
+        return leftFootRays;
+    }
+
 }
