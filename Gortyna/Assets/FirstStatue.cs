@@ -22,8 +22,9 @@ public class FirstStatue : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Hero"))
         {
-            Destroy(collision.gameObject);
-            mainCharactersManager.SpawnBunny(collision.transform);
+            //Destroy(collision.gameObject);
+            //SpawnBunny(collision.transform);
+            mainCharactersManager.CanBunny(); 
         }
     }
 }

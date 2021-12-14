@@ -20,6 +20,8 @@ public class HumanForm : Character
     public bool isDashing = false;
     public bool isMoving = false;
 
+    public bool canMutate_Bunny = false;
+
     public UnityEvent OnLandEvent;
 
     void Start()

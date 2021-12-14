@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputsHandler: MonoBehaviour
 {
     public HumanForm hero;
+    public MainCharactersManager mainCharactersManager;
 
     Command moveLeft;
     Command moveRight;
@@ -27,6 +28,7 @@ public class InputsHandler: MonoBehaviour
         canMove = true;
 
         hero = GameObject.FindObjectOfType <HumanForm>();
+        mainCharactersManager = GameObject.FindObjectOfType<MainCharactersManager>();
     }
     // Update is called once per frame
     void Update()
@@ -65,6 +67,14 @@ public class InputsHandler: MonoBehaviour
                     StartCoroutine(hero.Dash());
                     hero.animator.SetTrigger("Dash");
                     hero.isDashing = false;
+                }
+            }
+
+            if(Input.GetKeyDown("q") && canMove)
+            {
+                if(hero.canMutate_Bunny)
+                {
+                    mainCharactersManager.SpawnBunny(hero.transform);
                 }
             }
         }

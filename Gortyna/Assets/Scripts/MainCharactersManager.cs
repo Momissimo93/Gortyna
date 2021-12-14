@@ -41,8 +41,26 @@ public class MainCharactersManager : MonoBehaviour
             if (characters[i].name == "Bunny")
             {
                 Debug.Log("Found the Bunny");
+                Destroy(tr.gameObject);
                 bunny = characters[i].gameObject;
                 Instantiate(bunny, tr.position, tr.rotation);
+            }
+            else
+            {
+                Debug.Log("I could not find the bunny");
+            }
+        }
+    }
+
+    public void CanBunny()
+    {
+        for (int i = 0; i < characters.Count; i++)
+        {
+            if (characters[i].gameObject.GetComponent<HumanForm>())
+            {
+                HumanForm human = characters[i].gameObject.GetComponent<HumanForm>();
+                human.canMutate_Bunny = true;
+                Debug.Log("canMutate into a Bunny? " + human.canMutate_Bunny);
             }
             else
             {
