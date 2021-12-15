@@ -12,9 +12,9 @@ public class Jump : Command
     {
         if (trans.gameObject.GetComponent<Rigidbody2D>())
         {
-            HumanForm humanform = trans.gameObject.GetComponent<HumanForm>();
+            Human human = trans.gameObject.GetComponent<Human>();
             rb = trans.gameObject.GetComponent<Rigidbody2D>();
-            rb.velocity = new Vector2(rb.velocity.x, humanform.jumpForce);
+            rb.velocity = new Vector2(rb.velocity.x, human.jumpForce);
         }
         else
         {

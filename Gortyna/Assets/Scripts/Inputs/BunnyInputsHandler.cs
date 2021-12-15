@@ -8,13 +8,14 @@ public class BunnyInputsHandler : MonoBehaviour
     private float horizontalMove = 0;
     float direction;
     Rigidbody2D rb;
-    Command moveRigth; 
+    Command moveRigth;
+    Command moveLeft;
     // Start is called before the first frame update
     void Start()
     {
         moveRigth = new MoveRight();
+        moveLeft = new MoveLeft();
     }
-
     private void Update()
     {
         bunny = FindObjectOfType<Bunny>();
@@ -27,6 +28,7 @@ public class BunnyInputsHandler : MonoBehaviour
         if (bunny)
         {
             Debug.Log("Let's try to move");
+
             horizontalMove = Input.GetAxisRaw("Horizontal");
 
             direction = horizontalMove;
@@ -34,19 +36,18 @@ public class BunnyInputsHandler : MonoBehaviour
             if (horizontalMove < 0 )
             {
                 moveRigth.Execute(bunny.transform, -1);
-                Debug.Log("Let's move");
-                //bunny.transform.position = new Vector2(bunny.transform.position.x + (direction * 10 * Time.deltaTime), bunny.transform.position.y);
-
-                //rb = bunny.transform.gameObject.GetComponent<Rigidbody2D>();
-                //rb.velocity = new Vector2(-1 * bunny.speed * Time.deltaTime, rb.velocity.y);
+                bunny.animator.SetFloat("Bunny_Speed", bunny.speed);
+                bunny.SetRotation("right");
             }
-            else if (horizontalMove < 0 )
+            else if (horizontalMove > 0 )
             {
-
+                moveLeft.Execute(bunny.transform, 1);
+                bunny.animator.SetFloat("Bunny_Speed", bunny.speed);
+                bunny.SetRotation("left");
             }
             else if (horizontalMove == 0)
             {
-
+                bunny.animator.SetFloat("Bunny_Speed", 0);
             }
         }
     }

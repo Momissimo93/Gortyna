@@ -6,6 +6,7 @@ public class MainCharactersManager : MonoBehaviour
 {
     public List<Character> characters;
     Vector3 position;
+
     void Awake()
     {
         SpawnHuman();
@@ -19,15 +20,15 @@ public class MainCharactersManager : MonoBehaviour
 
     public void SpawnHuman()
     {
-        GameObject hero;
+        GameObject human;
 
         for (int i = 0; i < characters.Count; i++)
         {
             if(characters[i].name == "Hero")
             {
                 Debug.Log("Found the Human");
-                hero = characters[i].gameObject;
-                Instantiate(hero, transform.position, transform.rotation);
+                human = characters[i].gameObject;
+                Instantiate(human, transform.position, transform.rotation);
             }
         }
     }
@@ -56,9 +57,9 @@ public class MainCharactersManager : MonoBehaviour
     {
         for (int i = 0; i < characters.Count; i++)
         {
-            if (characters[i].gameObject.GetComponent<HumanForm>())
+            if (characters[i].gameObject.GetComponent<Human>())
             {
-                HumanForm human = characters[i].gameObject.GetComponent<HumanForm>();
+                Human human = characters[i].gameObject.GetComponent<Human>();
                 human.canMutate_Bunny = true;
                 Debug.Log("canMutate into a Bunny? " + human.canMutate_Bunny);
             }

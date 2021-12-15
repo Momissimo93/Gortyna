@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InputsHandler: MonoBehaviour
 {
-    public HumanForm hero;
+    public Human human;
     public MainCharactersManager mainCharactersManager;
 
     Command moveLeft;
@@ -27,54 +27,54 @@ public class InputsHandler: MonoBehaviour
         hero_Attack = new Hero_Attack();
         canMove = true;
 
-        hero = GameObject.FindObjectOfType <HumanForm>();
+        human = GameObject.FindObjectOfType <Human>();
         mainCharactersManager = GameObject.FindObjectOfType<MainCharactersManager>();
     }
     // Update is called once per frame
     void Update()
     {
-        if (hero)
+        if (human)
         {
             horizontalMove = Input.GetAxisRaw("Horizontal");
 
-            if (Input.GetButtonDown("Jump") && (hero.isOnGround) && canMove)
+            if (Input.GetButtonDown("Jump") && (human.isOnGround) && canMove)
             {
-                hero.isMoving = true;
+                human.isMoving = true;
                 direction = horizontalMove;
-                jump.Execute(hero.transform, direction);
+                jump.Execute(human.transform, direction);
                 //Debug.Log("Jump animation activated");
-                hero.animator.SetTrigger("IsJumping");
+                human.animator.SetTrigger("IsJumping");
             }
-            else if (hero.isOnGround == true)
+            else if (human.isOnGround == true)
             {
                 //Debug.Log("Jump animation De-activated");
-                hero.animator.ResetTrigger("IsJumping");
+                human.animator.ResetTrigger("IsJumping");
             }
 
             if (Input.GetButtonDown("Fire1") && canMove)
             {
 
                 StartCoroutine(Stop(0.35f));
-                hero.rigidBody.velocity = new Vector2(0, hero.rigidBody.velocity.y);
-                hero.animator.SetTrigger("Human_Attack");
+                human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);
+                human.animator.SetTrigger("Human_Attack");
             }
 
             if (Input.GetButtonDown("Fire2") && canMove)
             {
-                if (!hero.isDashing && canMove)
+                if (!human.isDashing && canMove)
                 {
-                    hero.isDashing = true;
-                    StartCoroutine(hero.Dash());
-                    hero.animator.SetTrigger("Dash");
-                    hero.isDashing = false;
+                    human.isDashing = true;
+                    StartCoroutine(human.Dash());
+                    human.animator.SetTrigger("Dash");
+                    human.isDashing = false;
                 }
             }
 
             if(Input.GetKeyDown("q") && canMove)
             {
-                if(hero.canMutate_Bunny)
+                if(human.canMutate_Bunny)
                 {
-                    mainCharactersManager.SpawnBunny(hero.transform);
+                    mainCharactersManager.SpawnBunny(human.transform);
                 }
             }
         }
@@ -92,49 +92,50 @@ public class InputsHandler: MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(hero)
+        if(human)
         {
             direction = horizontalMove;
 
             if (horizontalMove > 0 && canMove == true)
             {
-                if (hero)
+                if (human)
                 {
-                    hero.isMoving = true;
-                    MoveRight(hero.transform, direction);
-                    hero.SetRotation("right");
+                    human.isMoving = true;
+                    human.animator.SetFloat("Human_Speed", human.speed);
+                    moveRight.Execute(transform, direction);
+                    human.SetRotation("right");
                 }
             }
             else if (horizontalMove < 0 && canMove == true)
             {
-                hero.isMoving = true;
-                if (hero)
+                if (human)
                 {
-                    MoveLeft(hero.transform, direction);
-                    hero.SetRotation("left");
+                    human.isMoving = true;
+                    human.animator.SetFloat("Human_Speed", human.speed);
+                    moveLeft.Execute(transform, direction);
+                    human.SetRotation("left");
                 }
             }
             else if (horizontalMove == 0)
             {
-                hero.isMoving = false;
-                if (hero.rigidBody)
+                human.isMoving = false;
+                if (human.rigidBody)
                 {
-                    hero.rigidBody.velocity = new Vector2(0, hero.rigidBody.velocity.y);
-                    hero.animator.SetFloat("Human_Speed", 0);
+                    human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);
+                    human.animator.SetFloat("Human_Speed", 0);
                 }
             }
         }
     }
 
-    public void MoveLeft(Transform transform, float direction)
+    /*public void MoveLeft(Transform transform, float direction)
     {
-        hero.animator.SetFloat("Human_Speed", hero.speed);
-        moveLeft.Execute(transform, direction);
+        human.animator.SetFloat("Human_Speed", human.speed);
+       // moveLeft.Execute(transform, direction);
     }
     public void MoveRight(Transform transform, float direction)
     {
-        hero.animator.SetFloat("Human_Speed", hero.speed);
-        moveRight.Execute(transform, direction);
-    }
-
+        human.animator.SetFloat("Human_Speed", human.speed);
+       // moveRight.Execute(transform, direction);
+    }*/
 }

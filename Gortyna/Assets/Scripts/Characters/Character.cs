@@ -35,7 +35,6 @@ public class Character : MonoBehaviour
             boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
         }
     }
-
     protected void SetTransform()
     {
         if(GetComponent<Transform>())
@@ -43,7 +42,6 @@ public class Character : MonoBehaviour
             trans = gameObject.GetComponent<Transform>();
         }
     }
-
     protected void SetRigidBody2D()
     {
         if (GetComponent<Rigidbody2D>())

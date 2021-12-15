@@ -12,7 +12,6 @@ public class EnemyMoveLeft
             character = tr.gameObject.GetComponent<Character>();
 
             tr.position = new Vector2(tr.position.x, tr.position.y + (2 * direction * Time.deltaTime));
-
         }
         else
         {
