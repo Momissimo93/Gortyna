@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Spike : MonoBehaviour
 {
-    private Vector2 observer;
+    private Vector2 observerLeft;
+    private RaycastHit2D observerRayLeft;
+
+    private Vector2 observerRight;
+    private RaycastHit2D observerRayRight;
+
     private BoxCollider2D boxCollider2D;
-    private RaycastHit2D observerRay;
+
     public float rayLenght;
     private int hero = 1 << 7;
     bool canMove = false;
@@ -36,10 +41,14 @@ public class Spike : MonoBehaviour
 
     public bool EmittingRay()
     {
-        observer = new Vector2(boxCollider2D.bounds.min.x, boxCollider2D.bounds.min.y);
-        observerRay = Physics2D.Raycast(observer, Vector2.down, rayLenght, hero);
+        observerLeft = new Vector2(boxCollider2D.bounds.min.x, boxCollider2D.bounds.min.y);
+        observerRayLeft = Physics2D.Raycast(observerLeft, Vector2.down, rayLenght, hero);
 
-        if(observerRay)
+        observerRight = new Vector2(boxCollider2D.bounds.max.x, boxCollider2D.bounds.min.y);
+        observerRayRight = Physics2D.Raycast(observerRight, Vector2.down, rayLenght, hero);
+
+
+        if (observerRayLeft || observerRayRight)
         {
             return true;
         }
@@ -57,7 +66,8 @@ public class Spike : MonoBehaviour
 
     public void DrawRaysFromFeet()
     {
-        Debug.DrawRay(observer, Vector2.down * rayLenght, Color.blue);
+        Debug.DrawRay(observerRight, Vector2.down * rayLenght, Color.blue);
+        Debug.DrawRay(observerLeft, Vector2.down * rayLenght, Color.blue);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
