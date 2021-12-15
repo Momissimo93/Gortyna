@@ -18,7 +18,6 @@ public class HumanInputs : MonoBehaviour
     float direction;
 
     bool isJumping;
-  
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +28,6 @@ public class HumanInputs : MonoBehaviour
         hero_Attack = new Hero_Attack();
         dash = new Dash();
         stop = new Stop();
-
 
         human = GameObject.FindObjectOfType<Human>();
         mainCharactersManager = GameObject.FindObjectOfType<MainCharactersManager>();

@@ -53,17 +53,24 @@ public class Human : Character
 
     private void SetDirection()
     {
-        if(trans.rotation.y == 180)
+        float localEu = trans.localEulerAngles.y;
+        Debug.Log(localEu);
+
+        if (localEu == 180.0f)
         {
-            //Debug.Log("is facing left");
+            Debug.Log("is facing left" );
             direction = -1;
             facingRight = false;
         }
-        else
+        else if(localEu == 0.0f)
         {
-            //Debug.Log("is facing rigth");
+            Debug.Log("is facing rigth");
             direction = 1;
             facingRight = true;
+        }
+        else
+        {
+            Debug.Log("....");
         }
     }
 

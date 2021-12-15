@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 7014370016738316769}
   - component: {fileID: 7014370016738316782}
   - component: {fileID: -462689663687012057}
+  - component: {fileID: -2905725585828232214}
   m_Layer: 7
   m_Name: Hero
   m_TagString: Hero
@@ -216,6 +217,7 @@ MonoBehaviour:
   direction: 0
   rigidBody: {fileID: 0}
   animator: {fileID: 0}
+  canMove: 0
   jumpForce: 9
   leftFoot: {fileID: 7014370016612024999}
   rightFoot: {fileID: 7014370017186277717}
@@ -230,6 +232,20 @@ MonoBehaviour:
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-2905725585828232214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014370016738316773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f1912647fe9e448936ab61d8b8303a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  human: {fileID: -462689663687012057}
+  mainCharactersManager: {fileID: 0}
 --- !u!1 &7014370017186277716
 GameObject:
   m_ObjectHideFlags: 0

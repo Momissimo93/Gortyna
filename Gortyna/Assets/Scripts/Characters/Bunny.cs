@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Bunny : Character
 {
-    protected bool facingForward = true;
+    protected bool facingRight;
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetDirection();
     }
 
     // Update is called once per frame
@@ -16,22 +16,44 @@ public class Bunny : Character
     {
         
     }
+
+    private void SetDirection()
+    {
+        float localEu = trans.localEulerAngles.y;
+        Debug.Log(localEu);
+
+        if (localEu == 180f || localEu == -180)
+        {
+            Debug.Log("is facing left");
+            direction = -1;
+            facingRight = false;
+        }
+        else 
+        {
+            Debug.Log("is facing rigth");
+            direction = 1;
+            facingRight = true;
+        }
+    }
+
     public void SetRotation(string s)
     {
         if (s == "right")
         {
-            if (!facingForward)
+            if (!facingRight)
             {
                 transform.Rotate(0, 180f, 0f);
-                facingForward = true;
+                facingRight = true;
+                direction = 1;
             }
         }
         else if (s == "left")
         {
-            if (facingForward)
+            if (facingRight)
             {
                 transform.Rotate(0f, 180f, 0f);
-                facingForward = false;
+                facingRight = false;
+                direction = -1;
             }
         }
     }

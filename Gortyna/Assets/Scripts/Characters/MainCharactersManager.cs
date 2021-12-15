@@ -61,8 +61,9 @@ public class MainCharactersManager : MonoBehaviour
 
     public void HumanMutation(Bunny bunny)
     {
+        Bunny b = bunny;
         Transform tr = bunny.transform;
-        Destroy(bunny);
+        Destroy(b.gameObject);
 
         GameObject human;
 
@@ -72,9 +73,8 @@ public class MainCharactersManager : MonoBehaviour
             {
                 //Debug.Log("Found the Human");
                 human = characters[i].gameObject;
-                //Instantiate(human, tr.position, transform.rotation);
+                Instantiate(human, tr.position, transform.rotation);
             }
         }
-
     }
 }

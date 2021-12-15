@@ -35,15 +35,15 @@ public class BunnyInputsHandler : MonoBehaviour
 
             direction = horizontalMove;
 
-            if (horizontalMove < 0)
+            if (horizontalMove > 0)
             {
-                moveRigth.Execute(bunny.transform, -1);
+                moveRigth.Execute(bunny.transform, direction);
                 bunny.animator.SetFloat("Bunny_Speed", bunny.speed);
                 bunny.SetRotation("right");
             }
-            else if (horizontalMove > 0 )
+            else if (horizontalMove < 0 )
             {
-                moveLeft.Execute(bunny.transform, 1);
+                moveLeft.Execute(bunny.transform, direction);
                 bunny.animator.SetFloat("Bunny_Speed", bunny.speed);
                 bunny.SetRotation("left");
             }
