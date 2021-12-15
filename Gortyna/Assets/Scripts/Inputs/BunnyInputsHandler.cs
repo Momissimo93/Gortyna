@@ -11,6 +11,7 @@ public class BunnyInputsHandler : MonoBehaviour
     Command moveRigth;
     Command moveLeft;
     // Start is called before the first frame update
+
     void Start()
     {
         moveRigth = new MoveRight();
@@ -18,6 +19,7 @@ public class BunnyInputsHandler : MonoBehaviour
     }
     private void Update()
     {
+        //
         bunny = FindObjectOfType<Bunny>();
         Move();
     }
@@ -33,7 +35,7 @@ public class BunnyInputsHandler : MonoBehaviour
 
             direction = horizontalMove;
 
-            if (horizontalMove < 0 )
+            if (horizontalMove < 0)
             {
                 moveRigth.Execute(bunny.transform, -1);
                 bunny.animator.SetFloat("Bunny_Speed", bunny.speed);

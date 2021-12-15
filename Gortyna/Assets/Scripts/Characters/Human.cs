@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Human : Character
 {
-    protected bool facingForward = true;
+    protected bool facingRight;
+    public bool canMove;
 
     public int jumpForce;
     public LeftFoot leftFoot;
@@ -19,7 +20,7 @@ public class Human : Character
     public bool isDashing = false;
     public bool isMoving = false;
 
-    public bool canMutate_Bunny = false;
+    public bool canMutate_Bunny;
 
     public UnityEvent OnLandEvent;
 
@@ -28,6 +29,10 @@ public class Human : Character
         speed = baseSpeed;
         if (OnLandEvent == null)
             OnLandEvent = new UnityEvent();
+
+        SetDirection();
+
+        canMutate_Bunny = false;
     }
 
     void Update()
@@ -46,22 +51,40 @@ public class Human : Character
         IsOnGround();
     }
 
+    private void SetDirection()
+    {
+        if(trans.rotation.y == 180)
+        {
+            //Debug.Log("is facing left");
+            direction = -1;
+            facingRight = false;
+        }
+        else
+        {
+            //Debug.Log("is facing rigth");
+            direction = 1;
+            facingRight = true;
+        }
+    }
+
     public void SetRotation(string s)
     {
         if (s == "right")
         {
-            if (!facingForward)
+            if (!facingRight)
             {
                 transform.Rotate(0, 180f, 0f);
-                facingForward = true;
+                facingRight = true;
+                direction = 1;
             }
         }
         else if (s == "left")
         {
-            if (facingForward)
+            if (facingRight)
             {
                 transform.Rotate(0f, 180f, 0f);
-                facingForward = false;
+                facingRight = false;
+                direction = -1;
             }
         }
     }
@@ -70,24 +93,15 @@ public class Human : Character
         if (leftFoot.IsOnGround() == true || rightFoot.IsOnGround() == true)
         {
             isOnGround = true;
-            Debug.Log("The player is on the ground");
+            //Debug.Log("The player is on the ground");
             //OnLandEvent.Invoke();
         }
         else if (leftFoot.IsOnGround() == false || rightFoot.IsOnGround() == false)
         {
             isOnGround = false;
-            Debug.Log("The player is NOT the ground");
+            //Debug.Log("The player is NOT the ground");
             //animator.SetTrigger("IsJumping");
         }
-    }
-
-    public IEnumerator Dash()
-    {
-        isDashing = true;
-        speed *= dashPower;
-        yield return new WaitForSeconds(dashTime);
-        speed = baseSpeed;
-        isDashing = false;
     }
 
     public void OnLanding()

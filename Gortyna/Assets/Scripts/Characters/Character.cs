@@ -5,7 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] public float speed;
-    [SerializeField] protected float direction;
+    [SerializeField] public float direction;
 
     protected Transform trans;
     protected BoxCollider2D boxCollider2D;

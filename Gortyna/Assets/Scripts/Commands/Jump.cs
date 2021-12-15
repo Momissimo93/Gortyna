@@ -18,7 +18,7 @@ public class Jump : Command
         }
         else
         {
-            Debug.Log("I can not jump");
+            //Debug.Log("I can not jump");
         }
     }
 }

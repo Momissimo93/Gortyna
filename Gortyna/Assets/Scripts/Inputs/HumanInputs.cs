@@ -11,12 +11,14 @@ public class HumanInputs : MonoBehaviour
     Command moveRight;
     Command jump;
     Command hero_Attack;
+    Dash dash;
+    Stop stop;
 
     private float horizontalMove = 0;
     float direction;
 
     bool isJumping;
-    bool canMove;
+  
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +27,13 @@ public class HumanInputs : MonoBehaviour
         moveLeft = new MoveLeft();
         moveRight = new MoveRight();
         hero_Attack = new Hero_Attack();
-        canMove = true;
+        dash = new Dash();
+        stop = new Stop();
+
 
         human = GameObject.FindObjectOfType<Human>();
         mainCharactersManager = GameObject.FindObjectOfType<MainCharactersManager>();
+        human.canMove = true;
     }
     // Update is called once per frame
     void Update()
@@ -37,40 +42,38 @@ public class HumanInputs : MonoBehaviour
         {
             horizontalMove = Input.GetAxisRaw("Horizontal");
 
-            if (Input.GetButtonDown("Jump") && (human.isOnGround) && canMove)
+            if (Input.GetButtonDown("Jump") && (human.isOnGround) && human.canMove)
             {
                 human.isMoving = true;
                 direction = horizontalMove;
                 jump.Execute(human.transform, direction);
-                //Debug.Log("Jump animation activated");
                 human.animator.SetTrigger("IsJumping");
             }
-            else if (human.isOnGround == true)
+
+            if (human.isOnGround == true)
             {
-                //Debug.Log("Jump animation De-activated");
                 human.animator.ResetTrigger("IsJumping");
             }
 
-            if (Input.GetButtonDown("Fire1") && canMove)
+            if (Input.GetButtonDown("Fire1") && human.canMove)
             {
-
-                StartCoroutine(Stop(0.35f));
+                //StartCoroutine(Stop(0.35f));
+                StartCoroutine(stop.Stopping(0.35f,human));
                 human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);
                 human.animator.SetTrigger("Human_Attack");
             }
 
-            if (Input.GetButtonDown("Fire2") && canMove)
+            if (Input.GetButtonDown("Fire2") && human.canMove)
             {
-                if (!human.isDashing && canMove)
+                if (!human.isDashing && human.canMove)
                 {
-                    human.isDashing = true;
-                    StartCoroutine(human.Dash());
                     human.animator.SetTrigger("Dash");
-                    human.isDashing = false;
+                    StartCoroutine(dash.Dashing(human));
+                    //human.StartCoroutine(human.Dash());
                 }
             }
 
-            if (Input.GetKeyDown("q") && canMove)
+            if (Input.GetKeyDown("q") && human.canMove)
             {
                 if (human.canMutate_Bunny)
                 {
@@ -80,37 +83,29 @@ public class HumanInputs : MonoBehaviour
         }
     }
 
-    IEnumerator Stop(float seconds)
-    {
-        for (int i = 0; i < 1; i++)
-        {
-            canMove = false;
-            yield return new WaitForSeconds(seconds);
-        }
-        canMove = true;
-    }
-
     private void FixedUpdate()
     {
         if (human)
         {
             direction = horizontalMove;
 
-            if (horizontalMove > 0 && canMove == true)
+            if (horizontalMove > 0 && human.canMove == true && human.isDashing == false)
             {
                 if (human)
                 {
                     human.isMoving = true;
-                    MoveRight(human.transform, direction);
+                    human.animator.SetFloat("Human_Speed", human.speed);
+                    moveRight.Execute(human.transform, direction);
                     human.SetRotation("right");
                 }
             }
-            else if (horizontalMove < 0 && canMove == true)
+            else if (horizontalMove < 0 && human.canMove == true && human.isDashing == false)
             {
-                human.isMoving = true;
                 if (human)
                 {
-                    MoveLeft(human.transform, direction);
+                    human.isMoving = true;
+                    human.animator.SetFloat("Human_Speed", human.speed);
+                    moveLeft.Execute(human.transform, direction);
                     human.SetRotation("left");
                 }
             }
@@ -119,22 +114,10 @@ public class HumanInputs : MonoBehaviour
                 human.isMoving = false;
                 if (human.rigidBody)
                 {
-                    human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);
+                    //human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);
                     human.animator.SetFloat("Human_Speed", 0);
                 }
             }
         }
     }
-
-    public void MoveLeft(Transform transform, float direction)
-    {
-        human.animator.SetFloat("Human_Speed", human.speed);
-        moveLeft.Execute(transform, direction);
-    }
-    public void MoveRight(Transform transform, float direction)
-    {
-        human.animator.SetFloat("Human_Speed", human.speed);
-        moveRight.Execute(transform, direction);
-    }
-
 }

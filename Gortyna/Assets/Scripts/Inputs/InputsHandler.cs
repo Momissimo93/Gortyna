@@ -64,7 +64,7 @@ public class InputsHandler: MonoBehaviour
                 if (!human.isDashing && canMove)
                 {
                     human.isDashing = true;
-                    StartCoroutine(human.Dash());
+                    //StartCoroutine(human.Dash());
                     human.animator.SetTrigger("Dash");
                     human.isDashing = false;
                 }

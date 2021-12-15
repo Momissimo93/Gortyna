@@ -6,25 +6,25 @@ public class FirstStatue : MonoBehaviour
 {
     public MainCharactersManager mainCharactersManager;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Hero"))
         {
             //Destroy(collision.gameObject);
             //SpawnBunny(collision.transform);
-            mainCharactersManager.CanBunny(); 
+            Human human = collision.GetComponent<Human>();
+            mainCharactersManager.CanBunny(human);
+            Debug.Log("Collision");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bunny"))
+        {
+            Debug.Log("Destroy the bunny");
+            Bunny bunny = collision.GetComponent<Bunny>();
+            mainCharactersManager.HumanMutation(bunny);
         }
     }
 }
