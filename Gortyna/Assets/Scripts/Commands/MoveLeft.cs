@@ -27,7 +27,7 @@ public class MoveLeft: Command
         }
         else
         {
-            Debug.Log("Error");
+            Debug.Log("No Object of type Character was detected");
         }
     }
 }

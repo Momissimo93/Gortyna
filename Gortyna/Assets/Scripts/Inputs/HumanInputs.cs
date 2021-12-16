@@ -55,7 +55,6 @@ public class HumanInputs : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1") && human.canMove)
             {
-                //StartCoroutine(Stop(0.35f));
                 StartCoroutine(stop.Stopping(0.35f,human));
                 human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);
                 human.animator.SetTrigger("Human_Attack");
@@ -67,7 +66,6 @@ public class HumanInputs : MonoBehaviour
                 {
                     human.animator.SetTrigger("Dash");
                     StartCoroutine(dash.Dashing(human));
-                    //human.StartCoroutine(human.Dash());
                 }
             }
 
@@ -110,9 +108,9 @@ public class HumanInputs : MonoBehaviour
             else if (horizontalMove == 0)
             {
                 human.isMoving = false;
+
                 if (human.rigidBody)
                 {
-                    //human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);
                     human.animator.SetFloat("Human_Speed", 0);
                 }
             }

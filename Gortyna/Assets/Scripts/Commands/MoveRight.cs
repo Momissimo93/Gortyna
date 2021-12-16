@@ -17,6 +17,7 @@ public class MoveRight : Command
 
             if (trans.gameObject.GetComponent<Rigidbody2D>())
             {
+              
                 rb = trans.gameObject.GetComponent<Rigidbody2D>();
                 rb.velocity = new Vector2(direction * character.speed * Time.deltaTime, rb.velocity.y);
             }
@@ -27,7 +28,7 @@ public class MoveRight : Command
         }
         else
         {
-            Debug.Log("Error");
+            Debug.Log("No Gameobject of type Character was detected");
         }
     }
 }

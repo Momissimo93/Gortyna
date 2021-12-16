@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BunnyInputsHandler : MonoBehaviour
+public class BunnyInputs : MonoBehaviour
 {
     public Bunny bunny;
     private float horizontalMove = 0;
@@ -40,7 +40,7 @@ public class BunnyInputsHandler : MonoBehaviour
                 bunny.animator.SetFloat("Bunny_Speed", bunny.speed);
                 bunny.SetRotation("right");
             }
-            else if (horizontalMove < 0 )
+            else if (horizontalMove < 0)
             {
                 moveLeft.Execute(bunny.transform, direction);
                 bunny.animator.SetFloat("Bunny_Speed", bunny.speed);

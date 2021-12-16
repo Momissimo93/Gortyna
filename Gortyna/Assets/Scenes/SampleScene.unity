@@ -12271,7 +12271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 918008308}
-  - component: {fileID: 918008309}
+  - component: {fileID: 918008310}
   m_Layer: 0
   m_Name: BunnyInputs
   m_TagString: Untagged
@@ -12293,7 +12293,7 @@ Transform:
   m_Father: {fileID: 1497427261}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &918008309
+--- !u!114 &918008310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12302,7 +12302,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 918008307}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b9fa88a5209e0545ab373e2892a2408, type: 3}
+  m_Script: {fileID: 11500000, guid: 40cc0f381eb378841a17058f8b12eaca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bunny: {fileID: 0}

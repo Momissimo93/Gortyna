@@ -13,7 +13,7 @@ public class Human : Character
     public bool isOnGround;
     public bool isJumping;
 
-    public float baseSpeed;
+    //public float baseSpeed;
     public float dashPower;
     public float dashTime;
 
@@ -22,18 +22,20 @@ public class Human : Character
 
     public bool canMutate_Bunny;
 
-    public UnityEvent OnLandEvent;
+    //public UnityEvent OnLandEvent;
+
+    //public Vector3 originalVelocity;
 
     void Start()
     {
-        speed = baseSpeed;
+        //speed = baseSpeed;
 
         SetDirection();
 
         canMutate_Bunny = false;
 
-        /*if (OnLandEvent == null)
-            OnLandEvent = new UnityEvent();*/
+        //originalVelocity = rigidBody.velocity;
+
     }
 
     void Update()
@@ -43,8 +45,6 @@ public class Human : Character
 
         rightFoot.EmittingRay();
         rightFoot.DrawRaysFromFeet();
-
-        //IsOnGround();
     }
 
     private void FixedUpdate()
@@ -55,17 +55,14 @@ public class Human : Character
     private void SetDirection()
     {
         float localEu = trans.localEulerAngles.y;
-        Debug.Log(localEu);
 
         if (localEu == 180.0f)
         {
-            Debug.Log("is facing left" );
             direction = -1;
             facingRight = false;
         }
         else if(localEu == 0.0f)
         {
-            Debug.Log("is facing rigth");
             direction = 1;
             facingRight = true;
         }
@@ -101,21 +98,11 @@ public class Human : Character
         if (leftFoot.IsOnGround() == true || rightFoot.IsOnGround() == true)
         {
             isOnGround = true;
-            //Debug.Log("The player is on the ground");
-            //OnLandEvent.Invoke();
         }
         else if (leftFoot.IsOnGround() == false || rightFoot.IsOnGround() == false)
         {
             isOnGround = false;
-            //Debug.Log("The player is NOT the ground");
-            //animator.SetTrigger("IsJumping");
         }
-    }
-
-    public void OnLanding()
-    {
-        Debug.Log("I have landed");
-        animator.SetBool("IsJumping", false);
     }
 }
 

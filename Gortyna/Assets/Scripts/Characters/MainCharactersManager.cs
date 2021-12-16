@@ -20,6 +20,7 @@ public class MainCharactersManager : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.x);
     }
 
+    //Mehotd Called only the game start 
     public void SpawnHuman()
     {
         GameObject human;
@@ -28,7 +29,6 @@ public class MainCharactersManager : MonoBehaviour
         {
             if(characters[i].name == "Hero")
             {
-                //Debug.Log("Found the Human");
                 human = characters[i].gameObject;
                 Instantiate(human, transform.position, transform.rotation);
             }
@@ -49,7 +49,6 @@ public class MainCharactersManager : MonoBehaviour
         {
             if (characters[i].name == "Bunny")
             {
-                //Debug.Log("Found the Bunny");
                 Destroy(transform.gameObject);
                 bunny = characters[i].gameObject.GetComponent<Bunny>();
                 bunny.SetTransform(transform);
@@ -62,9 +61,9 @@ public class MainCharactersManager : MonoBehaviour
     public void CanBunny(Human human)
     {
         human.canMutate_Bunny = true;
-        Debug.Log("canMutate into a Bunny? " + human.canMutate_Bunny);
     }
 
+    //Mehtod used when we mutate back into Human
     public void HumanMutation(Bunny bunny)
     {
         Bunny b = bunny;
@@ -77,7 +76,6 @@ public class MainCharactersManager : MonoBehaviour
         {
             if (characters[i].name == "Hero")
             {
-                //Debug.Log("Found the Human");
                 human = characters[i].gameObject;
                 Instantiate(human, tr.position, transform.rotation);
             }

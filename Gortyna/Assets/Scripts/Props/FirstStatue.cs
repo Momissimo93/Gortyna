@@ -10,11 +10,8 @@ public class FirstStatue : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Hero"))
         {
-            //Destroy(collision.gameObject);
-            //SpawnBunny(collision.transform);
             Human human = collision.GetComponent<Human>();
             mainCharactersManager.CanBunny(human);
-            Debug.Log("Collision");
         }
     }
 
@@ -22,7 +19,6 @@ public class FirstStatue : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bunny"))
         {
-            Debug.Log("Destroy the bunny");
             Bunny bunny = collision.GetComponent<Bunny>();
             mainCharactersManager.HumanMutation(bunny);
         }

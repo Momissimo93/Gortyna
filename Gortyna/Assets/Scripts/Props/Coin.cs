@@ -19,7 +19,7 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Hero"))
+        if(collision.gameObject.CompareTag("Hero") || collision.gameObject.CompareTag("Bunny"))
         {
             animator.SetTrigger("PickedUp");
             StartCoroutine(WaitFor(0.3f));

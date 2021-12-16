@@ -19,7 +19,7 @@ public class Dash : MonoBehaviour
         }
         else
         {
-            Debug.Log("No rigid body detected");
+            Debug.Log("No Object of type Human detected");
         }
     }
 }
