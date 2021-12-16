@@ -6,6 +6,8 @@ public class MainCharactersManager : MonoBehaviour
 {
     public List<Character> characters;
     Vector3 position;
+    Bunny bunny;
+    float direction;
 
     void Awake()
     {
@@ -35,22 +37,26 @@ public class MainCharactersManager : MonoBehaviour
 
     public void SpawnBunny(Transform tr)
     {
-        GameObject bunny;
+        Transform transform = tr;
+        float direction = 0;
+
+        if (transform.gameObject.GetComponent<Human>())
+        {
+            direction = transform.gameObject.GetComponent<Human>().direction;
+        }
 
         for (int i = 0; i < characters.Count; i++)
         {
             if (characters[i].name == "Bunny")
             {
                 //Debug.Log("Found the Bunny");
-                Destroy(tr.gameObject);
-                bunny = characters[i].gameObject;
-                Instantiate(bunny, tr.position, tr.rotation);
-            }
-            else
-            {
-                //Debug.Log("I could not find the bunny");
+                Destroy(transform.gameObject);
+                bunny = characters[i].gameObject.GetComponent<Bunny>();
+                bunny.SetTransform(transform);
+                bunny.SetDirection(direction);
             }
         }
+        Instantiate(bunny, transform.position, transform.rotation);
     }
 
     public void CanBunny(Human human)

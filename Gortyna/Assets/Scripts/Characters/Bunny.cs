@@ -8,7 +8,7 @@ public class Bunny : Character
     // Start is called before the first frame update
     void Start()
     {
-        SetDirection();
+        //SetDirection();
     }
 
     // Update is called once per frame
@@ -17,12 +17,35 @@ public class Bunny : Character
         
     }
 
+    public void SetTransform (Transform tr)
+    {
+        trans = tr;
+    }
+    public void SetDirection (float dr)
+    {
+        direction = dr;
+        //Debug.Log("Bunny direction " + direction);
+
+        /*if (direction == -1)
+        {
+            Debug.Log("is facing left");
+            facingRight = false;
+            Debug.Log("Facing right = " + facingRight);
+        }
+        else
+        {
+            Debug.Log("is facing rigth");
+            facingRight = true;
+            Debug.Log("Facing right = " + facingRight);
+        }*/
+    }
+
     private void SetDirection()
     {
-        float localEu = trans.localEulerAngles.y;
+        /*float localEu = trans.localEulerAngles.y;
         Debug.Log(localEu);
 
-        if (localEu == 180f || localEu == -180)
+        if (localEu == -180)
         {
             Debug.Log("is facing left");
             direction = -1;
@@ -33,26 +56,32 @@ public class Bunny : Character
             Debug.Log("is facing rigth");
             direction = 1;
             facingRight = true;
-        }
+        }*/
     }
 
     public void SetRotation(string s)
     {
+        Debug.Log("The character is moving " + s);
+
         if (s == "right")
         {
-            if (!facingRight)
+            if (direction == -1)
             {
-                transform.Rotate(0, 180f, 0f);
-                facingRight = true;
+                Debug.Log("is facing right was " + facingRight);
+                transform.Rotate(0f, 180f, 0f);
+                //facingRight = true;
+                Debug.Log("is facing right is " + facingRight);
                 direction = 1;
             }
         }
         else if (s == "left")
         {
-            if (facingRight)
+            if (direction == 1)
             {
+                Debug.Log("is facing right was " + facingRight);
                 transform.Rotate(0f, 180f, 0f);
-                facingRight = false;
+                //facingRight = false;
+                Debug.Log("is facing right is " + facingRight);
                 direction = -1;
             }
         }

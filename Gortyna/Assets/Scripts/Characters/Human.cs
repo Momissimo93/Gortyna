@@ -27,12 +27,13 @@ public class Human : Character
     void Start()
     {
         speed = baseSpeed;
-        if (OnLandEvent == null)
-            OnLandEvent = new UnityEvent();
 
         SetDirection();
 
         canMutate_Bunny = false;
+
+        /*if (OnLandEvent == null)
+            OnLandEvent = new UnityEvent();*/
     }
 
     void Update()
