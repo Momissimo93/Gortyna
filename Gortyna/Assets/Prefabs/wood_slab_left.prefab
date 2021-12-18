@@ -10,7 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4114533418916383247}
   - component: {fileID: 4192774938326106213}
-  m_Layer: 0
+  - component: {fileID: 2252375062223868439}
+  - component: {fileID: 2261049975987122066}
+  - component: {fileID: 7738804148021999456}
+  m_Layer: 6
   m_Name: wood_slab_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +86,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &2252375062223868439
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6140011390206038047}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: eaed29be3325c084e81d2b9b0e449aae, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 1}
+    oldSize: {x: 1, y: 0.5}
+    newSize: {x: 1, y: 0.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 0}
+      - {x: 0, y: -0.5}
+      - {x: 0.125, y: -0.5}
+      - {x: 0.125, y: -0.4375}
+      - {x: 0.1875, y: -0.4375}
+      - {x: 0.1875, y: -0.375}
+      - {x: 1, y: -0.375}
+      - {x: 1, y: 0}
+--- !u!251 &2261049975987122066
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6140011390206038047}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
+--- !u!114 &7738804148021999456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6140011390206038047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2f47103c08ffc4a9878f2d64ef0e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

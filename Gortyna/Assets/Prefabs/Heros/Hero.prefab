@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5742547330445995852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4270338602673136434}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4270338602673136434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742547330445995852}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.728, y: -0.033, z: 2.532669}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7014370016738316770}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7014370016612024984
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,6 +90,8 @@ GameObject:
   - component: {fileID: 7014370016738316782}
   - component: {fileID: -462689663687012057}
   - component: {fileID: -2905725585828232214}
+  - component: {fileID: 6823443670746385564}
+  - component: {fileID: 4643368382543449823}
   m_Layer: 7
   m_Name: Hero
   m_TagString: Hero
@@ -80,6 +112,7 @@ Transform:
   m_Children:
   - {fileID: 7014370016612024985}
   - {fileID: 7014370017186277714}
+  - {fileID: 4270338602673136434}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -215,23 +248,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 120
   direction: 0
+  maxLifePoints: 4
+  currentLifePoints: 0
+  immune: 0
   rigidBody: {fileID: 0}
   animator: {fileID: 0}
+  damageManager: {fileID: 4643368382543449823}
   canMove: 0
   jumpForce: 9
   leftFoot: {fileID: 7014370016612024999}
   rightFoot: {fileID: 7014370017186277717}
   isOnGround: 0
   isJumping: 0
-  baseSpeed: 80
-  dashPower: 5
+  dashPower: 10
   dashTime: 0.4
   isDashing: 0
   isMoving: 0
   canMutate_Bunny: 1
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  attackPoint: {fileID: 4270338602673136434}
+  attackRange: 1
+  enemyLayer: 256
+  boxC2D: {fileID: 0}
 --- !u!114 &-2905725585828232214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +283,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   human: {fileID: -462689663687012057}
   mainCharactersManager: {fileID: 0}
+--- !u!114 &6823443670746385564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014370016738316773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7169b0f2c6850448a1aeba8d3b14488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4643368382543449823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014370016738316773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e11f2b0b6f30c9f4ab4ab7c7df67ddf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: -462689663687012057}
 --- !u!1 &7014370017186277716
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7014370017186277716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.368, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7014370016738316770}

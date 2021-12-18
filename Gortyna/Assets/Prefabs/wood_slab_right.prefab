@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 7103728294949276058}
   - component: {fileID: 6205974855192318420}
   - component: {fileID: 5115077107262193115}
-  m_Layer: 0
+  - component: {fileID: 8121177382395614423}
+  - component: {fileID: 7285957041979957956}
+  m_Layer: 6
   m_Name: wood_slab_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,9 +95,9 @@ PolygonCollider2D:
   m_GameObject: {fileID: 360934881887282694}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: eaed29be3325c084e81d2b9b0e449aae, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -117,3 +119,34 @@ PolygonCollider2D:
       - {x: -0.125, y: -0.5}
       - {x: 0, y: -0.5}
       - {x: 0, y: 0}
+--- !u!251 &8121177382395614423
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360934881887282694}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
+--- !u!114 &7285957041979957956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360934881887282694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2f47103c08ffc4a9878f2d64ef0e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

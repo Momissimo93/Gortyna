@@ -13,6 +13,7 @@ public class HumanInputs : MonoBehaviour
     Command hero_Attack;
     Dash dash;
     Stop stop;
+    HumanAttack attack;
 
     private float horizontalMove = 0;
     float direction;
@@ -28,6 +29,7 @@ public class HumanInputs : MonoBehaviour
         hero_Attack = new Hero_Attack();
         dash = new Dash();
         stop = new Stop();
+        attack = new HumanAttack();
 
         human = GameObject.FindObjectOfType<Human>();
         mainCharactersManager = GameObject.FindObjectOfType<MainCharactersManager>();
@@ -58,6 +60,7 @@ public class HumanInputs : MonoBehaviour
                 StartCoroutine(stop.Stopping(0.35f,human));
                 human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);
                 human.animator.SetTrigger("Human_Attack");
+                attack.Attack(human.transform);
             }
 
             if (Input.GetButtonDown("Fire2") && human.canMove)
@@ -105,12 +108,13 @@ public class HumanInputs : MonoBehaviour
                     human.SetRotation("left");
                 }
             }
-            else if (horizontalMove == 0)
+            else if (horizontalMove == 0 && human.isDashing == false)
             {
                 human.isMoving = false;
 
                 if (human.rigidBody)
                 {
+                    human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);
                     human.animator.SetFloat("Human_Speed", 0);
                 }
             }

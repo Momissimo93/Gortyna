@@ -6,12 +6,17 @@ public class Character : MonoBehaviour
 {
     [SerializeField] public float speed;
     [SerializeField] public float direction;
+    [SerializeField] protected int maxLifePoints;
+    public int currentLifePoints;
 
     protected Transform trans;
     protected BoxCollider2D boxCollider2D;
+    public bool immune = false;
+
     public Rigidbody2D rigidBody;
     public Animator animator;
 
+    public DamageManager damageManager;
     //protected Input moveLeft;
 
     void Awake()
@@ -20,6 +25,10 @@ public class Character : MonoBehaviour
         SetBoxCollider();
         SetTransform();
         SetRigidBody2D();
+
+        currentLifePoints = maxLifePoints;
+
+        damageManager = gameObject.GetComponent<DamageManager>();
     }
     protected void SetAnimator()
     {
@@ -47,6 +56,14 @@ public class Character : MonoBehaviour
         if (GetComponent<Rigidbody2D>())
         {
             rigidBody = gameObject.GetComponent<Rigidbody2D>();
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if(damageManager)
+        {
+            damageManager.TakeDamage(damage);
         }
     }
 }

@@ -22,6 +22,12 @@ public class Human : Character
 
     public bool canMutate_Bunny;
 
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public int enemyLayer = 1 << 8;
+
+    public BoxCollider2D boxC2D;
+
     //public UnityEvent OnLandEvent;
 
     //public Vector3 originalVelocity;
@@ -33,6 +39,8 @@ public class Human : Character
         SetDirection();
 
         canMutate_Bunny = false;
+
+        boxC2D = boxCollider2D;
 
         //originalVelocity = rigidBody.velocity;
 

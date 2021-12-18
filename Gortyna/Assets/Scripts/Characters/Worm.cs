@@ -16,6 +16,10 @@ public class Worm: Enemy
         rightFoot.DrawRaysFromFeet();
 
         GroundCheck();
+        //HorizontalMovement();
+    }
+    private void FixedUpdate()
+    {
         HorizontalMovement();
     }
 
