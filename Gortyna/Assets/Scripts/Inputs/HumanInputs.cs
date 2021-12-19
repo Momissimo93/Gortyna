@@ -27,9 +27,10 @@ public class HumanInputs : MonoBehaviour
         moveLeft = new MoveLeft();
         moveRight = new MoveRight();
         hero_Attack = new Hero_Attack();
-        dash = new Dash();
-        stop = new Stop();
-        attack = new HumanAttack();
+        dash = gameObject.AddComponent<Dash>();
+        stop = gameObject.AddComponent<Stop>();
+        attack = gameObject.AddComponent<HumanAttack>();
+        //attack = new HumanAttack(); dash = new Dash(); stop = new Stop();
 
         human = GameObject.FindObjectOfType<Human>();
         mainCharactersManager = GameObject.FindObjectOfType<MainCharactersManager>();

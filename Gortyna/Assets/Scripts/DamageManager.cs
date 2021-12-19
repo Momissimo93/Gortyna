@@ -34,7 +34,8 @@ public class DamageManager : MonoBehaviour
                 }
                 else
                     character.currentLifePoints -= damage;
-                    StartCoroutine("Immunity", 2f);
+                    StartCoroutine("Immunity", 1f);
+                    StartCoroutine("StopAnimation", 1f);
             }
         }
     }
@@ -48,11 +49,32 @@ public class DamageManager : MonoBehaviour
             for (int i = 0; i < seconds; i++)
             {
                 //it runs 3 times and at each iteration it stops for a second --> so in total the characters will blink for 3 seconds
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(seconds);
+            }
+
+            RestoreRightAlpha();
+            character.immune = false;
+        }
+    }
+    IEnumerator StopAnimation(float seconds)
+    {
+        float originalSpeed = character.speed;
+        character.speed = 0;
+        character.animator.SetFloat("Speed", character.speed);
+
+        if (character)
+        {
+            for (int i = 0; i < seconds; i++)
+            {
+                //it runs 3 times and at each iteration it stops for a second --> so in total the characters will blink for 3 seconds
+                yield return new WaitForSeconds(seconds);
             }
             RestoreRightAlpha();
             character.immune = false;
         }
+
+        character.speed = originalSpeed;
+        character.animator.SetFloat("Speed", character.speed);
     }
 
     public void RestoreRightAlpha()
@@ -76,7 +98,6 @@ public class DamageManager : MonoBehaviour
             }
         }
     }
-
     protected void Blinking()
     {
         if (character)

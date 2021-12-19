@@ -12756,7 +12756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5fe372e8c2d6d4084fe84702dcdcce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 120
+  speed: 80
   direction: 1
   maxLifePoints: 2
   currentLifePoints: 0
@@ -24502,7 +24502,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129213101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.2282324, y: 5.938052, z: -0.25348854}
+  m_LocalPosition: {x: -3.93, y: -1.35, z: -0.25348854}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
