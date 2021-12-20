@@ -59,12 +59,4 @@ public class HumanAttack : MonoBehaviour
         rigidBody.velocity = Vector2.zero;
         rigidBody.isKinematic = true;
     }
-
-
-    void OnDrawGizmosSelected()
-    {
-        if (human.attackPoint == null)
-            return;
-        Gizmos.DrawWireSphere(human.attackPoint.position, human.attackRange);
-    }
 }

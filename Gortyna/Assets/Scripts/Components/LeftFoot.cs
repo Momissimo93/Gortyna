@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class LeftFoot: MonoBehaviour
 {
-    private Vector2 leftFoot;
     public BoxCollider2D boxCollider2D;
-    public float rayLenghtFromFeet;
     private int ground = 1 << 6;
+
+    public float rayLenghtFromFeet;
+    private Vector2 leftFoot;
     public RaycastHit2D leftFootRays;
 
     public void EmittingRay()

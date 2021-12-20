@@ -19,7 +19,7 @@ public class Human : Character
 
     public bool isDashing = false;
     public bool isMoving = false;
-
+    public bool isNotOnPlatform = true;
     public bool canMutate_Bunny;
 
     public Transform attackPoint;
@@ -31,6 +31,9 @@ public class Human : Character
     //public UnityEvent OnLandEvent;
 
     //public Vector3 originalVelocity;
+   /* private int platform = 1 << 9;
+    Vector2 center;
+    RaycastHit2D centerRay;*/
 
     void Start()
     {
@@ -53,6 +56,15 @@ public class Human : Character
 
         rightFoot.EmittingRay();
         rightFoot.DrawRaysFromFeet();
+
+        //center = new Vector2(boxCollider2D.bounds.min.x, boxCollider2D.bounds.min.y);
+        //centerRay = Physics2D.Raycast(center, Vector2.down, 0.5f, platform);
+
+        /*if (centerRay)
+        {
+            Debug.Log("We are on the platform");
+            isNotOnPlatform = false;
+        }*/
     }
 
     private void FixedUpdate()
