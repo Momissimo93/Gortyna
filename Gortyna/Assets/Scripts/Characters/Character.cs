@@ -10,13 +10,13 @@ public class Character : MonoBehaviour
     public int currentLifePoints;
 
     protected Transform trans;
-    protected BoxCollider2D boxCollider2D;
     public bool immune = false;
 
     public Rigidbody2D rigidBody;
     public Animator animator;
+    public BoxCollider2D boxCollider2D;
 
-    public DamageManager damageManager;
+    public TakeDamage takeDamage;
     //protected Input moveLeft;
 
     void Awake()
@@ -28,7 +28,7 @@ public class Character : MonoBehaviour
 
         currentLifePoints = maxLifePoints;
 
-        damageManager = gameObject.GetComponent<DamageManager>();
+        takeDamage = gameObject.GetComponent<TakeDamage>();
     }
     protected void SetAnimator()
     {
@@ -59,11 +59,11 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Character offender, Character receiver)
     {
-        if(damageManager)
+        if(takeDamage)
         {
-            damageManager.TakeDamage(damage);
+            takeDamage.DoTakeDamage(damage, offender, receiver);
         }
     }
 }

@@ -22,7 +22,7 @@ public class DamageBox : MonoBehaviour
         {
             Debug.Log("Hit");
             Character c = (collision.gameObject.GetComponent<Human>());
-            c.TakeDamage(1);
+            //c.TakeDamage(1);
         }
         else
         {

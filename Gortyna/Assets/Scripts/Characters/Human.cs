@@ -19,7 +19,7 @@ public class Human : Character
 
     public bool isDashing = false;
     public bool isMoving = false;
-    public bool isNotOnPlatform = true;
+    public bool isOnPlatform = false;
     public bool canMutate_Bunny;
 
     public Transform attackPoint;
@@ -118,10 +118,12 @@ public class Human : Character
         if (leftFoot.IsOnGround() == true || rightFoot.IsOnGround() == true)
         {
             isOnGround = true;
+            //Debug.Log("I  on ground");
         }
         else if (leftFoot.IsOnGround() == false || rightFoot.IsOnGround() == false)
         {
             isOnGround = false;
+            //Debug.Log("I NOT  on ground");
         }
     }
 }

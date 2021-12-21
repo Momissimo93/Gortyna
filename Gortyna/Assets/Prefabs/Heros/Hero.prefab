@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider2D: {fileID: 7014370016738316769}
-  rayLenghtFromFeet: 0.1
+  rayLenghtFromFeet: 0.4
 --- !u!1 &7014370016738316773
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: -2905725585828232214}
   - component: {fileID: 6823443670746385564}
   - component: {fileID: 4643368382543449823}
+  - component: {fileID: -4172900913132980859}
   m_Layer: 7
   m_Name: Hero
   m_TagString: Hero
@@ -200,7 +201,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.037136614, y: 0.001037538}
+  m_Offset: {x: -0.037136614, y: 0.036965907}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -211,7 +212,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.69747126, y: 0.9}
+  m_Size: {x: 0.69747126, y: 0.82814324}
   m_EdgeRadius: 0
 --- !u!50 &7014370016738316782
 Rigidbody2D:
@@ -253,9 +254,10 @@ MonoBehaviour:
   immune: 0
   rigidBody: {fileID: 0}
   animator: {fileID: 0}
-  damageManager: {fileID: 4643368382543449823}
+  boxCollider2D: {fileID: 0}
+  takeDamage: {fileID: 0}
   canMove: 0
-  jumpForce: 9
+  jumpForce: 10
   leftFoot: {fileID: 7014370016612024999}
   rightFoot: {fileID: 7014370017186277717}
   isOnGround: 0
@@ -264,6 +266,7 @@ MonoBehaviour:
   dashTime: 0.4
   isDashing: 0
   isMoving: 0
+  isOnPlatform: 0
   canMutate_Bunny: 1
   attackPoint: {fileID: 4270338602673136434}
   attackRange: 1
@@ -302,12 +305,34 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7014370016738316773}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e11f2b0b6f30c9f4ab4ab7c7df67ddf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: -462689663687012057}
+  blinking: {fileID: 0}
+  immunity: {fileID: 0}
+  stopAnimation: {fileID: 0}
+  knockBack: {fileID: 0}
+--- !u!114 &-4172900913132980859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014370016738316773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01dd142a2596f1d4da8a2c3116b617a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  receiver: {fileID: 0}
+  offender: {fileID: 0}
+  blinking: {fileID: 0}
+  immunity: {fileID: 0}
+  stopAnimation: {fileID: 0}
+  knockBack: {fileID: 0}
 --- !u!1 &7014370017186277716
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,4 +377,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider2D: {fileID: 7014370016738316769}
-  rayLenghtFromFeet: 0.1
+  rayLenghtFromFeet: 0.4

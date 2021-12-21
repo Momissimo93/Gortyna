@@ -26,7 +26,7 @@ public class Coin : MonoBehaviour
         }
         else
         {
-            Debug.Log("He is not the hero");
+            //Debug.Log("He is not the hero");
         }
     }
     public  IEnumerator WaitFor(float seconds )

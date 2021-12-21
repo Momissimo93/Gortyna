@@ -8,7 +8,7 @@ public class VerticalPlaform : MonoBehaviour
     private Vector2 originalPosition;
     private Transform transform;
     private VerticalMovement verticalMovement;
-    private float distance = 7.80f;
+    private float distance = 7.00f;
     private int initialDirection = -1;
 
     // Start is called before the first frame update
@@ -30,17 +30,20 @@ public class VerticalPlaform : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Human>())
+        if (collision.gameObject.GetComponent<Human>() && collision.gameObject.GetComponent<Human>().isOnPlatform == false)
         {
             collision.transform.SetParent(transform);
+            collision.gameObject.GetComponent<Human>().isOnPlatform = true;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Human>())
+        if (collision.gameObject.GetComponent<Human>() && collision.gameObject.GetComponent<Human>().isOnPlatform == true)
         {
             collision.transform.SetParent(null);
+            collision.gameObject.GetComponent<Human>().isOnPlatform = false;
             //collision.gameObject.GetComponent<Human>().isNotOnPlatform = true;
+            Debug.Log("Exit");
         }
     }
 }

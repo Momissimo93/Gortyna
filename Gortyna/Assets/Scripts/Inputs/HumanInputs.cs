@@ -61,7 +61,7 @@ public class HumanInputs : MonoBehaviour
                 StartCoroutine(stop.Stopping(0.35f,human));
                 human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);
                 human.animator.SetTrigger("Human_Attack");
-                attack.Attack(human.transform);
+                attack.DoHumanAttack(human);
             }
 
             if (Input.GetButtonDown("Fire2") && human.canMove)

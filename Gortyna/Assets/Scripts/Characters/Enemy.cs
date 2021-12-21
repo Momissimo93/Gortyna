@@ -7,6 +7,8 @@ public class Enemy : Character
     Command moveLeft;
     Command moveRight;
 
+    bool facingRight = false;
+
     void Start()
     {
         moveLeft = new MoveLeft();
@@ -21,5 +23,27 @@ public class Enemy : Character
     public void MoveRight()
     {
         moveRight.Execute(trans, 1);
+    }
+
+    public void SetRotation(int s)
+    {
+        if (s == 1)
+        {
+            if (!facingRight)
+            {
+                transform.Rotate(0, 180f, 0f);
+                facingRight = true;
+                direction = -1;
+            }
+        }
+        else if (s == -1)
+        {
+            if (facingRight)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                facingRight = false;
+                direction = 1;
+            }
+        }
     }
 }
