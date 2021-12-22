@@ -7,13 +7,14 @@ public class HumanInputs : MonoBehaviour
     public Human human;
     public MainCharactersManager mainCharactersManager;
 
+    public HumanAttack attack;
     Command moveLeft;
     Command moveRight;
     Command jump;
     Command hero_Attack;
     Dash dash;
     Stop stop;
-    HumanAttack attack;
+    //HumanAttack attack;
 
     private float horizontalMove = 0;
     float direction;
@@ -29,8 +30,7 @@ public class HumanInputs : MonoBehaviour
         hero_Attack = new Hero_Attack();
         dash = gameObject.AddComponent<Dash>();
         stop = gameObject.AddComponent<Stop>();
-        attack = gameObject.AddComponent<HumanAttack>();
-        //attack = new HumanAttack(); dash = new Dash(); stop = new Stop();
+        //attack = gameObject.AddComponent<HumanAttack>();
 
         human = GameObject.FindObjectOfType<Human>();
         mainCharactersManager = GameObject.FindObjectOfType<MainCharactersManager>();

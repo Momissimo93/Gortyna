@@ -6,8 +6,7 @@ public class Worm: Enemy
 {
     public LeftFoot leftFoot;
     public RightFoot rightFoot;
-    public WarmAttackPoint attackPoint;
-    //private bool attack;
+    public WarmAttack attack;
 
     void Update()
     {
@@ -19,13 +18,16 @@ public class Worm: Enemy
 
         GroundCheck();
 
-        attackPoint.CheckHero();
+        attack.CheckHero();
 
         //HorizontalMovement();
     }
     private void FixedUpdate()
     {
-        HorizontalMovement();
+        if (canMove)
+        {
+            HorizontalMovement();
+        }
     }
 
     void GroundCheck()

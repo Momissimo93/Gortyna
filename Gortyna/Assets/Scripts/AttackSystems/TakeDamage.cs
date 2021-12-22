@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class TakeDamage : MonoBehaviour
 {
+    [HideInInspector]
     public Character receiver;
+    [HideInInspector]
     public Character offender;
-
+    [HideInInspector]
     public Blinking blinking;
+    [HideInInspector]
     public Immunity immunity;
+    [HideInInspector]
     public StopAnimation stopAnimation;
+    [HideInInspector]
     public KnockBack knockBack;
     
     void Start()
@@ -56,9 +61,9 @@ public class TakeDamage : MonoBehaviour
 
                 else if (receiver.currentLifePoints > 0)
                 {
-                    //knockBack.DoKnockBack(offender, receiver);
-                    immunity.DoImmunity(receiver, 1f);
                     stopAnimation.DoStopAnimation(receiver, 1f);
+                    knockBack.DoKnockBack(offender, receiver);
+                    immunity.DoImmunity(receiver, 1f);
                 }
             }
         }

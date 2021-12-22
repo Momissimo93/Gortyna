@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    int offenderLayer;
-    Character offender;
-    Character receiver;
+    protected int offenderLayer;
+    protected Character offender;
+    protected Character receiver;
 
-    // Start is called before the first frame update
-    void Start()
+
+    public void SetOffenderLayer(int offndLayer)
     {
-        
+        offenderLayer = offndLayer;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetReceiver(Character rc)
     {
-        
+        receiver = rc;
+    }
+
+    public void SetOffender(Character of)
+    {
+        offender = of;
     }
 }

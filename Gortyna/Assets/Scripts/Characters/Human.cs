@@ -5,7 +5,6 @@ using UnityEngine.Events;
 public class Human : Character
 {
     protected bool facingRight;
-    public bool canMove;
 
     public int jumpForce;
     public LeftFoot leftFoot;
@@ -22,9 +21,9 @@ public class Human : Character
     public bool isOnPlatform = false;
     public bool canMutate_Bunny;
 
-    public Transform attackPoint;
-    public float attackRange = 0.5f;
-    public int enemyLayer = 1 << 8;
+    //public Transform attackPoint;
+    //public float attackRange = 0.5f;
+    //public int enemyLayer = 1 << 8;
 
     public BoxCollider2D boxC2D;
 

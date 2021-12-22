@@ -2,23 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HumanAttack : MonoBehaviour
+public class HumanAttack : Attack
 {
     // Start is called before the first frame update
+    public float rangeRadius;
+    Vector2 rangeOrigin;
     Human human;
+
     //KnockBack knockBack;
     void Start()
     {
-  
+
+        rangeOrigin = transform.position;
+        offenderLayer = 1 << 8;
+        //SetOffender(human);
+
+    }
+    void Update()
+    {
+        rangeOrigin = transform.position;
     }
 
     public void DoHumanAttack(Human hm)
     {
-        if (hm.GetComponent<Human>())
+        human = hm;
+        if (human)
         {
-            human = gameObject.GetComponent<Human>();
+            Debug.Log("Let's Attack");
 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(human.attackPoint.position, human.attackRange, human.enemyLayer);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(rangeOrigin, rangeRadius, offenderLayer);
 
             foreach (Collider2D e in hitEnemies)
             {
@@ -41,8 +53,16 @@ public class HumanAttack : MonoBehaviour
 
     private IEnumerator HumanAttackCoroutine(Enemy enemy)
     {
-        yield return new WaitForSeconds(0.1f);
-        enemy.GetComponent<Enemy>().TakeDamage(1,human,enemy);
-        //knockBack.DoKnockBack(human, enemy);
+        if(human!= null)
+        {
+            yield return new WaitForSeconds(0.1f);
+            enemy.GetComponent<Enemy>().TakeDamage(1, human, enemy);
+            //knockBack.DoKnockBack(human, enemy);
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(rangeOrigin, rangeRadius);
     }
 }

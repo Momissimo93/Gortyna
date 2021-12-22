@@ -217,7 +217,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9b5b4293b9f20064c99e2698ea65b52f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -265,13 +265,14 @@ MonoBehaviour:
   maxLifePoints: 50
   currentLifePoints: 0
   immune: 0
+  canMove: 1
   rigidBody: {fileID: 0}
   animator: {fileID: 0}
   boxCollider2D: {fileID: 0}
   takeDamage: {fileID: 0}
   leftFoot: {fileID: 774705505}
   rightFoot: {fileID: 182034382}
-  attackPoint: {fileID: 1522099211}
+  attack: {fileID: 1832720884}
 --- !u!114 &995311940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,8 +318,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7652549467879928988}
   - component: {fileID: 3095699218044413400}
-  - component: {fileID: 5864368335800429433}
   - component: {fileID: 1522099211}
+  - component: {fileID: 1832720884}
   m_Layer: 10
   m_Name: AttackPoint
   m_TagString: Untagged
@@ -366,7 +367,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5864368335800429433
+--- !u!114 &1522099211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915995690351570345}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48f3305c31cd77b41891b1ab5c1376ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeRadius: 0.38
+  worm: {fileID: 995311938}
+--- !u!114 &1832720884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -376,19 +391,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52ebde02826218c4d9d890233a586e16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  worm: {fileID: 995311938}
---- !u!114 &1522099211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8915995690351570345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48f3305c31cd77b41891b1ab5c1376ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rangeRadius: 0.38

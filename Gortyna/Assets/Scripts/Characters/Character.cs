@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
 
     protected Transform trans;
     public bool immune = false;
+    public bool canMove = true;
 
     public Rigidbody2D rigidBody;
     public Animator animator;

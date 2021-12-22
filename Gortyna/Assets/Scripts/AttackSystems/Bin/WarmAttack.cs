@@ -2,36 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarmAttack : MonoBehaviour
+public class WarmAttack : Attack
 {
+    public float rangeRadius;
+    Vector2 rangeOrigin;
     public Worm worm;
-    Human human;
-    // Start is called before the first frame update
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Start()
     {
-        if (collision.gameObject.CompareTag("Hero"))
-        {
-            human = collision.gameObject.GetComponent<Human>();
+        rangeOrigin = transform.position;
+        offenderLayer = 1 << 7;
+        //SetOffender(worm);
+    }
 
-            if (human.currentLifePoints > 0)
+    private void Update()
+    {
+        rangeOrigin = transform.position;
+    }
+
+    public void CheckHero()
+    {
+        Vector2 rangeOrigin = transform.position;
+        RaycastHit2D range = Physics2D.CircleCast(rangeOrigin, rangeRadius, Vector2.zero, 1, offenderLayer);
+
+        if (range)
+        {
+            Debug.Log("The enemy is in range");
+            if (range.collider.gameObject.CompareTag("Hero"))
             {
-                //KnockBack(human);
-                Debug.Log("We have it " + human.name);
-                human.takeDamage.DoTakeDamage(1, worm, human );
+                SetReceiver(range.collider.gameObject.GetComponent<Human>());
+                receiver.TakeDamage(1, offender, receiver);
             }
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    }
+    private void OnDrawGizmos()
     {
-        if (collision.gameObject.CompareTag("Hero"))
-        {
-                //KnockBack(human);
-                Debug.Log("We have it " + human.name);
-
-        }
-
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(rangeOrigin, rangeRadius);
     }
-
 }
+

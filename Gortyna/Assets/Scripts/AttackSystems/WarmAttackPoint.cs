@@ -2,19 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarmAttackPoint : MonoBehaviour
+public class WarmAttackPoint: Attack
 {
-    private int heroLayer = 1 << 7;
     public float rangeRadius;
     Vector2 rangeOrigin;
-    private Transform target;
-    private Human human;
     public Worm worm;
+    //private int heroLayer = 1 << 7;
+    //private Transform target;
+    //private Human human;
+    //public Worm worm;
 
     private void Start()
     {
         rangeOrigin = transform.position;
+        offenderLayer = 1 << 7;
+        SetOffender(worm);
     }
+
     private void Update()
     {
         rangeOrigin = transform.position;
@@ -23,16 +27,14 @@ public class WarmAttackPoint : MonoBehaviour
     public void CheckHero()
     {
         Vector2 rangeOrigin = transform.position;
-        RaycastHit2D range = Physics2D.CircleCast(rangeOrigin, rangeRadius, Vector2.zero, 1, heroLayer);
+        RaycastHit2D range = Physics2D.CircleCast(rangeOrigin, rangeRadius, Vector2.zero, 1, offenderLayer);
 
         if (range)
         {
             if (range.collider.gameObject.CompareTag("Hero"))
             {
-                human = range.collider.gameObject.GetComponent<Human>();
-                human.TakeDamage(1,worm,human);
-                Debug.Log("Found it let's attack him");
-                //target = range.collider.transform;
+                SetReceiver(range.collider.gameObject.GetComponent<Human>());
+                receiver.TakeDamage(1, offender, receiver);
             }
         }
 
