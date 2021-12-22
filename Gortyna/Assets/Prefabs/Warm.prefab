@@ -271,6 +271,7 @@ MonoBehaviour:
   takeDamage: {fileID: 0}
   leftFoot: {fileID: 774705505}
   rightFoot: {fileID: 182034382}
+  attackPoint: {fileID: 1522099211}
 --- !u!114 &995311940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +318,8 @@ GameObject:
   - component: {fileID: 7652549467879928988}
   - component: {fileID: 3095699218044413400}
   - component: {fileID: 5864368335800429433}
-  m_Layer: 0
+  - component: {fileID: 1522099211}
+  m_Layer: 10
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8915995690351570345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.492, y: -0.157, z: 0}
+  m_LocalPosition: {x: -0.016, y: -0.157, z: 0}
   m_LocalScale: {x: 0.07019512, y: 0.17017, z: 0.17017}
   m_Children: []
   m_Father: {fileID: 1632625212215932953}
@@ -345,10 +347,10 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8915995690351570345}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -376,4 +378,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ebde02826218c4d9d890233a586e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worm: {fileID: 995311938}
+--- !u!114 &1522099211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915995690351570345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48f3305c31cd77b41891b1ab5c1376ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeRadius: 0.38
   worm: {fileID: 995311938}

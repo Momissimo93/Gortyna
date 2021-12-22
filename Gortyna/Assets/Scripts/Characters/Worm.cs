@@ -6,6 +6,8 @@ public class Worm: Enemy
 {
     public LeftFoot leftFoot;
     public RightFoot rightFoot;
+    public WarmAttackPoint attackPoint;
+    //private bool attack;
 
     void Update()
     {
@@ -16,6 +18,9 @@ public class Worm: Enemy
         rightFoot.DrawRaysFromFeet();
 
         GroundCheck();
+
+        attackPoint.CheckHero();
+
         //HorizontalMovement();
     }
     private void FixedUpdate()

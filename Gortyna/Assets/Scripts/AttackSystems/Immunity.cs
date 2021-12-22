@@ -14,7 +14,7 @@ public class Immunity : MonoBehaviour
         if (character)
         {
             character.immune = true;
-            character.boxCollider2D.isTrigger = true;
+            //character.boxCollider2D.isTrigger = true;
 
             for (int i = 0; i < seconds; i++)
             {
@@ -24,8 +24,8 @@ public class Immunity : MonoBehaviour
 
             RestoreRightAlpha(character);
             character.immune = false;
-            character.boxCollider2D.isTrigger = false;
-            Debug.Log("The character is not immune");
+            //character.boxCollider2D.isTrigger = false;
+            //Debug.Log("The character is not immune");
         }
     }
 
@@ -43,10 +43,12 @@ public class Immunity : MonoBehaviour
                 {
                     tempColor.a = 1f;
                     spriteRenderer.color = tempColor;
-                    Debug.Log("Alpha Restored");
+                    //Debug.Log("Alpha Restored");
                 }
                 else
-                    Debug.Log("There is no need for restoring Alpha Restored");
+                {
+                    //Debug.Log("There is no need for restoring Alpha Restored");
+                }
             }
         }
     }

@@ -22,11 +22,18 @@ public class HumanAttack : MonoBehaviour
 
             foreach (Collider2D e in hitEnemies)
             {
-                if(e.GetComponent<Enemy>().currentLifePoints > 0 )
+                if (e.GetComponent<Enemy>())
                 {
-                    Enemy enemy = e.GetComponent<Enemy>();
-                    StartCoroutine("HumanAttackCoroutine",(e.GetComponent<Enemy>()));
-                    //Debug.Log("We have it " + enemy.name);
+                    if (e.GetComponent<Enemy>().currentLifePoints > 0)
+                    {
+                        Enemy enemy = e.GetComponent<Enemy>();
+                        StartCoroutine("HumanAttackCoroutine", (e.GetComponent<Enemy>()));
+                        //Debug.Log("We have it " + enemy.name);
+                    }
+                }
+                else
+                {
+                    Debug.Log("This component does not have a class Enemy");
                 }
             }
         }

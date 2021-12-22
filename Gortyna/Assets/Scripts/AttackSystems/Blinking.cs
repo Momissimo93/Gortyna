@@ -10,7 +10,7 @@ public class Blinking : MonoBehaviour
         {
             if (character.GetComponent<SpriteRenderer>())
             {
-                Debug.Log("Let's blink");
+                //Debug.Log("Let's blink");
                 SpriteRenderer spriteRenderer;
                 spriteRenderer = character.GetComponent<SpriteRenderer>();
                 Color tempColor = spriteRenderer.color;

@@ -31,7 +31,7 @@ public class TakeDamage : MonoBehaviour
             }
             else
             {
-                Debug.Log("Receiver is not immune");
+                //Debug.Log("Receiver is not immune");
             }
         }
     }
