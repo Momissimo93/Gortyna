@@ -5,15 +5,11 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     public GameObject mainChar;
-    SpriteRenderer spriteRend;
     Camera camera;
     public GameObject backGround;
 
     float verExtent;
     float horExtent;
-
-    float spriteWidth;
-    float spriteHeight;
 
     float leftB;
     float rightB;
@@ -28,48 +24,27 @@ public class CameraControl : MonoBehaviour
     private Human human;
     private Bunny bunny;
 
+    Bounds sceneBounds;
+
     void Start()
     {
         //We do that has we know that the first Character to be spawn is the human
-        human = GameObject.FindObjectOfType<Human>();
-        typeOfChar = TypeOfCharacter.Human;
+        SetCameraHuman();
 
-        if (backGround.GetComponent<SpriteRenderer>())
+        camera = GetComponent<Camera>();
+
+        Collider2D[] sceneColliders2D = FindObjectsOfType<Collider2D>(); 
+
+        foreach(Collider2D coll in sceneColliders2D)
         {
-            spriteRend = backGround.GetComponent<SpriteRenderer>();
-            //spriteSizeMax = sprite.bounds.size.x/2  ;
-            //Debug.Log("spriteSizeMax = " + spriteSizeMax);
+            sceneBounds.Encapsulate(coll.bounds);
         }
-        else
-        {
-            Debug.Log("The object does not have a SpriteRendere");
-        }
-
-        if (GetComponent<Camera>())
-        {
-
-            camera = GetComponent<Camera>();
-
-            verExtent = camera.orthographicSize;
-            horExtent = verExtent * camera.aspect;
-
-
-            spriteWidth = spriteRend.bounds.size.x / 2f;
-            spriteHeight = spriteRend.bounds.size.y / 2f;
-
-            leftB = spriteRend.bounds.min.x + horExtent - offset.x;
-            rightB = spriteRend.bounds.max.x - horExtent - offset.x;
-
-            bottomB = spriteRend.bounds.min.y + verExtent - offset.y;
-            topB = spriteRend.bounds.max.y - verExtent - offset.y;
-
-        }
-    
+        GetExtents();
+        GetBounds();
     }
     // Update is called once per frame
     void Update()
     {
-  
         switch (typeOfChar)
         {
             case TypeOfCharacter.Human:
@@ -80,30 +55,29 @@ public class CameraControl : MonoBehaviour
                 transform.position = Vector3.Lerp(transform.position, new Vector3(Mathf.Clamp(bunny.trans.position.x, leftB, rightB) + offset.x, Mathf.Clamp(bunny.trans.position.y, bottomB, topB) + offset.y, transform.position.z), Time.deltaTime * interpolationSpeed);
                 break;
         }
-        //transform.position = new Vector2 (mainChar.transform.position.x , mainChar.transform.position.y);
-
-        //transform.position = Vector3.Lerp(transform.position, new Vector3(Mathf.Clamp(human.trans.position.x, leftB, rightB) + offset.x, Mathf.Clamp(human.trans.position.y, bottomB, topB) + offset.y, transform.position.z), Time.deltaTime * interpolationSpeed);
     }
 
-    /*
-    public void SetMainCharacter(GameObject character)
+    void GetExtents()
     {
-        if (character.gameObject.CompareTag("Hero"))
+        if (camera)
         {
-            typeOfChar = TypeOfCharacter.Human;
-            human = character.gameObject.GetComponent<Human>();
+            verExtent = camera.orthographicSize;
+            horExtent = verExtent * camera.aspect;
+        }
+    }
 
-        }
-        else if (character.gameObject.CompareTag("Hero"))
+    void GetBounds()
+    {
+        if (camera)
         {
-            typeOfChar = TypeOfCharacter.Bunny;
-            human = character.gameObject.GetComponent<Human>();
+
+            leftB = sceneBounds.min.x + horExtent - offset.x;
+            rightB = sceneBounds.max.x - horExtent - offset.x;
+
+            bottomB = sceneBounds.min.y + verExtent - offset.y;
+            topB = sceneBounds.max.y - verExtent - offset.y;
         }
-        else
-        {
-            Debug.Log("Error");
-        }
-    }*/
+    }
 
     public void SetCameraBunny()
     {

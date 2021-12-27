@@ -7,8 +7,6 @@ public class Attack : MonoBehaviour
     protected int offenderLayer;
     protected Character offender;
     protected Character receiver;
-
-
     public void SetOffenderLayer(int offndLayer)
     {
         offenderLayer = offndLayer;

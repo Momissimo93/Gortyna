@@ -16,7 +16,6 @@ public class VerticalMovement : MonoBehaviour
         distance = dist;
         direction = dir;
     }
-
     public void Move(Transform tr)
     {
         transform.position = new Vector2(transform.position.x, transform.position.y + (2 * direction * Time.deltaTime));

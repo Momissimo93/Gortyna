@@ -137,15 +137,5 @@ public class Human : Character
             //Debug.Log("I NOT  on ground");
         }
     }
-
-    /*public float GetTransformPosition_X()
-    {
-        return humanTransform.x;
-    }
-
-    public float GetTransformPosition_Y()
-    {
-        return humanTransform.y;
-    }*/
 }
 

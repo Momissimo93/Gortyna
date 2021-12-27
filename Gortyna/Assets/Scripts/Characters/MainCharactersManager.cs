@@ -6,9 +6,7 @@ public class MainCharactersManager : MonoBehaviour
 {
     public List<Character> characters;
     public CameraControl cameraControl;
-    Vector3 position;
     Bunny bunny;
-    float direction;
 
     void Awake()
     {
@@ -18,7 +16,7 @@ public class MainCharactersManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.x);
+       
     }
 
     //Mehotd Called only the game start 
