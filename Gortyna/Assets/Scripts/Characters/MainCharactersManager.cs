@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainCharactersManager : MonoBehaviour
 {
     public List<Character> characters;
+    public CameraControl cameraControl;
     Vector3 position;
     Bunny bunny;
     float direction;
@@ -17,7 +18,7 @@ public class MainCharactersManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.x);
+        //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.x);
     }
 
     //Mehotd Called only the game start 
@@ -31,6 +32,12 @@ public class MainCharactersManager : MonoBehaviour
             {
                 human = characters[i].gameObject;
                 Instantiate(human, transform.position, transform.rotation);
+ 
+                if(human.gameObject.GetComponent<Transform>() != null)
+                {
+                    //cameraControl.SetMainCharacter(human);
+                    Debug.Log("Let's set the Camera");
+                }
             }
         }
     }
@@ -56,6 +63,7 @@ public class MainCharactersManager : MonoBehaviour
             }
         }
         Instantiate(bunny, transform.position, transform.rotation);
+        cameraControl.SetCameraBunny();
     }
 
     public void CanBunny(Human human)
@@ -78,6 +86,7 @@ public class MainCharactersManager : MonoBehaviour
             {
                 human = characters[i].gameObject;
                 Instantiate(human, tr.position, transform.rotation);
+                cameraControl.SetCameraHuman();
             }
         }
     }

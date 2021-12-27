@@ -16,6 +16,8 @@ public class Human : Character
     public float dashPower;
     public float dashTime;
 
+    //Vector2 humanTransform;
+
     public bool isDashing = false;
     public bool isMoving = false;
     public bool isOnPlatform = false;
@@ -45,7 +47,16 @@ public class Human : Character
         boxC2D = boxCollider2D;
 
         //originalVelocity = rigidBody.velocity;
+        trans = gameObject.GetComponent<Transform>();
 
+        /*if(gameObject.GetComponent<Transform>())
+        {
+            humanTransform = new Vector2 (gameObject.GetComponent<Transform>().position.x, gameObject.GetComponent<Transform>().position.y);
+        }
+        else
+        {
+            Debug.Log("Null");
+        }*/
     }
 
     void Update()
@@ -64,6 +75,7 @@ public class Human : Character
             Debug.Log("We are on the platform");
             isNotOnPlatform = false;
         }*/
+        //humanTransform = new Vector2(gameObject.GetComponent<Transform>().position.x, gameObject.GetComponent<Transform>().position.y);
     }
 
     private void FixedUpdate()
@@ -125,5 +137,15 @@ public class Human : Character
             //Debug.Log("I NOT  on ground");
         }
     }
+
+    /*public float GetTransformPosition_X()
+    {
+        return humanTransform.x;
+    }
+
+    public float GetTransformPosition_Y()
+    {
+        return humanTransform.y;
+    }*/
 }
 

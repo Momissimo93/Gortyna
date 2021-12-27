@@ -27,7 +27,7 @@ public class WarmAttack : Attack
 
         if (range)
         {
-            Debug.Log("The enemy is in range");
+            //Debug.Log("The enemy is in range");
             if (range.collider.gameObject.CompareTag("Hero"))
             {
                 SetReceiver(range.collider.gameObject.GetComponent<Human>());

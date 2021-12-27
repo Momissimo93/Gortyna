@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
     [SerializeField] protected int maxLifePoints;
     public int currentLifePoints;
 
-    protected Transform trans;
+    public Transform trans;
     public bool immune = false;
     public bool canMove = true;
 
@@ -66,5 +66,23 @@ public class Character : MonoBehaviour
         {
             takeDamage.DoTakeDamage(damage, offender, receiver);
         }
+    }
+
+    public float GetTransfromPositionX()
+    {
+        if(this.trans!=null)
+        {
+            return trans.position.x;
+        }
+        return 0f;
+    }
+
+    public float GetTranformPositionY()
+    {
+        if(this.trans != null)
+        {
+            return trans.position.y;
+        }
+        return 0f;
     }
 }
