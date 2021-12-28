@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangeRadius: 0.5
-  human: {fileID: -462689663687012057}
 --- !u!1 &7014370016612024984
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,8 +261,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 120
   direction: 0
-  maxLifePoints: 4
+  maxLifePoints: 3
   currentLifePoints: 0
+  trans: {fileID: 0}
   immune: 0
   canMove: 0
   rigidBody: {fileID: 0}

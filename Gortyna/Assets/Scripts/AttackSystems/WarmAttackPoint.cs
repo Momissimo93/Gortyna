@@ -11,12 +11,15 @@ public class WarmAttackPoint: Attack
     //private Transform target;
     //private Human human;
     //public Worm worm;
+    private HeartsHealthVisual heartsHealthVisual;
 
     private void Start()
     {
         rangeOrigin = transform.position;
         offenderLayer = 1 << 7;
         SetOffender(worm);
+
+        heartsHealthVisual = FindObjectOfType<HeartsHealthVisual>();
     }
 
     private void Update()
@@ -35,6 +38,7 @@ public class WarmAttackPoint: Attack
             {
                 SetReceiver(range.collider.gameObject.GetComponent<Human>());
                 receiver.TakeDamage(1, offender, receiver);
+                heartsHealthVisual.heartHealthSystemOnDamaged(1);
             }
         }
 

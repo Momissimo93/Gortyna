@@ -45,15 +45,18 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (typeOfChar)
+        if(mainChar)
         {
-            case TypeOfCharacter.Human:
-                transform.position = Vector3.Lerp(transform.position, new Vector3(Mathf.Clamp(human.trans.position.x, leftB, rightB) + offset.x, Mathf.Clamp(human.trans.position.y, bottomB, topB) + offset.y, transform.position.z), Time.deltaTime * interpolationSpeed);
-                break;
+            switch (typeOfChar)
+            {
+                case TypeOfCharacter.Human:
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(Mathf.Clamp(human.trans.position.x, leftB, rightB) + offset.x, Mathf.Clamp(human.trans.position.y, bottomB, topB) + offset.y, transform.position.z), Time.deltaTime * interpolationSpeed);
+                    break;
 
-            case TypeOfCharacter.Bunny:
-                transform.position = Vector3.Lerp(transform.position, new Vector3(Mathf.Clamp(bunny.trans.position.x, leftB, rightB) + offset.x, Mathf.Clamp(bunny.trans.position.y, bottomB, topB) + offset.y, transform.position.z), Time.deltaTime * interpolationSpeed);
-                break;
+                case TypeOfCharacter.Bunny:
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(Mathf.Clamp(bunny.trans.position.x, leftB, rightB) + offset.x, Mathf.Clamp(bunny.trans.position.y, bottomB, topB) + offset.y, transform.position.z), Time.deltaTime * interpolationSpeed);
+                    break;
+            }
         }
     }
 
