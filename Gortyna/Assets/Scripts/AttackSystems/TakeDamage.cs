@@ -45,12 +45,11 @@ public class TakeDamage : MonoBehaviour
     {
         receiver = rcv;
         offender = ofd;
-
         int damage = d;
 
-        if (this.receiver)
+        if (receiver)
         {
-            if (this.receiver.immune == false)
+            if (receiver.immune == false)
             {
                 receiver.currentLifePoints -= damage;
 

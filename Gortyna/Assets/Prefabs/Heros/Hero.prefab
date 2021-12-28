@@ -261,7 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 120
   direction: 0
-  maxLifePoints: 3
+  maxLifePoints: 10
   currentLifePoints: 0
   trans: {fileID: 0}
   immune: 0

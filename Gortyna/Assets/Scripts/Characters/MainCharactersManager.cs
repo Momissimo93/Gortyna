@@ -34,7 +34,6 @@ public class MainCharactersManager : MonoBehaviour
                 if(human.gameObject.GetComponent<Transform>() != null)
                 {
                     //cameraControl.SetMainCharacter(human);
-                    Debug.Log("Let's set the Camera");
                 }
             }
         }

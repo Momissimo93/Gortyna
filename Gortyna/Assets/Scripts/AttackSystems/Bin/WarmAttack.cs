@@ -15,6 +15,7 @@ public class WarmAttack : Attack
         offenderLayer = 1 << 7;
         //SetOffender(worm);
         heartsHealthVisual = FindObjectOfType<HeartsHealthVisual>();
+        offender = worm;
     }
 
     private void Update()
@@ -32,18 +33,15 @@ public class WarmAttack : Attack
             //Debug.Log("The enemy is in range");
             if (range.collider.gameObject.CompareTag("Hero"))
             {
-
                 if (heartsHealthVisual && (range.collider.gameObject.GetComponent<Human>().immune == false))
                 {
                     heartsHealthVisual.heartHealthSystemOnDamaged(1);
                     StartCoroutine(NotMoreDamages(1));
                 }
-
                 SetReceiver(range.collider.gameObject.GetComponent<Human>());
                 receiver.TakeDamage(1, offender, receiver);
             }
         }
-
     }
     private void OnDrawGizmos()
     {
@@ -56,7 +54,6 @@ public class WarmAttack : Attack
             {
                 //it runs 3 times and at each iteration it stops for a second --> so in total the characters will blink for 3 seconds
                 yield return new WaitForSeconds(seconds);
-            Debug.Log("BNOT MORE DAMAGES");
             }
     }
 }

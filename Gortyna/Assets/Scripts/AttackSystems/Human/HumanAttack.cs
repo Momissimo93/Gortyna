@@ -28,8 +28,6 @@ public class HumanAttack : Attack
         human = hm;
         if (human)
         {
-            Debug.Log("Let's Attack");
-
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(rangeOrigin, rangeRadius, offenderLayer);
 
             foreach (Collider2D e in hitEnemies)

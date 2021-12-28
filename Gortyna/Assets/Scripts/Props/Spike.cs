@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Spike : MonoBehaviour
 {
+    [SerializeField] private TrapsAttack trapsAttack;
+
     private Vector2 observerLeft;
     private RaycastHit2D observerRayLeft;
 
@@ -15,6 +17,7 @@ public class Spike : MonoBehaviour
     public float rayLenght;
     private int hero = 1 << 7;
     bool canMove = false;
+    int damages = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +75,11 @@ public class Spike : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Hero"))
+        {
+            Human humam = collision.gameObject.GetComponent<Human>();
+            trapsAttack.Attack(humam, damages);
+        }
         if (collision.gameObject.CompareTag("SpikePlatform"))
         {
             canMove = false;

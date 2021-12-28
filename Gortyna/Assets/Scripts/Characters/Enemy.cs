@@ -13,6 +13,7 @@ public class Enemy : Character
     {
         moveLeft = new MoveLeft();
         moveRight = new MoveRight();
+        animator.SetFloat("Speed", speed);
     }
 
     public void MoveLeft()

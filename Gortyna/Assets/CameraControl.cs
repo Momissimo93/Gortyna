@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     public GameObject mainChar;
-    Camera camera;
-    public GameObject backGround;
+    Camera cam;
+    //public GameObject backGround;
 
     float verExtent;
     float horExtent;
@@ -31,7 +31,7 @@ public class CameraControl : MonoBehaviour
         //We do that has we know that the first Character to be spawn is the human
         SetCameraHuman();
 
-        camera = GetComponent<Camera>();
+        cam =  GetComponent<Camera>();
 
         Collider2D[] sceneColliders2D = FindObjectsOfType<Collider2D>(); 
 
@@ -39,13 +39,14 @@ public class CameraControl : MonoBehaviour
         {
             sceneBounds.Encapsulate(coll.bounds);
         }
+
         GetExtents();
         GetBounds();
     }
     // Update is called once per frame
     void Update()
     {
-        if(mainChar)
+        if((human) || (bunny))
         {
             switch (typeOfChar)
             {
@@ -62,16 +63,16 @@ public class CameraControl : MonoBehaviour
 
     void GetExtents()
     {
-        if (camera)
+        if (GetComponent<Camera>())
         {
-            verExtent = camera.orthographicSize;
-            horExtent = verExtent * camera.aspect;
+            verExtent = GetComponent<Camera>().orthographicSize;
+            horExtent = verExtent * GetComponent<Camera>().aspect;
         }
     }
 
     void GetBounds()
     {
-        if (camera)
+        if (GetComponent<Camera>())
         {
 
             leftB = sceneBounds.min.x + horExtent - offset.x;

@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 995311942}
   m_Layer: 8
   m_Name: Warm
-  m_TagString: Bunny
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,8 +262,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 80
   direction: 1
-  maxLifePoints: 50
+  maxLifePoints: 2
   currentLifePoints: 0
+  trans: {fileID: 0}
   immune: 0
   canMove: 1
   rigidBody: {fileID: 0}

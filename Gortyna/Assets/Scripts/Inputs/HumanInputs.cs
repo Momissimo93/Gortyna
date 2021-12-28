@@ -94,7 +94,7 @@ public class HumanInputs : MonoBehaviour
                 if (human)
                 {
                     human.isMoving = true;
-                    human.animator.SetFloat("Human_Speed", human.speed);
+                    human.animator.SetFloat("Speed", human.speed);
                     moveRight.Execute(human.transform, direction);
                     human.SetRotation("right");
                 }
@@ -104,7 +104,7 @@ public class HumanInputs : MonoBehaviour
                 if (human)
                 {
                     human.isMoving = true;
-                    human.animator.SetFloat("Human_Speed", human.speed);
+                    human.animator.SetFloat("Speed", human.speed);
                     moveLeft.Execute(human.transform, direction);
                     human.SetRotation("left");
                 }
@@ -116,7 +116,7 @@ public class HumanInputs : MonoBehaviour
                 if (human.rigidBody)
                 {
                     human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);
-                    human.animator.SetFloat("Human_Speed", 0);
+                    human.animator.SetFloat("Speed", 0);
                 }
             }
         }

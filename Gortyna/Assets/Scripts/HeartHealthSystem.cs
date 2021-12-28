@@ -38,7 +38,7 @@ public class HeartHealthSystem
             Heart heart = heartList[i];
             if (damageAmount > heart.GetStatus())
             {
-                Debug.Log("This heart can NOT take the full damage");
+                //Debug.Log("This heart can NOT take the full damage");
                 //if it can NOT absorb it then we reduce the damage amount by the amount  they absorbed 
                 damageAmount = damageAmount - heart.GetStatus();
                 //if this happens we go into the next heart and we deal with the next damage 
@@ -46,13 +46,13 @@ public class HeartHealthSystem
             }
             else
             {
-                Debug.Log("This heart can take the full damage");
+                //Debug.Log("This heart can take the full damage");
                 //When we find an heart that can absorb the full damage, it takes the damage it can absorb and we break out of the cycle 
                 heart.Damage();
                 break;
             }
         }
-        Debug.Log("Let's see if the player is still alaive");
+     
         if (IsDead())
         {
             Debug.Log("DEAD");

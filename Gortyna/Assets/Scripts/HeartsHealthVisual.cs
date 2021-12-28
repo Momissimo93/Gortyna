@@ -68,7 +68,6 @@ public class HeartsHealthVisual : MonoBehaviour
     {
         heartHealthSystem.Damage(damage);
         RefreshAllHearts();
-        Debug.Log("Damage");
     }
     public void heartHealthSystemOnHealed(object sender, System.EventArgs e)
     {
