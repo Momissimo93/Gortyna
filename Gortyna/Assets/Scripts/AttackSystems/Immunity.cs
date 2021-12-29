@@ -15,7 +15,6 @@ public class Immunity : MonoBehaviour
         {
             character.immune = true;
             //character.boxCollider2D.isTrigger = true;
-            Debug.Log("IMMUNE");
             for (int i = 0; i < seconds; i++)
             {
                 //it runs 3 times and at each iteration it stops for a second --> so in total the characters will blink for 3 seconds
@@ -25,7 +24,6 @@ public class Immunity : MonoBehaviour
             RestoreRightAlpha(character);
             character.immune = false;
             //character.boxCollider2D.isTrigger = false;
-            Debug.Log("The character is not immune");
         }
     }
 

@@ -2,20 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarmAttack : Attack
+public class WarmAttackPoint: Attack
 {
     public float rangeRadius;
     Vector2 rangeOrigin;
     public Worm worm;
-    HeartsHealthVisual heartsHealthVisual;
+    //private int heroLayer = 1 << 7;
+    //private Transform target;
+    //private Human human;
+    //public Worm worm;
+    private HeartsHealthVisual heartsHealthVisual;
 
     private void Start()
     {
         rangeOrigin = transform.position;
         offenderLayer = 1 << 7;
-        //SetOffender(worm);
+        SetOffender(worm);
+
         heartsHealthVisual = FindObjectOfType<HeartsHealthVisual>();
-        offender = worm;
     }
 
     private void Update()
@@ -30,31 +34,18 @@ public class WarmAttack : Attack
 
         if (range)
         {
-            //Debug.Log("The enemy is in range");
             if (range.collider.gameObject.CompareTag("Hero"))
             {
-                if (heartsHealthVisual && (range.collider.gameObject.GetComponent<Human>().immune == false))
-                {
-                    heartsHealthVisual.heartHealthSystemOnDamaged(1);
-                    StartCoroutine(NotMoreDamages(1));
-                }
                 SetReceiver(range.collider.gameObject.GetComponent<Human>());
                 receiver.TakeDamage(1, offender, receiver);
+                heartsHealthVisual.HeartHealthSystemOnDamaged(1);
             }
         }
+
     }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(rangeOrigin, rangeRadius);
     }
-    IEnumerator NotMoreDamages( float seconds)
-    {
-            for (int i = 0; i < seconds; i++)
-            {
-                //it runs 3 times and at each iteration it stops for a second --> so in total the characters will blink for 3 seconds
-                yield return new WaitForSeconds(seconds);
-            }
-    }
 }
-

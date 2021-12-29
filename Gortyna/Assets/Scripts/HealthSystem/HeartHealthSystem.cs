@@ -7,49 +7,59 @@ public class HeartHealthSystem
 {
     public const int MAX_STATUS_AMOUNT = 1;
 
-    //public event EventHandler onDamage;
-    //public event EventHandler onHealed;
-
     private List<Heart> heartList;
 
+    private int initialLifePoint;
+    private int lifePoints;
     public HeartHealthSystem (int heartAmount)
     {
+        //Depending on the number of hearts the player has (heartAmount) a number of Heart gameObject is created and added to the list heartList
         heartList = new List<Heart>();
+ 
+        initialLifePoint = heartAmount;
+        lifePoints = initialLifePoint;
+
         for (int i = 0; i < heartAmount; i ++)
         {
             Heart heart = new Heart(1);
             heartList.Add(heart);
         }
-        //heartList[heartList.Count - 1].setStatus(0);
-
     }
 
+    //The method return a List of Heart. This List is used by the fucntion SetHeartHealthSystem, which is inside the class HeartsHealthVisual 
     public List<Heart> GetHeartList()
     {
         return heartList;
     }
 
+    /*
+     * This method is connected to the external world. The gameObject that holds a reference to the HearthHealthSystem can signal throught this method call the the player has been hit.
+     * The function needs to know the amount of damages
+    */
+
+    //This method is called by the HeartHealthVisual 
     public void Damage (int damageAmount)
     {
+        lifePoints = lifePoints - damageAmount;
+
         //Cycle through all hearts starting from the end 
         for (int i = heartList.Count - 1; i >= 0; i --)
         {
-            //Test if this hearth can absorb the current damageAmount
+            //Test if this heart can absorb the totality of current damageAmount
             Heart heart = heartList[i];
+
             if (damageAmount > heart.GetStatus())
             {
-                //Debug.Log("This heart can NOT take the full damage");
-                //if it can NOT absorb it then we reduce the damage amount by the amount  they absorbed 
+                //if it can NOT absorb it then we reduce the damage amount by the amount they absorbed 
                 damageAmount = damageAmount - heart.GetStatus();
-                //if this happens we go into the next heart and we deal with the next damage 
+                //if this happens we go into the next heart and we do again the same process (Recursion)
                 heart.Damage();
             }
             else
             {
-                //Debug.Log("This heart can take the full damage");
                 //When we find an heart that can absorb the full damage, it takes the damage it can absorb and we break out of the cycle 
                 heart.Damage();
-                break;
+                break; //End of the recursion 
             }
         }
      
@@ -57,11 +67,12 @@ public class HeartHealthSystem
         {
             Debug.Log("DEAD");
         }
-        //if (onDamage != null) onDamage(this, EventArgs.Empty);
     }
 
     public void Heal(int healAmount)
     {
+        lifePoints = lifePoints + healAmount;
+
         Debug.Log("Let's Heal");
         for(int i = 0; i < heartList.Count; i ++)
         {
@@ -85,7 +96,6 @@ public class HeartHealthSystem
                 heart.Heal();
                 break;
             }
-
         }
         //if (onDamage != null) onHealed(this, EventArgs.Empty);
     }
@@ -95,32 +105,12 @@ public class HeartHealthSystem
         return heartList[0].GetStatus() == 0;
     }
 
-    public class Heart
+    public int GetLifePoints()
     {
-        private int status;
-        public Heart(int status)
-        {
-            this.status = status;
-        }
-
-        public int GetStatus()
-        {
-            return status;
-        }
-
-        public void setStatus(int status )
-        {
-            this.status = status;
-        }
-
-        public void Damage()
-        {
-            status = 0;
-        }
-
-        public void Heal ()
-        {
-            status = 1;
-        }
+        return lifePoints;
+    }
+    public int GetInitialLifePoints()
+    {
+        return initialLifePoint;
     }
 }

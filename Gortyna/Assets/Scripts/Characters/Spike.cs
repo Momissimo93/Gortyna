@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spike : MonoBehaviour
+public class Spike : Character
 {
     [SerializeField] private TrapsAttack trapsAttack;
 
@@ -12,20 +12,15 @@ public class Spike : MonoBehaviour
     private Vector2 observerRight;
     private RaycastHit2D observerRayRight;
 
-    private BoxCollider2D boxCollider2D;
-
     public float rayLenght;
     private int hero = 1 << 7;
-    bool canMove = false;
+    //bool canMove = false;
     int damages = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(gameObject.GetComponent<BoxCollider2D>())
-        {
-            boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
-        }
+        canMove = false;
     }
 
     // Update is called once per frame
@@ -78,7 +73,7 @@ public class Spike : MonoBehaviour
         if (collision.gameObject.CompareTag("Hero"))
         {
             Human humam = collision.gameObject.GetComponent<Human>();
-            trapsAttack.Attack(humam, damages);
+            trapsAttack.Attack(damages, humam, this.gameObject.GetComponent<Spike>() );
         }
         if (collision.gameObject.CompareTag("SpikePlatform"))
         {

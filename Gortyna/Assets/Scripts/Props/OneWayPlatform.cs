@@ -29,7 +29,6 @@ public class OneWayPlatform : MonoBehaviour
         if(collision.gameObject.CompareTag("Hero"))
         {
             human = collision.gameObject.GetComponent<Human>();
-                Debug.Log("The player is here");
         }
         else
         {
