@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3361699209813754875}
   - component: {fileID: 3361699209813754874}
-  - component: {fileID: 3361699209813754873}
+  - component: {fileID: 506933676}
+  - component: {fileID: 506933677}
   m_Layer: 0
   m_Name: HitBox
   m_TagString: Untagged
@@ -58,7 +59,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3361699209813754873
+--- !u!114 &506933676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,9 +68,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 3361699209813754868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87eb81835c36f9d458346eb4368aa046, type: 3}
+  m_Script: {fileID: 11500000, guid: 6521ab34c68cf1a43a2ea940adbef565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &506933677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3361699209813754868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a677f25f22aa2449b3536fbc29dc4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  direction: 0
+  maxLifePoints: 0
+  currentLifePoints: 0
+  trans: {fileID: 0}
+  immune: 0
+  canMove: 1
+  rigidBody: {fileID: 0}
+  animator: {fileID: 0}
+  boxCollider2D: {fileID: 0}
+  takeDamage: {fileID: 0}
+  trapsAttack: {fileID: 506933676}
 --- !u!1 &3361699210624535370
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +120,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3361699210624535370}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.4463396, y: 7.5193143, z: 0.9542135}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -60,7 +60,7 @@ public class HeartsHealthVisual : MonoBehaviour
             CreateHearthImage(heartAncoredPosition).SetHearthState(heart.GetStatus());
 
             //The heartAncoredPosition is then updated 
-            heartAncoredPosition += new Vector2(80, 0);
+            heartAncoredPosition += new Vector2(50, 0);
 
             col++;
             if (col > colMax)
@@ -120,7 +120,7 @@ public class HeartsHealthVisual : MonoBehaviour
 
         //Locate and Size heart 
         heartGameObject.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
-        heartGameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(25, 25);
+        heartGameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(20, 20);
 
         //Set heart sprite
         Image hearthImageUI = heartGameObject.GetComponent<Image>();

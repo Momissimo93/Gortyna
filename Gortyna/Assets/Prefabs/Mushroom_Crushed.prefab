@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 664939090850295912}
   - component: {fileID: 664939090850295913}
   - component: {fileID: 7087924314687839519}
+  - component: {fileID: 942942828}
   m_Layer: 0
   m_Name: Mushroom_Crushed
   m_TagString: Untagged
@@ -116,3 +117,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418169d05cd7eae438851b9e2a79e40d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &942942828
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664939090850295915}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: eaed29be3325c084e81d2b9b0e449aae, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.016339064, y: 0.20015287}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.49349022, y: 0.14220142}
+  m_EdgeRadius: 0
