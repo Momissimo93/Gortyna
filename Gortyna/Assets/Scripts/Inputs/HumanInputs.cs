@@ -79,6 +79,10 @@ public class HumanInputs : MonoBehaviour
                 {
                     mainCharactersManager.SpawnBunny(human.transform);
                 }
+                else if (human.canMutate_Bird)
+                {
+                    mainCharactersManager.SpawnBird(human.transform);
+                }
             }
         }
     }

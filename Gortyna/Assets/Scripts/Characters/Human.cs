@@ -22,6 +22,7 @@ public class Human : Character
     public bool isMoving = false;
     public bool isOnPlatform = false;
     public bool canMutate_Bunny;
+    public bool canMutate_Bird;
 
     //public Transform attackPoint;
     //public float attackRange = 0.5f;

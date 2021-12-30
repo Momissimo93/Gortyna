@@ -12,9 +12,12 @@ GameObject:
   - component: {fileID: 9175741399617695881}
   - component: {fileID: 2979069685319047582}
   - component: {fileID: -8677931791199328366}
+  - component: {fileID: -5011376805690251949}
+  - component: {fileID: 784469129260778299}
+  - component: {fileID: -4809190797278196849}
   m_Layer: 0
   m_Name: Bird
-  m_TagString: Untagged
+  m_TagString: Bird
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7086713199884145600}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.00000008742278, z: 0, w: -1}
   m_LocalPosition: {x: -7.09, y: -7.0261545, z: 57.764065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -116,3 +119,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6845bb16e1f6c3643b1b4ae61fec4383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 200
+  direction: 1
+  maxLifePoints: 0
+  currentLifePoints: 0
+  trans: {fileID: 0}
+  immune: 0
+  canMove: 1
+  rigidBody: {fileID: 0}
+  animator: {fileID: 0}
+  boxCollider2D: {fileID: 0}
+  takeDamage: {fileID: 0}
+  flyingPower: 5
+--- !u!50 &-5011376805690251949
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7086713199884145600}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 3
+  m_LinearDrag: 0
+  m_AngularDrag: 1
+  m_GravityScale: 3
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &784469129260778299
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7086713199884145600}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5, y: 0.5}
+    newSize: {x: 0.08, y: 0.08}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5}
+  m_EdgeRadius: 0
+--- !u!114 &-4809190797278196849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7086713199884145600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d53fd85799ea34b9866bea074da8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bird: {fileID: -8677931791199328366}

@@ -11,4 +11,5 @@ public abstract class Command
     public virtual void Move(Transform trans, float direction) { }
     public virtual void JumpCommand(Transform trans) { }
 
+    public virtual void FlyingCommand(Transform trans) { }
 }

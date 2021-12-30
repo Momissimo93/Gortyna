@@ -18,11 +18,12 @@ public class CameraControl : MonoBehaviour
 
     [SerializeField] float interpolationSpeed = 5f;
     [SerializeField] Vector2 offset;
-    private enum TypeOfCharacter {Human, Bunny};
+    private enum TypeOfCharacter {Human, Bunny, Bird};
     private TypeOfCharacter typeOfChar;
 
     private Human human;
     private Bunny bunny;
+    private Bird bird;
 
     Bounds sceneBounds;
 
@@ -46,7 +47,7 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((human) || (bunny))
+        if((human) || (bunny) || (bird))
         {
             switch (typeOfChar)
             {
@@ -56,6 +57,10 @@ public class CameraControl : MonoBehaviour
 
                 case TypeOfCharacter.Bunny:
                     transform.position = Vector3.Lerp(transform.position, new Vector3(Mathf.Clamp(bunny.trans.position.x, leftB, rightB) + offset.x, Mathf.Clamp(bunny.trans.position.y, bottomB, topB) + offset.y, transform.position.z), Time.deltaTime * interpolationSpeed);
+                    break;
+
+                case TypeOfCharacter.Bird:
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(Mathf.Clamp(bird.trans.position.x, leftB, rightB) + offset.x, Mathf.Clamp(bird.trans.position.y, bottomB, topB) + offset.y, transform.position.z), Time.deltaTime * interpolationSpeed);
                     break;
             }
         }
@@ -88,6 +93,12 @@ public class CameraControl : MonoBehaviour
         typeOfChar = TypeOfCharacter.Bunny;
         bunny = GameObject.FindObjectOfType<Bunny>();
     }
+    public void SetCameraBird()
+    {
+        typeOfChar = TypeOfCharacter.Bird;
+        bird = GameObject.FindObjectOfType<Bird>();
+    }
+
     public void SetCameraHuman()
     {
         typeOfChar = TypeOfCharacter.Human;

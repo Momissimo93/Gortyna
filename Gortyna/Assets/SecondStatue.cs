@@ -2,27 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstStatue : MonoBehaviour
+public class SecondStatue : MonoBehaviour
 {
     public MainCharactersManager mainCharactersManager;
     Human human;
-
+    // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Hero"))
         {
             human = collision.GetComponent<Human>();
-            mainCharactersManager.CanBunny(human);
+            mainCharactersManager.CanBird(human);
         }
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bunny"))
+        if (collision.gameObject.CompareTag("Bird"))
         {
-            Bunny bunny = collision.GetComponent<Bunny>();
-            mainCharactersManager.HumanMutationFromBunny(bunny);
+            Bird bird = collision.GetComponent<Bird>();
+            mainCharactersManager.HumanMutationFromBird(bird);
         }
-        mainCharactersManager.CanNotBunny(human);
+        mainCharactersManager.CanNotBird(human);
     }
 }
