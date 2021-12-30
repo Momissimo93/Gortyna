@@ -41,6 +41,9 @@ TextureImporter:
   - first:
       213: -8140173966147065108
     second: strange_door_opening_anim_strip_14_12
+  - first:
+      213: -6849821907640612264
+    second: strange_door_opening_anim_strip_14_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -422,6 +425,27 @@ TextureImporter:
       bones: []
       spriteID: ceaebe108ea480f80800000000000000
       internalID: -8140173966147065108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: strange_door_opening_anim_strip_14_13
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 16
+        height: 3
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85a8464544b80f0a0800000000000000
+      internalID: -6849821907640612264
       vertices: []
       indices: 
       edges: []
