@@ -5,6 +5,27 @@ using UnityEngine;
 public class Bird : Character
 {
     public float flyingPower;
+    public LeftFoot leftFoot;
+    public RightFoot rightFoot;
+    public bool isOnGround;
+
+    void Update()
+    {
+        leftFoot.EmittingRay();
+        leftFoot.DrawRaysFromFeet();
+
+        rightFoot.EmittingRay();
+        rightFoot.DrawRaysFromFeet();
+    }
+
+    private void FixedUpdate()
+    {
+        if(leftFoot && rightFoot)
+        {
+            IsOnGround();
+        }
+    }
+
     public void SetTransform(Transform tr)
     {
         trans = tr;
@@ -13,10 +34,8 @@ public class Bird : Character
     {
         direction = dr;
     }
-    // Start is called before the first frame update
     public void SetRotation(string s)
     {
-
         if (s == "right")
         {
             if (direction == -1)
@@ -32,6 +51,21 @@ public class Bird : Character
                 transform.Rotate(0f, 180f, 0f);
                 direction = -1;
             }
+        }
+    }
+    public void IsOnGround()
+    {
+        if (leftFoot.IsOnGround() == true || rightFoot.IsOnGround() == true)
+        {
+            isOnGround = true;
+            Debug.Log("I  on ground");
+            animator.SetBool("Bird_Flying", false);
+        }
+        else if (leftFoot.IsOnGround() == false || rightFoot.IsOnGround() == false)
+        {
+            isOnGround = false;
+            Debug.Log("I NOT  on ground");
+            animator.SetBool("Bird_Flying", true);
         }
     }
 }

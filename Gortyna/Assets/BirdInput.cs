@@ -18,11 +18,10 @@ public class BirdInput : MonoBehaviour
         moveRigth = new MoveRight();
         moveLeft = new MoveLeft();
         fly = new Fly();
-
     }
     private void FixedUpdate()
     {
-        Move();
+       Move();
     }
 
     // Update is called once per frame
@@ -38,30 +37,39 @@ public class BirdInput : MonoBehaviour
     }
     private void Move()
     {
+        Debug.Log(bird.speed);
         if (bird)
         {
             horizontalMove = Input.GetAxisRaw("Horizontal");
 
             direction = horizontalMove;
 
-            if (horizontalMove > 0)
+            if (horizontalMove > 0f)
             {
                 moveRigth.Execute(bird.transform, direction);
-                //bunny.animator.SetFloat("Bunny_Speed", bunny.speed);
                 bird.SetRotation("right");
+                if (bird.isOnGround == true)
+                {
+                    bird.animator.SetFloat("Bird_Speed", bird.speed);
+                }
             }
-            else if (horizontalMove < 0)
+            else if (horizontalMove < 0f)
             {
                 moveLeft.Execute(bird.transform, direction);
-                //bunny.animator.SetFloat("Bunny_Speed", bunny.speed);
                 bird.SetRotation("left");
+                if (bird.isOnGround == true)
+                {
+                    bird.animator.SetFloat("Bird_Speed", bird.speed);
+                }
             }
-            else if (horizontalMove == 0)
+            else 
             {
-                //bunny.animator.SetFloat("Bunny_Speed", 0);
-                 //bird.rigidBody.velocity = Vector3.zero;
+                bird.rigidBody.velocity = new Vector2(0f, bird.rigidBody.velocity.y);
+                if (bird.isOnGround == true)
+                {
+                    bird.animator.SetFloat("Bird_Speed", 0f);
+                }
             }
-
         }
     }
 }

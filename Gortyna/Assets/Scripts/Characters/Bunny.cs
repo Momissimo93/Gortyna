@@ -17,7 +17,6 @@ public class Bunny : Character
 
     public void SetRotation(string s)
     {
-
         if (s == "right")
         {
             if (direction == -1)

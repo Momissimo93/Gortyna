@@ -12,11 +12,9 @@ public class Human : Character
     public bool isOnGround;
     public bool isJumping;
 
-    //public float baseSpeed;
     public float dashPower;
     public float dashTime;
 
-    //Vector2 humanTransform;
 
     public bool isDashing = false;
     public bool isMoving = false;
@@ -24,22 +22,11 @@ public class Human : Character
     public bool canMutate_Bunny;
     public bool canMutate_Bird;
 
-    //public Transform attackPoint;
-    //public float attackRange = 0.5f;
-    //public int enemyLayer = 1 << 8;
 
     public BoxCollider2D boxC2D;
 
-    //public UnityEvent OnLandEvent;
-
-    //public Vector3 originalVelocity;
-   /* private int platform = 1 << 9;
-    Vector2 center;
-    RaycastHit2D centerRay;*/
-
     void Start()
     {
-        //speed = baseSpeed;
 
         SetDirection();
 
@@ -47,17 +34,7 @@ public class Human : Character
 
         boxC2D = boxCollider2D;
 
-        //originalVelocity = rigidBody.velocity;
         trans = gameObject.GetComponent<Transform>();
-
-        /*if(gameObject.GetComponent<Transform>())
-        {
-            humanTransform = new Vector2 (gameObject.GetComponent<Transform>().position.x, gameObject.GetComponent<Transform>().position.y);
-        }
-        else
-        {
-            Debug.Log("Null");
-        }*/
     }
 
     void Update()
@@ -67,16 +44,6 @@ public class Human : Character
 
         rightFoot.EmittingRay();
         rightFoot.DrawRaysFromFeet();
-
-        //center = new Vector2(boxCollider2D.bounds.min.x, boxCollider2D.bounds.min.y);
-        //centerRay = Physics2D.Raycast(center, Vector2.down, 0.5f, platform);
-
-        /*if (centerRay)
-        {
-            Debug.Log("We are on the platform");
-            isNotOnPlatform = false;
-        }*/
-        //humanTransform = new Vector2(gameObject.GetComponent<Transform>().position.x, gameObject.GetComponent<Transform>().position.y);
     }
 
     private void FixedUpdate()
