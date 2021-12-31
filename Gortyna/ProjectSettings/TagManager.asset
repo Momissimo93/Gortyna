@@ -9,6 +9,7 @@ TagManager:
   - Bunny
   - Rock
   - Bird
+  - Enemy
   layers:
   - Default
   - TransparentFX

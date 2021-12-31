@@ -370,8 +370,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   direction: 0
-  maxLifePoints: 0
-  currentLifePoints: 0
   trans: {fileID: 0}
   immune: 0
   canMove: 1
@@ -2526,8 +2524,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   direction: 0
-  maxLifePoints: 0
-  currentLifePoints: 0
   trans: {fileID: 0}
   immune: 0
   canMove: 1
@@ -46848,8 +46844,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   direction: 0
-  maxLifePoints: 0
-  currentLifePoints: 0
   trans: {fileID: 0}
   immune: 0
   canMove: 1
@@ -47176,8 +47170,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   direction: 0
-  maxLifePoints: 0
-  currentLifePoints: 0
   trans: {fileID: 0}
   immune: 0
   canMove: 1
@@ -62698,8 +62690,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   direction: 0
-  maxLifePoints: 0
-  currentLifePoints: 0
   trans: {fileID: 0}
   immune: 0
   canMove: 1
@@ -70594,8 +70584,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   direction: 0
-  maxLifePoints: 0
-  currentLifePoints: 0
   trans: {fileID: 0}
   immune: 0
   canMove: 1
@@ -70801,8 +70789,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   direction: 0
-  maxLifePoints: 0
-  currentLifePoints: 0
   trans: {fileID: 0}
   immune: 0
   canMove: 1
@@ -71747,7 +71733,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129213101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.85, y: 34.91, z: -0.25348854}
+  m_LocalPosition: {x: 5, y: -1, z: -0.25348854}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -71909,6 +71895,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 869590446}
     m_Modifications:
+    - target: {fileID: 995311938, guid: 862106cfd9f5d4d44b65a0ddb1f02813, type: 3}
+      propertyPath: speed
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 1632625212215932953, guid: 862106cfd9f5d4d44b65a0ddb1f02813, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -71956,6 +71946,10 @@ PrefabInstance:
     - target: {fileID: 1632625212215933030, guid: 862106cfd9f5d4d44b65a0ddb1f02813, type: 3}
       propertyPath: m_Name
       value: Worm
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632625212215933030, guid: 862106cfd9f5d4d44b65a0ddb1f02813, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 862106cfd9f5d4d44b65a0ddb1f02813, type: 3}

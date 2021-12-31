@@ -20,10 +20,6 @@ public class HeartsHealthVisual : MonoBehaviour
     {
         //Initialize a list of HeartImage object 
         hearthImageList = new List<HeartImage>();
-    }
-
-    private void Start()
-    {
         //The constructor of the heartHealthSystem needs to know the amount of heart the player has
         HeartHealthSystem heartHealthSystem = new HeartHealthSystem(3);
 
@@ -135,5 +131,10 @@ public class HeartsHealthVisual : MonoBehaviour
         hearthImageList.Add(heartImage);
 
         return heartImage;
+    }
+
+    public void SetCurrentCharacter(Character c)
+    {
+        heartHealthSystem.SetCurrentCharacter(c);
     }
 }

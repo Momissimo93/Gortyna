@@ -54,23 +54,16 @@ public class Bird : Character
         }
     }
 
-    public void SetLifePoint(int lp)
-    {
-        this.currentLifePoints = lp;
-    }
-
     public void IsOnGround()
     {
         if (leftFoot.IsOnGround() == true || rightFoot.IsOnGround() == true)
         {
             isOnGround = true;
-            Debug.Log("I  on ground");
             animator.SetBool("Bird_Flying", false);
         }
         else if (leftFoot.IsOnGround() == false || rightFoot.IsOnGround() == false)
         {
             isOnGround = false;
-            Debug.Log("I NOT  on ground");
             animator.SetBool("Bird_Flying", true);
         }
     }

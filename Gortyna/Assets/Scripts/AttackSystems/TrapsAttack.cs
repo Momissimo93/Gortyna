@@ -19,10 +19,10 @@ public class TrapsAttack : Attack
 
         if(heartsHealthVisual == true  && receiver.immune == false)
         {
-            heartsHealthVisual.HeartHealthSystemOnDamaged(1);
-            receiver.currentLifePoints -= damages;
+            //We update the visual system that will update the number of life that we have 
+            //receiver.currentLifePoints -= damages;
+            SetReceiver(receiver);
+            receiver.TakeDamage(1, offender, receiver);
         }
-        SetReceiver(receiver);
-        receiver.TakeDamage(1, offender, receiver);
     }
 }

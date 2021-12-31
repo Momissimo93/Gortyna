@@ -8,6 +8,7 @@ public class Worm: Enemy
     public RightFoot rightFoot;
     public WarmAttack attack;
 
+
     void Update()
     {
         leftFoot.EmittingRay();

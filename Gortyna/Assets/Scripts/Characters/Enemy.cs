@@ -9,8 +9,12 @@ public class Enemy : Character
 
     bool facingRight = false;
 
+    [SerializeField] protected int maxLifePoints;
+    public int currentLifePoints;
+
     void Start()
     {
+        currentLifePoints = maxLifePoints;
         moveLeft = new MoveLeft();
         moveRight = new MoveRight();
         animator.SetFloat("Speed", speed);

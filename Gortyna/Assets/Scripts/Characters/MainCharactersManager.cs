@@ -6,38 +6,29 @@ public class MainCharactersManager : MonoBehaviour
 {
     public List<Character> characters;
     public CameraControl cameraControl;
+    private HeartsHealthVisual heartHealthVisual;
     Bunny bunny;
-    int lifePoints = 0;
     Bird bird;
-
+    Human human;
 
     void Awake()
     {
+        heartHealthVisual = GameObject.FindObjectOfType<HeartsHealthVisual>();
         SpawnHuman();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
     }
 
     //Mehotd Called only the game start 
     public void SpawnHuman()
     {
-        GameObject human;
+        //GameObject human;
 
         for (int i = 0; i < characters.Count; i++)
         {
             if(characters[i].name == "Hero")
             {
-                human = characters[i].gameObject;
+                human = characters[i].gameObject.GetComponent<Human>();
                 Instantiate(human, transform.position, transform.rotation);
- 
-                if(human.gameObject.GetComponent<Transform>() != null)
-                {
-                    //cameraControl.SetMainCharacter(human);
-                }
+                heartHealthVisual.SetCurrentCharacter(bird);
             }
         }
     }
@@ -64,6 +55,7 @@ public class MainCharactersManager : MonoBehaviour
         }
         Instantiate(bunny, transform.position, transform.rotation);
         cameraControl.SetCameraBunny();
+        heartHealthVisual.SetCurrentCharacter(bird);
     }
 
     public void SpawnBird(Transform tr)
@@ -74,8 +66,7 @@ public class MainCharactersManager : MonoBehaviour
         if (transform.gameObject.GetComponent<Human>())
         {
             direction = transform.gameObject.GetComponent<Human>().direction;
-            lifePoints = transform.gameObject.GetComponent<Human>().currentLifePoints;
-            Debug.Log("Human lifePoints " + lifePoints);
+            //lifePoints = transform.gameObject.GetComponent<Human>().currentLifePoints;
         }
 
         for (int i = 0; i < characters.Count; i++)
@@ -89,11 +80,46 @@ public class MainCharactersManager : MonoBehaviour
             }
         }
         Instantiate(bird, transform.position, transform.rotation);
-        bird.SetLifePoint(lifePoints);
-        Debug.Log("Birds lifePoints " + bird.currentLifePoints);
+        //bird.SetLifePoint(lifePoints);
         cameraControl.SetCameraBird();
+        heartHealthVisual.SetCurrentCharacter(bird);
     }
 
+    //Mehtod used when we mutate back into Human
+    public void HumanMutationFromBunny(Bunny bunny)
+    {
+        Character b = bunny;
+        Transform tr = bunny.transform;
+        Destroy(b.gameObject);
+
+        for (int i = 0; i < characters.Count; i++)
+        {
+            if (characters[i].name == "Hero")
+            {
+                human = characters[i].gameObject.GetComponent<Human>();
+                Instantiate(human, tr.position, transform.rotation);
+                cameraControl.SetCameraHuman();
+                heartHealthVisual.SetCurrentCharacter(human);
+            }
+        }
+    }
+    public void HumanMutationFromBird(Bird bird)
+    {
+        Bird b = bird;
+        Transform tr = bird.transform;
+        Destroy(b.gameObject);
+
+        for (int i = 0; i < characters.Count; i++)
+        {
+            if (characters[i].name == "Hero")
+            {
+                human = characters[i].gameObject.GetComponent<Human>();
+                Instantiate(human, tr.position, transform.rotation);
+                cameraControl.SetCameraHuman();
+                heartHealthVisual.SetCurrentCharacter(human);
+            }
+        }
+    }
     public void CanBunny(Human human)
     {
         human.canMutate_Bunny = true;
@@ -104,48 +130,10 @@ public class MainCharactersManager : MonoBehaviour
     }
     public void CanBird(Human human)
     {
-        human.canMutate_Bird= true;
+        human.canMutate_Bird = true;
     }
     public void CanNotBird(Human human)
     {
         human.canMutate_Bird = false;
-    }
-
-    //Mehtod used when we mutate back into Human
-    public void HumanMutationFromBunny(Bunny bunny)
-    {
-        Character b = bunny;
-        Transform tr = bunny.transform;
-        Destroy(b.gameObject);
-
-        GameObject human;
-
-        for (int i = 0; i < characters.Count; i++)
-        {
-            if (characters[i].name == "Hero")
-            {
-                human = characters[i].gameObject;
-                Instantiate(human, tr.position, transform.rotation);
-                cameraControl.SetCameraHuman();
-            }
-        }
-    }
-    public void HumanMutationFromBird(Bird bird)
-    {
-        Bird b = bird;
-        Transform tr = bird.transform;
-        Destroy(b.gameObject);
-
-        GameObject human;
-
-        for (int i = 0; i < characters.Count; i++)
-        {
-            if (characters[i].name == "Hero")
-            {
-                human = characters[i].gameObject;
-                Instantiate(human, tr.position, transform.rotation);
-                cameraControl.SetCameraHuman();
-            }
-        }
     }
 }

@@ -35,11 +35,11 @@ public class WarmAttack : Attack
             {
                 if (heartsHealthVisual && (range.collider.gameObject.GetComponent<Human>().immune == false))
                 {
-                    heartsHealthVisual.HeartHealthSystemOnDamaged(1);
+                    //heartsHealthVisual.HeartHealthSystemOnDamaged(1);
+                    SetReceiver(range.collider.gameObject.GetComponent<Human>());
+                    receiver.TakeDamage(1, offender, receiver);
                     StartCoroutine(NotMoreDamages(1));
                 }
-                SetReceiver(range.collider.gameObject.GetComponent<Human>());
-                receiver.TakeDamage(1, offender, receiver);
             }
         }
     }

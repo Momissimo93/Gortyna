@@ -37,7 +37,6 @@ public class BirdInput : MonoBehaviour
     }
     private void Move()
     {
-        Debug.Log(bird.speed);
         if (bird)
         {
             horizontalMove = Input.GetAxisRaw("Horizontal");

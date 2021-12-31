@@ -11,6 +11,8 @@ public class HeartHealthSystem
 
     private int initialLifePoint;
     private int lifePoints;
+
+    [SerializeField] private Character character;
     public HeartHealthSystem (int heartAmount)
     {
         //Depending on the number of hearts the player has (heartAmount) a number of Heart gameObject is created and added to the list heartList
@@ -65,7 +67,7 @@ public class HeartHealthSystem
      
         if (IsDead())
         {
-            Debug.Log("DEAD");
+            Debug.Log("The character " + character + " is DEAD");
         }
     }
 
@@ -112,5 +114,10 @@ public class HeartHealthSystem
     public int GetInitialLifePoints()
     {
         return initialLifePoint;
+    }
+
+    public void SetCurrentCharacter (Character c)
+    {
+        character = c;
     }
 }

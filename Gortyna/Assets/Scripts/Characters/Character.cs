@@ -6,8 +6,6 @@ public class Character : MonoBehaviour
 {
     [SerializeField] public float speed;
     [SerializeField] public float direction;
-    [SerializeField] protected int maxLifePoints;
-    public int currentLifePoints;
 
     public Transform trans;
     public bool immune = false;
@@ -26,8 +24,6 @@ public class Character : MonoBehaviour
         SetBoxCollider();
         SetTransform();
         SetRigidBody2D();
-
-        //currentLifePoints = maxLifePoints;
 
         takeDamage = gameObject.GetComponent<TakeDamage>();
     }

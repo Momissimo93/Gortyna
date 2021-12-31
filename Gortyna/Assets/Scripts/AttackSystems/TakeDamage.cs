@@ -16,15 +16,16 @@ public class TakeDamage : MonoBehaviour
     public StopAnimation stopAnimation;
     [HideInInspector]
     public KnockBack knockBack;
-    
+    HeartsHealthVisual heartsHealthVisual;
+
+
     void Start()
     {
-        //character = gameObject.GetComponent<Character>();
-
         knockBack = gameObject.AddComponent<KnockBack>();
         blinking = gameObject.AddComponent<Blinking>();
         immunity = gameObject.AddComponent<Immunity>();
         stopAnimation = gameObject.AddComponent<StopAnimation>();
+        heartsHealthVisual = GameObject.FindObjectOfType<HeartsHealthVisual>();
     }
     void FixedUpdate()
     {
@@ -47,24 +48,33 @@ public class TakeDamage : MonoBehaviour
         offender = ofd;
         int damage = d;
 
-        if (receiver)
+        if (receiver.gameObject.GetComponent<Enemy>())
         {
-            if (receiver.immune == false)
+            Enemy e = receiver.gameObject.GetComponent<Enemy>();
+            if (e.immune == false)
             {
-                receiver.currentLifePoints -= damage;
+                e.currentLifePoints -= damage;
 
-                if (receiver.currentLifePoints <= 0)
+                if (e.currentLifePoints <= 0)
                 {
-                    Destroy(receiver.gameObject);
+                    Destroy(e.gameObject);
                 }
 
-                else if (receiver.currentLifePoints > 0)
+                else if (e.currentLifePoints > 0)
                 {
-                    stopAnimation.DoStopAnimation(receiver, 1f);
-                    knockBack.DoKnockBack(offender, receiver);
-                    immunity.DoImmunity(receiver, 1f);
+                    stopAnimation.DoStopAnimation(e, 1f);
+                    knockBack.DoKnockBack(offender, e);
+                    immunity.DoImmunity(e, 1f);
                 }
             }
+        }
+        //If it is the Bird or the Human
+        else 
+        {
+            stopAnimation.DoStopAnimation(receiver, 1f);
+            knockBack.DoKnockBack(offender, receiver);
+            immunity.DoImmunity(receiver, 1f);
+            heartsHealthVisual.HeartHealthSystemOnDamaged(damage);
         }
      }
 }
