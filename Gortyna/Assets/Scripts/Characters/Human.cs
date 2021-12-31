@@ -15,13 +15,11 @@ public class Human : Character
     public float dashPower;
     public float dashTime;
 
-
     public bool isDashing = false;
     public bool isMoving = false;
     public bool isOnPlatform = false;
     public bool canMutate_Bunny;
     public bool canMutate_Bird;
-
 
     public BoxCollider2D boxC2D;
 
@@ -36,7 +34,6 @@ public class Human : Character
 
         trans = gameObject.GetComponent<Transform>();
     }
-
     void Update()
     {
         leftFoot.EmittingRay();
@@ -45,7 +42,6 @@ public class Human : Character
         rightFoot.EmittingRay();
         rightFoot.DrawRaysFromFeet();
     }
-
     private void FixedUpdate()
     {
         IsOnGround();

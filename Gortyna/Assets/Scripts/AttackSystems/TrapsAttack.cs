@@ -16,6 +16,7 @@ public class TrapsAttack : Attack
     {
         receiver = rcv;
         offender = ofend;
+
         if(heartsHealthVisual == true  && receiver.immune == false)
         {
             heartsHealthVisual.HeartHealthSystemOnDamaged(1);

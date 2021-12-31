@@ -6,6 +6,7 @@ public class TrapSuspended : Character
 {
     [SerializeField] private TrapsAttack trapsAttack;
     int damages = 1;
+
     // Start is called before the first frame update
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -15,5 +16,10 @@ public class TrapSuspended : Character
             Human humam = collision.gameObject.GetComponent<Human>();
             trapsAttack.Attack(damages, humam, this.gameObject.GetComponent<TrapSuspended>());
         }
+        else if (collision.gameObject.CompareTag("Bird"))
+        {
+            Bird bird = collision.gameObject.GetComponent<Bird>();
+             trapsAttack.Attack(damages, bird, this.gameObject.GetComponent<TrapSuspended>());
+        } 
     }
 }

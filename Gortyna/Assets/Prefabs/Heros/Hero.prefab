@@ -261,8 +261,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 120
   direction: 0
-  maxLifePoints: 10
-  currentLifePoints: 0
+  maxLifePoints: 0
+  currentLifePoints: 12
   trans: {fileID: 0}
   immune: 0
   canMove: 0
@@ -281,6 +281,7 @@ MonoBehaviour:
   isMoving: 0
   isOnPlatform: 0
   canMutate_Bunny: 1
+  canMutate_Bird: 0
   boxC2D: {fileID: 0}
 --- !u!114 &-2905725585828232214
 MonoBehaviour:

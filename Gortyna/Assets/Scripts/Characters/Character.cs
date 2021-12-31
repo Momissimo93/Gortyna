@@ -27,7 +27,7 @@ public class Character : MonoBehaviour
         SetTransform();
         SetRigidBody2D();
 
-        currentLifePoints = maxLifePoints;
+        //currentLifePoints = maxLifePoints;
 
         takeDamage = gameObject.GetComponent<TakeDamage>();
     }

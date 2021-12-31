@@ -53,6 +53,12 @@ public class Bird : Character
             }
         }
     }
+
+    public void SetLifePoint(int lp)
+    {
+        this.currentLifePoints = lp;
+    }
+
     public void IsOnGround()
     {
         if (leftFoot.IsOnGround() == true || rightFoot.IsOnGround() == true)

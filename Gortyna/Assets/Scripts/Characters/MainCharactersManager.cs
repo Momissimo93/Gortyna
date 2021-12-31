@@ -7,7 +7,9 @@ public class MainCharactersManager : MonoBehaviour
     public List<Character> characters;
     public CameraControl cameraControl;
     Bunny bunny;
+    int lifePoints = 0;
     Bird bird;
+
 
     void Awake()
     {
@@ -71,7 +73,9 @@ public class MainCharactersManager : MonoBehaviour
 
         if (transform.gameObject.GetComponent<Human>())
         {
-            direction = transform.gameObject.GetComponent<Human>().direction ;
+            direction = transform.gameObject.GetComponent<Human>().direction;
+            lifePoints = transform.gameObject.GetComponent<Human>().currentLifePoints;
+            Debug.Log("Human lifePoints " + lifePoints);
         }
 
         for (int i = 0; i < characters.Count; i++)
@@ -85,6 +89,8 @@ public class MainCharactersManager : MonoBehaviour
             }
         }
         Instantiate(bird, transform.position, transform.rotation);
+        bird.SetLifePoint(lifePoints);
+        Debug.Log("Birds lifePoints " + bird.currentLifePoints);
         cameraControl.SetCameraBird();
     }
 
