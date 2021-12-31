@@ -5,7 +5,8 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     Animator animator;
-    public VerticalPlaform verticalPlatform;
+    //public VerticalPlaform verticalPlatform;
+    public GameObject gObj;
     private void Awake()
     {
         if (gameObject.GetComponent<Animator>())
@@ -18,10 +19,20 @@ public class Button : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bunny"))
+        if (collision.gameObject.CompareTag("Bunny") || collision.gameObject.CompareTag("Human") || collision.gameObject.CompareTag("Bird"))
         {
-            animator.SetTrigger("ButtonPressed");
-            verticalPlatform.canMove = true;
+            if (gObj.GetComponent<VerticalPlaform>())
+            {
+                VerticalPlaform verticalPlatform = gObj.GetComponent<VerticalPlaform>();
+                animator.SetTrigger("ButtonPressed");
+                verticalPlatform.canMove = true;
+            }
+            else if (gObj.GetComponent<MagicDoor>())
+            {
+                MagicDoor magicDoor = gObj.GetComponent<MagicDoor>();
+                animator.SetTrigger("ButtonPressed");
+                magicDoor.OpenDoor();
+            }
         }
     }
 }

@@ -42,21 +42,18 @@ public class HumanInputs : MonoBehaviour
         if (human)
         {
             horizontalMove = Input.GetAxisRaw("Horizontal");
+            direction = horizontalMove;
 
-            if (Input.GetButtonDown("Jump") && (human.isOnGround) && human.canMove)
+            if (Input.GetButtonDown("Jump") && human.canMove && human.isOnGround)
             {
                 human.isMoving = true;
-                direction = horizontalMove;
+                //direction = horizontalMove;
                 jump.Execute(human.transform, direction);
-                human.animator.SetTrigger("IsJumping");
+                //human.animator.SetTrigger("IsJumping");
+                //human.animator.SetBool("isJumping", true);
             }
 
-            if (human.isOnGround == true)
-            {
-                human.animator.ResetTrigger("IsJumping");
-            }
-
-            if (Input.GetButtonDown("Fire1") && human.canMove)
+            if (Input.GetButtonDown("Fire1") && human.canMove && human.isOnGround)
             {
                 StartCoroutine(stop.Stopping(0.35f,human));
                 human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);
@@ -68,7 +65,8 @@ public class HumanInputs : MonoBehaviour
             {
                 if (!human.isDashing && human.canMove)
                 {
-                    human.animator.SetTrigger("Dash");
+                    //human.animator.SetBool("Dash",true);
+                    //human.animator.SetBool("isJumping", false);
                     StartCoroutine(dash.Dashing(human));
                 }
             }
