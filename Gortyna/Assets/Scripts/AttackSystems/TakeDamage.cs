@@ -9,6 +9,8 @@ public class TakeDamage : MonoBehaviour
     [HideInInspector]
     public Character offender;
     [HideInInspector]
+    public Trap offenderTrap;
+    [HideInInspector]
     public Blinking blinking;
     [HideInInspector]
     public Immunity immunity;
@@ -17,7 +19,6 @@ public class TakeDamage : MonoBehaviour
     [HideInInspector]
     public KnockBack knockBack;
     HeartsHealthVisual heartsHealthVisual;
-
 
     void Start()
     {
@@ -76,6 +77,18 @@ public class TakeDamage : MonoBehaviour
             immunity.DoImmunity(receiver, 1f);
             heartsHealthVisual.HeartHealthSystemOnDamaged(damage);
         }
-     }
+    }
+
+    public void DoTakeDamageFromTrap(int d, Trap ofd, Character rcv)
+    {
+        receiver = rcv;
+        offenderTrap = ofd;
+        int damage = d;
+
+        stopAnimation.DoStopAnimation(receiver, 1f);
+        knockBack.DoKnockBackFromTrap(ofd, receiver);
+        immunity.DoImmunity(receiver, 1f);
+        heartsHealthVisual.HeartHealthSystemOnDamaged(damage);
+    }
 }
 

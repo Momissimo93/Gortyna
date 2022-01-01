@@ -93,14 +93,12 @@ public class Human : Character
         if (leftFoot.IsOnGround() == true || rightFoot.IsOnGround() == true)
         {
             isOnGround = true;
-            Debug.Log("I  on ground");
             animator.SetBool("isJumping", false);
 
         }
         else if (leftFoot.IsOnGround() == false || rightFoot.IsOnGround() == false)
         {
             isOnGround = false;
-            Debug.Log("I NOT  on ground");
             animator.SetBool("isJumping", true);
         }
     }

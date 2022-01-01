@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1728810428388588235}
   - component: {fileID: 1728810428388588238}
-  - component: {fileID: 1728810428388588236}
+  - component: {fileID: 2039609693}
   m_Layer: 0
   m_Name: HitBox
   m_TagString: Untagged
@@ -58,7 +58,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1728810428388588236
+--- !u!114 &2039609693
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,9 +67,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1728810428388588234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87eb81835c36f9d458346eb4368aa046, type: 3}
+  m_Script: {fileID: 11500000, guid: 52bb43ee547ed054abfcd9d9bcd54a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 0
+  trans: {fileID: 0}
+  rigidBody: {fileID: 0}
+  animator: {fileID: 0}
+  boxCollider2D: {fileID: 0}
+  takeDamage: {fileID: 0}
+  trapsAttack: {fileID: 0}
+  damages: 1
 --- !u!1 &1728810428431659744
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,6 +89,7 @@ GameObject:
   - component: {fileID: 1728810428431659747}
   - component: {fileID: 1728810428431659746}
   - component: {fileID: 1728810428431659745}
+  - component: {fileID: 1140450881}
   m_Layer: 0
   m_Name: Trap_suspendedRL
   m_TagString: Untagged
@@ -95,7 +104,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728810428431659744}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.0636606, y: 22.51931, z: 0.9542135}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -174,3 +183,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1140450881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728810428431659744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7873d38d31f7042b5c4114f1c378ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapSuspended: {fileID: 2039609693}

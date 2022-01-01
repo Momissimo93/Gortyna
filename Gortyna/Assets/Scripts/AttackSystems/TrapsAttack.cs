@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrapsAttack : Attack
+public class TrapsAttack: Attack
 {
     HeartsHealthVisual heartsHealthVisual;
 
@@ -12,17 +12,17 @@ public class TrapsAttack : Attack
     }
 
     ///RISOLVERE QUESTA FACCENDA 
-    public void Attack(int damages, Character rcv, Character ofend)
+    public void Attack(int damages, Character rcv, Trap ofend)
     {
         receiver = rcv;
-        offender = ofend;
+        offenderTrap = ofend;
 
         if(heartsHealthVisual == true  && receiver.immune == false)
         {
             //We update the visual system that will update the number of life that we have 
             //receiver.currentLifePoints -= damages;
             SetReceiver(receiver);
-            receiver.TakeDamage(1, offender, receiver);
+            receiver.TakeDamageFromTrap(1, offenderTrap, receiver);
         }
     }
 }

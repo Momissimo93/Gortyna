@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrapSuspended : Character
+public class TrapSuspended: Trap
 {
-    [SerializeField] private TrapsAttack trapsAttack;
-    int damages = 1;
-
-    // Start is called before the first frame update
-
+    private void Start()
+    {
+        damages = 1;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Hero"))
@@ -19,7 +18,7 @@ public class TrapSuspended : Character
         else if (collision.gameObject.CompareTag("Bird"))
         {
             Bird bird = collision.gameObject.GetComponent<Bird>();
-             trapsAttack.Attack(damages, bird, this.gameObject.GetComponent<TrapSuspended>());
+            trapsAttack.Attack(damages, bird, this.gameObject.GetComponent<TrapSuspended>());
         } 
     }
 }

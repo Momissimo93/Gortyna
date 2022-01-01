@@ -73,7 +73,7 @@ public class Spike : Character
         if (collision.gameObject.CompareTag("Hero"))
         {
             Human humam = collision.gameObject.GetComponent<Human>();
-            trapsAttack.Attack(damages, humam, this.gameObject.GetComponent<Spike>() );
+            //trapsAttack.Attack(damages, humam, gameObject.GetComponent<Spike>() );
         }
         if (collision.gameObject.CompareTag("SpikePlatform"))
         {

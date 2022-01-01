@@ -9,6 +9,7 @@ public class KnockBack : MonoBehaviour
 
     private Character offender;
     private Character receiver;
+    private Trap offenderTrap;
 
     public void DoKnockBack(Character o, Character r)
     {
@@ -47,6 +48,28 @@ public class KnockBack : MonoBehaviour
                 StartCoroutine("KnockBackCoroutine", (rigidbody2D));
             }
             else if (offender.direction == -1)
+            {
+                receiver.rigidBody.velocity = new Vector2(-0.5f * force, 6f * force);
+                Rigidbody2D rigidbody2D = receiver.GetComponent<Rigidbody2D>();
+                StartCoroutine("KnockBackCoroutine", (rigidbody2D));
+            }
+        }
+    }
+    public void DoKnockBackFromTrap(Trap o, Character r)
+    {
+        offenderTrap = o;
+        receiver = r;
+
+        if (receiver.rigidBody.isKinematic == false)
+        {
+            receiver.canMove = false;
+            if (offenderTrap.direction == 1)
+            {
+                receiver.rigidBody.velocity = new Vector2(0.5f * force, 6f * force);
+                Rigidbody2D rigidbody2D = receiver.GetComponent<Rigidbody2D>();
+                StartCoroutine("KnockBackCoroutine", (rigidbody2D));
+            }
+            else if (offenderTrap.direction == -1)
             {
                 receiver.rigidBody.velocity = new Vector2(-0.5f * force, 6f * force);
                 Rigidbody2D rigidbody2D = receiver.GetComponent<Rigidbody2D>();

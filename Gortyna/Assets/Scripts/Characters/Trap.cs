@@ -2,21 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Trap : MonoBehaviour
 {
-    [SerializeField] public float speed;
     [SerializeField] public float direction;
+    [HideInInspector] public Transform trans;
+    [HideInInspector] public Rigidbody2D rigidBody;
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public BoxCollider2D boxCollider2D;
+    [HideInInspector] public TakeDamage takeDamage;
+    [HideInInspector] public TrapsAttack trapsAttack;
 
-    public bool immune = false;
-    public bool canMove = true;
-
-    public Transform trans;
-    public Rigidbody2D rigidBody;
-    public Animator animator;
-    public BoxCollider2D boxCollider2D;
-    public TakeDamage takeDamage;
-
-    //protected Input moveLeft;
+    public int damages;
 
     void Awake()
     {
@@ -26,7 +22,9 @@ public class Character : MonoBehaviour
         SetRigidBody2D();
 
         takeDamage = gameObject.GetComponent<TakeDamage>();
+        trapsAttack = gameObject.GetComponent<TrapsAttack>();
     }
+
     protected void SetAnimator()
     {
         if (GetComponent<Animator>())
@@ -43,7 +41,7 @@ public class Character : MonoBehaviour
     }
     protected void SetTransform()
     {
-        if(GetComponent<Transform>())
+        if (GetComponent<Transform>())
         {
             trans = gameObject.GetComponent<Transform>();
         }
@@ -55,25 +53,16 @@ public class Character : MonoBehaviour
             rigidBody = gameObject.GetComponent<Rigidbody2D>();
         }
     }
-
     public void TakeDamage(int damage, Character offender, Character receiver)
     {
-        if(takeDamage)
+        if (takeDamage)
         {
             takeDamage.DoTakeDamage(damage, offender, receiver);
         }
     }
-    public void TakeDamageFromTrap(int damage, Trap offender, Character receiver)
-    {
-        if (takeDamage)
-        {
-            takeDamage.DoTakeDamageFromTrap(damage, offender, receiver);
-        }
-    }
-
     public float GetTransfromPositionX()
     {
-        if(this.trans!=null)
+        if (this.trans != null)
         {
             return trans.position.x;
         }
@@ -82,7 +71,7 @@ public class Character : MonoBehaviour
 
     public float GetTranformPositionY()
     {
-        if(this.trans != null)
+        if (this.trans != null)
         {
             return trans.position.y;
         }
