@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spike : Character
+public class Spike : Trap
 {
-    [SerializeField] private TrapsAttack trapsAttack;
-
     private Vector2 observerLeft;
     private RaycastHit2D observerRayLeft;
 
@@ -14,12 +12,12 @@ public class Spike : Character
 
     public float rayLenght;
     private int hero = 1 << 7;
-    //bool canMove = false;
-    int damages = 1;
+    bool canMove;
 
     // Start is called before the first frame update
     void Start()
     {
+        damages = 1;
         canMove = false;
     }
 
@@ -73,7 +71,9 @@ public class Spike : Character
         if (collision.gameObject.CompareTag("Hero"))
         {
             Human humam = collision.gameObject.GetComponent<Human>();
-            //trapsAttack.Attack(damages, humam, gameObject.GetComponent<Spike>() );
+            //Like that the human is pushed back on the opposite site(i hope)
+            direction = humam.direction * -1;
+            trapsAttack.Attack(damages, humam, gameObject.GetComponent<Spike>() );
         }
         if (collision.gameObject.CompareTag("SpikePlatform"))
         {

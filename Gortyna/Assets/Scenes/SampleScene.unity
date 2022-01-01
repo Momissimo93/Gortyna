@@ -2521,16 +2521,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 829290d281b3b3a419e75b760819980a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
   direction: 0
-  immune: 0
-  canMove: 1
   trans: {fileID: 0}
   rigidBody: {fileID: 0}
   animator: {fileID: 0}
   boxCollider2D: {fileID: 0}
   takeDamage: {fileID: 0}
   trapsAttack: {fileID: 205206717}
+  damages: 1
   rayLenght: 5
 --- !u!114 &205206717 stripped
 MonoBehaviour:
@@ -47283,16 +47281,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 829290d281b3b3a419e75b760819980a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
   direction: 0
-  immune: 0
-  canMove: 1
   trans: {fileID: 0}
   rigidBody: {fileID: 0}
   animator: {fileID: 0}
   boxCollider2D: {fileID: 0}
   takeDamage: {fileID: 0}
   trapsAttack: {fileID: 1070029472}
+  damages: 1
   rayLenght: 5
 --- !u!114 &1070029472 stripped
 MonoBehaviour:
@@ -72249,7 +72245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129213101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.53, y: 5.97, z: -0.25348854}
+  m_LocalPosition: {x: 5.61, y: -1.09, z: -0.25348854}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72462,6 +72458,10 @@ PrefabInstance:
     - target: {fileID: 1632625212215933030, guid: 862106cfd9f5d4d44b65a0ddb1f02813, type: 3}
       propertyPath: m_Name
       value: Worm
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632625212215933030, guid: 862106cfd9f5d4d44b65a0ddb1f02813, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1632625212215933030, guid: 862106cfd9f5d4d44b65a0ddb1f02813, type: 3}
       propertyPath: m_TagString
