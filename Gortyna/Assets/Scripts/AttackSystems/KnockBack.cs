@@ -37,13 +37,29 @@ public class KnockBack : MonoBehaviour
                 StartCoroutine("KnockBackCoroutine", (rigidbody2D));
             }
         }
+        else if (receiver.rigidBody.isKinematic == false)
+        {
+            receiver.canMove = false;
+            if (offender.direction == 1)
+            {
+                receiver.rigidBody.velocity = new Vector2 (0.5f * force, 6f * force);
+                Rigidbody2D rigidbody2D = receiver.GetComponent<Rigidbody2D>();
+                StartCoroutine("KnockBackCoroutine", (rigidbody2D));
+            }
+            else if (offender.direction == -1)
+            {
+                receiver.rigidBody.velocity = new Vector2(-0.5f * force, 6f * force);
+                Rigidbody2D rigidbody2D = receiver.GetComponent<Rigidbody2D>();
+                StartCoroutine("KnockBackCoroutine", (rigidbody2D));
+            }
+        }
     }
 
     private IEnumerator KnockBackCoroutine(Rigidbody2D rigidBody)
     {
-        yield return new WaitForSeconds(1f);
-        rigidBody.velocity = Vector2.zero;
-        rigidBody.isKinematic = true;
+        yield return new WaitForSeconds(0.8f);
+        //rigidBody.velocity = Vector2.zero;
+        //rigidBody.isKinematic = true;
         receiver.canMove = true;
     }
 }

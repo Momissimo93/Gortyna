@@ -13,7 +13,7 @@ public class StopAnimation : MonoBehaviour
     {
         float originalSpeed = character.speed;
         character.speed = 0;
-        character.animator.SetFloat("Speed", character.speed);
+         character.animator.SetFloat("Speed", character.speed);
 
         if (character)
         {

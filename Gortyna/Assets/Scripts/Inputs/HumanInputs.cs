@@ -39,12 +39,12 @@ public class HumanInputs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (human)
+        if (human && human.canMove)
         {
             horizontalMove = Input.GetAxisRaw("Horizontal");
             direction = horizontalMove;
 
-            if (Input.GetButtonDown("Jump") && human.canMove && human.isOnGround)
+            if (Input.GetButtonDown("Jump") && human.isOnGround)
             {
                 human.isMoving = true;
                 //direction = horizontalMove;
@@ -53,7 +53,7 @@ public class HumanInputs : MonoBehaviour
                 //human.animator.SetBool("isJumping", true);
             }
 
-            if (Input.GetButtonDown("Fire1") && human.canMove && human.isOnGround)
+            if (Input.GetButtonDown("Fire1")  && human.isOnGround)
             {
                 StartCoroutine(stop.Stopping(0.35f,human));
                 human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);
@@ -63,7 +63,7 @@ public class HumanInputs : MonoBehaviour
 
             if (Input.GetButtonDown("Fire2") && human.canMove)
             {
-                if (!human.isDashing && human.canMove)
+                if (!human.isDashing)
                 {
                     //human.animator.SetBool("Dash",true);
                     //human.animator.SetBool("isJumping", false);
@@ -71,7 +71,7 @@ public class HumanInputs : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown("q") && human.canMove)
+            if (Input.GetKeyDown("q"))
             {
                 if (human.canMutate_Bunny)
                 {
@@ -87,11 +87,11 @@ public class HumanInputs : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (human)
+        if (human && human.canMove)
         {
             direction = horizontalMove;
 
-            if (horizontalMove > 0 && human.canMove == true && human.isDashing == false)
+            if (horizontalMove > 0 && !human.isDashing)
             {
                 if (human)
                 {
@@ -101,7 +101,7 @@ public class HumanInputs : MonoBehaviour
                     human.SetRotation("right");
                 }
             }
-            else if (horizontalMove < 0 && human.canMove == true && human.isDashing == false)
+            else if (horizontalMove < 0  && !human.isDashing)
             {
                 if (human)
                 {
@@ -111,9 +111,9 @@ public class HumanInputs : MonoBehaviour
                     human.SetRotation("left");
                 }
             }
-            else if (horizontalMove == 0 && human.isDashing == false)
+            else if (horizontalMove == 0 && !human.isDashing)
             {
-                human.isMoving = false;
+                //human.isMoving = false;
 
                 if (human.rigidBody)
                 {
