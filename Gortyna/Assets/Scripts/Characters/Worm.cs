@@ -6,8 +6,8 @@ public class Worm: Enemy
 {
     public LeftFoot leftFoot;
     public RightFoot rightFoot;
+    public Eye eye;
     public WarmAttack attack;
-
 
     void Update()
     {
@@ -16,6 +16,9 @@ public class Worm: Enemy
 
         rightFoot.EmittingRay();
         rightFoot.DrawRaysFromFeet();
+
+        eye.EmittingRay(direction);
+        eye.DrawRaysFromFeet(direction);
 
         GroundCheck();
 
@@ -34,6 +37,11 @@ public class Worm: Enemy
     void GroundCheck()
     {
         if((!leftFoot.leftFootRays) || (!rightFoot.rightFootRays))
+        {
+            transform.Rotate(0f, 180f, 0f);
+            direction = direction * -1;
+        }
+        else if (eye.eyeRay)
         {
             transform.Rotate(0f, 180f, 0f);
             direction = direction * -1;

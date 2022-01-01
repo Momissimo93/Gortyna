@@ -53,7 +53,7 @@ public class HumanAttack : Attack
     {
         if(human!= null)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.15f);
             enemy.GetComponent<Enemy>().TakeDamage(1, human, enemy);
             //knockBack.DoKnockBack(human, enemy);
         }
