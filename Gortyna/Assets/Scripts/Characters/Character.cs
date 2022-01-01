@@ -6,15 +6,17 @@ public class Character : MonoBehaviour
 {
     [SerializeField] public float speed;
     [SerializeField] public float direction;
+    [SerializeField] public float resistance_Horizontal;
+    [SerializeField] public float resistance_Vertical;
 
-    public bool immune = false;
-    public bool canMove = true;
+    [HideInInspector] public bool immune = false;
+    [HideInInspector] public bool canMove = true;
 
-    public Transform trans;
-    public Rigidbody2D rigidBody;
-    public Animator animator;
-    public BoxCollider2D boxCollider2D;
-    public TakeDamage takeDamage;
+    [HideInInspector] public Transform trans;
+    [HideInInspector] public Rigidbody2D rigidBody;
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public BoxCollider2D boxCollider2D;
+    [HideInInspector] public TakeDamage takeDamage;
 
     //protected Input moveLeft;
 

@@ -262,9 +262,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 120
   direction: 0
-  trans: {fileID: 0}
+  resistance_Horizontal: 1
+  resistance_Vertical: 6
   immune: 0
   canMove: 0
+  trans: {fileID: 0}
   rigidBody: {fileID: 0}
   animator: {fileID: 0}
   boxCollider2D: {fileID: 0}
@@ -272,10 +274,10 @@ MonoBehaviour:
   jumpForce: 10
   leftFoot: {fileID: 7014370016612024999}
   rightFoot: {fileID: 7014370017186277717}
-  isOnGround: 0
-  isJumping: 0
   dashPower: 10
   dashTime: 0.4
+  isOnGround: 0
+  isJumping: 0
   isDashing: 0
   isMoving: 0
   isOnPlatform: 0
@@ -311,6 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiver: {fileID: 0}
   offender: {fileID: 0}
+  offenderTrap: {fileID: 0}
   blinking: {fileID: 0}
   immunity: {fileID: 0}
   stopAnimation: {fileID: 0}

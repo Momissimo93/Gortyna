@@ -214,11 +214,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   direction: -1
-  maxLifePoints: 0
-  currentLifePoints: 0
-  trans: {fileID: 0}
+  resistance_Horizontal: 1
+  resistance_Vertical: 1.85
   immune: 0
   canMove: 1
+  trans: {fileID: 0}
   rigidBody: {fileID: 0}
   animator: {fileID: 0}
   boxCollider2D: {fileID: 0}
@@ -301,6 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiver: {fileID: 0}
   offender: {fileID: 0}
+  offenderTrap: {fileID: 0}
   blinking: {fileID: 0}
   immunity: {fileID: 0}
   stopAnimation: {fileID: 0}

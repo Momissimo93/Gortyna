@@ -9,19 +9,17 @@ public class Human : Character
     public int jumpForce;
     public LeftFoot leftFoot;
     public RightFoot rightFoot;
-    public bool isOnGround;
-    public bool isJumping;
-
     public float dashPower;
     public float dashTime;
 
-    public bool isDashing = false;
-    public bool isMoving = false;
-    public bool isOnPlatform = false;
-    public bool canMutate_Bunny;
-    public bool canMutate_Bird;
-
-    public BoxCollider2D boxC2D;
+    [HideInInspector] public bool isOnGround;
+    [HideInInspector] public bool isJumping;
+    [HideInInspector] public bool isDashing = false;
+    [HideInInspector] public bool isMoving = false;
+    [HideInInspector] public bool isOnPlatform = false;
+    [HideInInspector] public bool canMutate_Bunny;
+    [HideInInspector] public bool canMutate_Bird;
+    [HideInInspector] public BoxCollider2D boxC2D;
 
     void Start()
     {

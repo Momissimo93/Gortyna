@@ -14,6 +14,7 @@ public class TrapSuspended: Trap
         {
             Human humam = collision.gameObject.GetComponent<Human>();
             trapsAttack.Attack(damages, humam, this.gameObject.GetComponent<TrapSuspended>());
+
         }
         else if (collision.gameObject.CompareTag("Bird"))
         {

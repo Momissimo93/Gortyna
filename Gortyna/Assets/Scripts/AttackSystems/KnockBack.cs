@@ -25,11 +25,11 @@ public class KnockBack : MonoBehaviour
 
             if(offender.direction == 1)
             {
-                receiver.rigidBody.velocity = new Vector2(1 * force, 2f * force);
+                receiver.rigidBody.velocity = new Vector2(1 * force, 1f * force);
             }
             else if (offender.direction == -1)
             {
-                receiver.rigidBody.velocity = new Vector2(-1 * force, 2f * force);
+                receiver.rigidBody.velocity = new Vector2(-1 * force, 1f * force);
             }
 
             if (receiver.GetComponent<Rigidbody2D>())
@@ -43,13 +43,13 @@ public class KnockBack : MonoBehaviour
             receiver.canMove = false;
             if (offender.direction == 1)
             {
-                receiver.rigidBody.velocity = new Vector2 (0.5f * force, 6f * force);
+                receiver.rigidBody.velocity = new Vector2(1f * receiver.resistance_Horizontal, 1f * receiver.resistance_Vertical);
                 Rigidbody2D rigidbody2D = receiver.GetComponent<Rigidbody2D>();
                 StartCoroutine("KnockBackCoroutine", (rigidbody2D));
             }
             else if (offender.direction == -1)
             {
-                receiver.rigidBody.velocity = new Vector2(-0.5f * force, 6f * force);
+                receiver.rigidBody.velocity = new Vector2(-1f * receiver.resistance_Horizontal, 1f * receiver.resistance_Vertical);
                 Rigidbody2D rigidbody2D = receiver.GetComponent<Rigidbody2D>();
                 StartCoroutine("KnockBackCoroutine", (rigidbody2D));
             }
@@ -65,13 +65,13 @@ public class KnockBack : MonoBehaviour
             receiver.canMove = false;
             if (offenderTrap.direction == 1)
             {
-                receiver.rigidBody.velocity = new Vector2(0.5f * force, 6f * force);
+                receiver.rigidBody.velocity = new Vector2(1f * receiver.resistance_Horizontal, 1f * receiver.resistance_Vertical);
                 Rigidbody2D rigidbody2D = receiver.GetComponent<Rigidbody2D>();
                 StartCoroutine("KnockBackCoroutine", (rigidbody2D));
             }
             else if (offenderTrap.direction == -1)
             {
-                receiver.rigidBody.velocity = new Vector2(-0.5f * force, 6f * force);
+                receiver.rigidBody.velocity = new Vector2(-1f * receiver.resistance_Horizontal, 1f * receiver.resistance_Vertical);
                 Rigidbody2D rigidbody2D = receiver.GetComponent<Rigidbody2D>();
                 StartCoroutine("KnockBackCoroutine", (rigidbody2D));
             }
