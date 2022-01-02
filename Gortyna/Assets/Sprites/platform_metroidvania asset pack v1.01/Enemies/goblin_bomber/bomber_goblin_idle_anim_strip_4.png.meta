@@ -1,31 +1,19 @@
 fileFormatVersion: 2
-guid: 847fe76a43826f643a2710658bed086e
+guid: 5459f9197b68ffa43b66191e7aed23ce
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3095282964131620661
-    second: bomb_on_ground_anim_strip_8_0
+      213: 4062965729305634177
+    second: bomber_goblin_idle_anim_strip_4_0
   - first:
-      213: 8988081867551950553
-    second: bomb_on_ground_anim_strip_8_1
+      213: 5706325708820212063
+    second: bomber_goblin_idle_anim_strip_4_1
   - first:
-      213: -428833143504986590
-    second: bomb_on_ground_anim_strip_8_2
+      213: 5654424801616684977
+    second: bomber_goblin_idle_anim_strip_4_2
   - first:
-      213: -8074175677164752507
-    second: bomb_on_ground_anim_strip_8_3
-  - first:
-      213: 2545915500677710049
-    second: bomb_on_ground_anim_strip_8_4
-  - first:
-      213: -2950087604889697792
-    second: bomb_on_ground_anim_strip_8_5
-  - first:
-      213: -1181652202432709917
-    second: bomb_on_ground_anim_strip_8_6
-  - first:
-      213: 5710479905187869256
-    second: bomb_on_ground_anim_strip_8_7
+      213: 1412791399166139725
+    second: bomber_goblin_idle_anim_strip_4_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -139,169 +127,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bomb_on_ground_anim_strip_8_0
+      name: bomber_goblin_idle_anim_strip_4_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8
-        height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc8dd9b2b885b05d0800000000000000
-      internalID: -3095282964131620661
+      spriteID: 18529d5edcd826830800000000000000
+      internalID: 4062965729305634177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bomb_on_ground_anim_strip_8_1
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 0
-        width: 8
-        height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9d6409f66d41cbc70800000000000000
-      internalID: 8988081867551950553
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomb_on_ground_anim_strip_8_2
+      name: bomber_goblin_idle_anim_strip_4_1
       rect:
         serializedVersion: 2
         x: 16
         y: 0
-        width: 8
-        height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22e987d278a7c0af0800000000000000
-      internalID: -428833143504986590
+      spriteID: f5968eeaff0f03f40800000000000000
+      internalID: 5706325708820212063
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bomb_on_ground_anim_strip_8_3
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 0
-        width: 8
-        height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 581fe7c1004c2ff80800000000000000
-      internalID: -8074175677164752507
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomb_on_ground_anim_strip_8_4
+      name: bomber_goblin_idle_anim_strip_4_2
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 8
-        height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e04e06b8a8e45320800000000000000
-      internalID: 2545915500677710049
+      spriteID: 1b7658d066d887e40800000000000000
+      internalID: 5654424801616684977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bomb_on_ground_anim_strip_8_5
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 0
-        width: 8
-        height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 002444e14fe2f07d0800000000000000
-      internalID: -2950087604889697792
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomb_on_ground_anim_strip_8_6
+      name: bomber_goblin_idle_anim_strip_4_3
       rect:
         serializedVersion: 2
         x: 48
         y: 0
-        width: 8
-        height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3eab0f1259de99fe0800000000000000
-      internalID: -1181652202432709917
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomb_on_ground_anim_strip_8_7
-      rect:
-        serializedVersion: 2
-        x: 56
-        y: 0
-        width: 8
-        height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 842bab5e733bf3f40800000000000000
-      internalID: 5710479905187869256
+      spriteID: d4d5601da4e3b9310800000000000000
+      internalID: 1412791399166139725
       vertices: []
       indices: 
       edges: []

@@ -19,7 +19,7 @@ public class Button : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bunny") || collision.gameObject.CompareTag("Human") || collision.gameObject.CompareTag("Bird"))
+        if (collision.gameObject.CompareTag("Bunny") || collision.gameObject.CompareTag("Hero") || collision.gameObject.CompareTag("Bird"))
         {
             if (gObj.GetComponent<VerticalPlaform>())
             {

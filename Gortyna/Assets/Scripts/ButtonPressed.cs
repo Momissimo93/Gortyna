@@ -7,7 +7,9 @@ public class ButtonPressed : MonoBehaviour
     Animator animator;
     bool collider = false;
     BoxCollider2D boxCollider2D;
-    public MagicDoor magicDoor; 
+    public MagicDoor magicDoor;
+    bool isRock;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,16 +32,23 @@ public class ButtonPressed : MonoBehaviour
         if (collision.gameObject.CompareTag("Rock") || collision.gameObject.CompareTag("Hero"))
         {
             animator.SetTrigger("ButtonPressed");
+            magicDoor.OpenDoor();
+            if (collision.gameObject.CompareTag("Rock"))
+            {
+                isRock = true;
+            }
         }
-        magicDoor.OpenDoor();
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         Debug.Log("Exit");
-        if (collision.gameObject.CompareTag("Rock") || collision.gameObject.CompareTag("Hero"))
+        if(!isRock)
         {
-            animator.SetTrigger("ButtonUnPressed");
+            if ( collision.gameObject.CompareTag("Hero"))
+            {
+                animator.SetTrigger("ButtonUnPressed");
+                magicDoor.CloseDoor();
+            }
         }
-        magicDoor.CloseDoor();
     }
 }
