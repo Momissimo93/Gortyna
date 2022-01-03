@@ -5,9 +5,11 @@ using UnityEngine;
 public class ThrowingBombs : MonoBehaviour
 {
     Bomb b;
-    public void Fire(Bomb bomb)
+    public void Fire(Bomb bomb, GameObject t)
     {
+        Transform trnsf = t.transform;
         b = bomb;
-        Instantiate(b, transform.position, Quaternion.identity);
+
+        Instantiate(b, trnsf.position, Quaternion.identity);
     }
 }

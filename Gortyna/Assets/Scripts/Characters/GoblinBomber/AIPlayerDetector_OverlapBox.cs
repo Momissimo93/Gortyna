@@ -22,6 +22,8 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
 
     public LayerMask detectorLayer;
 
+    public int direction; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +37,7 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
             RaycastHit2D targetLine = Physics2D.Linecast(transform.position, Target.transform.position, (detectorLayer));
             DrawTargetLine(targetLine);
         }
-
+        CheckDirection();
     }
     public GameObject Target
     {
@@ -49,7 +51,6 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
             playerDetected = target != null;
         }
     }
-
     public GameObject GetTarget()
     {
         if (target)
@@ -69,15 +70,31 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
 
     public void PerformDetection()
     {
-        Collider2D collider = Physics2D.OverlapBox((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize,0,detectorLayer );
+        Collider2D collider = Physics2D.OverlapBox((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize, 0, detectorLayer );
         if(collider != null)
         {
             Target = collider.gameObject;
-            Debug.Log(target.name);
         }
         else
         {
             Target = null;
+        }
+    }
+
+    private void CheckDirection()
+    {
+        if (target && detectorOrigin)
+        {
+            if (target.transform.position.x - detectorOrigin.transform.position.x > 0.0f)
+            {
+                direction = 1;
+                Debug.Log(direction);
+            }
+            else if (target.transform.position.x - detectorOrigin.transform.position.x < 0.5f)
+            {
+                direction = -1;
+                Debug.Log(direction);
+            }
         }
     }
 

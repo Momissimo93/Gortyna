@@ -44,7 +44,6 @@ public class Human : Character
     {
         IsOnGround();
     }
-
     private void SetDirection()
     {
         float localEu = trans.localEulerAngles.y;
