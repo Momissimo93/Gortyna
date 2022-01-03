@@ -36,43 +36,43 @@ public class Goblin : Character
         eye.DrawRaysFromFeet(direction);
         GroundCheck();
 
-            if (playerDetector_CircleCast.playerDetected)
-            {
-                moveTowardsTarget.Move(speed, playerDetector_CircleCast.Target.transform);
-            }
-            else if (playerDetector_CircleCast.playerDetected == false)
-            {
-                speed = 1;
-                patrolling.Move(speed, foot, direction);
-            }
+        if (playerDetector_CircleCast.playerDetected)
+        {
+            moveTowardsTarget.Move(speed, playerDetector_CircleCast.Target.transform);
+        }
+        else
+        {
+            //speed = 1;
+            //patrolling.Move(speed, foot, direction);
+        }
     }
     void GroundCheck()
     {
-        if (playerDetector_CircleCast.playerDetected == false)
+        if (!foot.rightFootRays)
+        {
+            transform.Rotate(0f, 180f, 0f);
+            direction = direction * -1;
+            Debug.Log("The foot is not on ground");
+        }
+        else if (eye.eyeRay)
+        {
+            transform.Rotate(0f, 180f, 0f);
+            direction = direction * -1;
+            Debug.Log("I can see the ground");
+        }
+
+        /*else if (playerDetector_CircleCast.playerDetected)
         {
             if (!foot.rightFootRays)
             {
-                transform.Rotate(0f, 180f, 0f);
-                direction = direction * -1;
+                //speed = 0;
+                //canMove = false;
             }
             else if (eye.eyeRay)
             {
-                transform.Rotate(0f, 180f, 0f);
-                direction = direction * -1;
+                //speed = 0;
+                //canMove = false;
             }
-        }
-        else if (playerDetector_CircleCast.playerDetected == true)
-        {
-            if (!foot.rightFootRays)
-            {
-                speed = 0;
-                canMove = false;
-            }
-            else if (eye.eyeRay)
-            {
-                speed = 0;
-                canMove = false;
-            }
-        }
+        }*/
     }
 }
