@@ -4,10 +4,7 @@ public class Goblin: Enemy
 {
     public AIPlayerDetector_CircleCast playerDetector_CircleCast;
     public Eye eye;
-    //public MoveTowardsTarget moveTowardsTarget;
-    //public Patrolling patrolling;
 
-    // Update is called once per frame
     void Update()
     {
         eye.EmittingRay(direction);
@@ -58,14 +55,12 @@ public class Goblin: Enemy
             {
                 transform.Rotate(0f, 180f, 0f);
                 direction *= -1;
-                //facingRight = true;
                 Debug.Log("Player Check");
             }
             else if (playerDetector_CircleCast.direction == -1 && direction == 1)
             {
                 transform.Rotate(0f, 180f, 0f);
                 direction *= -1;
-                //facingRight = false;
                 Debug.Log("Player Check");
             }
         }

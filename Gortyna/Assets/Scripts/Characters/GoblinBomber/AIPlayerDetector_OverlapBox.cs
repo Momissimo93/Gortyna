@@ -24,11 +24,6 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
 
     public int direction; 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //StartCoroutine(DetectionCoroutine());
-    }
     private void Update()
     {
         PerformDetection();
@@ -37,6 +32,7 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
             RaycastHit2D targetLine = Physics2D.Linecast(transform.position, Target.transform.position, (detectorLayer));
             DrawTargetLine(targetLine);
         }
+        CheckDirection();
         
     }
     public GameObject Target
@@ -85,31 +81,33 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
     {
         if (target && detectorOrigin)
         {
-            if (target.transform.position.x - detectorOrigin.transform.position.x > 0.0f)
+            //Debug.Log(target.transform.position.x - detectorOrigin.transform.position.x);
+            if (target.transform.position.x - detectorOrigin.transform.position.x > 1f)
             {
                 direction = 1;
-                Debug.Log(direction);
             }
-            else if (target.transform.position.x - detectorOrigin.transform.position.x < 0.5f)
+            else if (target.transform.position.x - detectorOrigin.transform.position.x < -1f)
             {
                 direction = -1;
-                Debug.Log(direction);
             }
         }
     }
 
     private void OnDrawGizmos()
     {
-        if(showGizmos && detectorOrigin != null)
+        if((showGizmos && detectorOrigin != null) && target == null)
         {
             Gizmos.color = gizmoIdleColor;
-
             Gizmos.DrawCube((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize) ;
+        }
+        else if ((showGizmos && detectorOrigin && target != null))
+        {
+            Gizmos.color = gizmoDetectedColor;
+            Gizmos.DrawCube((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize);
         }
     }
     private void DrawTargetLine(RaycastHit2D r)
     {
-
         Debug.DrawLine(transform.position, r.collider.gameObject.transform.position, Color.yellow);
     }
 }

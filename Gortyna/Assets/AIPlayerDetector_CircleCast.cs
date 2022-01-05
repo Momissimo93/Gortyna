@@ -20,13 +20,6 @@ public class AIPlayerDetector_CircleCast : MonoBehaviour
     public bool attack = true;
     public int direction = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         PerformDetection();
@@ -38,14 +31,12 @@ public class AIPlayerDetector_CircleCast : MonoBehaviour
             {
                 Rigidbody2D rb = transform.gameObject.GetComponent<Rigidbody2D>();
                 {
-                    //Debug.Log("Stop");
                     attack = true;
                 }
             }
             else
                 attack = false;
         }
-
         CheckDirection();
     }
     private void CheckDirection()
@@ -60,7 +51,6 @@ public class AIPlayerDetector_CircleCast : MonoBehaviour
             {
                 direction = -1;
             }
-            Debug.Log("Player left or right ?" + direction);
         }
     }
     public GameObject Target
@@ -75,8 +65,6 @@ public class AIPlayerDetector_CircleCast : MonoBehaviour
             playerDetected = target != null;
         }
     }
-
-
     public void PerformDetection()
     {
         //RaycastHit2D circleCast  = Physics2D.CircleCast((Vector2)detectorOrigin.position + detectorOriginOffset, detectorRadius, Vector2.zero, detectorDistance, detectorLayer);
@@ -95,28 +83,28 @@ public class AIPlayerDetector_CircleCast : MonoBehaviour
             for (int i = 0; i < arrayOfElements.Length; i++)
             {
                 RaycastHit2D targetLine = Physics2D.Linecast(transform.position, arrayOfElements[i].collider.gameObject.transform.position, ~(enemyLayer + coinLayer + groundLayer));
-                
-                if (targetLine.collider.transform.gameObject.GetComponent<Human>())
+
+                if (targetLine)
                 {
-                    //Debug.Log("I can see the player");
-                    DrawTargetLine(targetLine, Color.yellow);
-                    Target = arrayOfElements[i].transform.gameObject;
-                    break;
+                    if (targetLine.collider.transform.gameObject.GetComponent<Human>())
+                    {
+                        DrawTargetLine(targetLine, Color.yellow);
+                        Target = arrayOfElements[i].transform.gameObject;
+                        break;
+                    }
+                    else if (!targetLine.collider.transform.gameObject.GetComponent<Human>())
+                    {
+                        DrawTargetLine(targetLine, Color.red);
+                        Target = null;
+                    }
+                    else
+                        Target = null;
                 }
-                else if (!targetLine.collider.transform.gameObject.GetComponent<Human>())
-                {
-                    //Debug.Log("There is an element before the player i can not see him anymore ");
-                    DrawTargetLine(targetLine, Color.red);
-                    Target = null;
-                }
-                else
-                    Target = null;
             }
         }
         else
         {
             Target = null;
-            //Debug.Log("I can not see the player");
         }
     }
     private void OnDrawGizmos()

@@ -2,54 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinBomber : MonoBehaviour
+public class GoblinBomber : Enemy
 {
     public Bomb b;
 
-    private Animator animator;
-    private AIPlayerDetector_OverlapBox playerDetector_OverlapBox;
-    private ThrowingBombs throwingBombs;
-    private bool isFirying = false;
-    private bool facingRight = true;
+    public AIPlayerDetector_OverlapBox playerDetector_OverlapBox;
+    public ThrowingBombs throwingBombs;
+    [SerializeField] GameObject spawnPoint;
 
+    private bool isFirying = false;
     private GameObject target;
     private GameObject oldTarget;
 
-    [SerializeField] GameObject spawnPoint;
-
-    public int direction = 1;
-    // Start is called before the first frame update
-    void Start()
-    {
-        playerDetector_OverlapBox = gameObject.GetComponent<AIPlayerDetector_OverlapBox>();
-        throwingBombs = gameObject.GetComponent<ThrowingBombs>();
-        if(gameObject.GetComponent<Animator>())
-        {
-            animator = gameObject.GetComponent<Animator>();
-        }
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if(playerDetector_OverlapBox.playerDetected)
+        PlayerCheck();
+        if (playerDetector_OverlapBox.playerDetected)
         {
             if(isFirying == false)
             {
                 StartCoroutine("ThrowingBombs");
             }
         }
-        if (playerDetector_OverlapBox.direction == 1 && direction == -1)
+    }
+    void PlayerCheck()
+    {
+        if (playerDetector_OverlapBox.playerDetected)
         {
-            Debug.Log("Change direction");
-            transform.Rotate(0f, 180f, 0f);
-            direction *= -1;
-        }
-        else if (playerDetector_OverlapBox.direction == -1 && direction == 1)
-        {
-            Debug.Log("Change direction");
-            transform.Rotate(0f, 180f, 0f);
-            direction *= -1;
+            if (playerDetector_OverlapBox.direction == 1 && direction == -1)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                direction *= -1;
+            }
+            else if (playerDetector_OverlapBox.direction == -1 && direction == 1)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                direction *= -1;
+            }
         }
     }
 
@@ -88,11 +77,5 @@ public class GoblinBomber : MonoBehaviour
 
         isFirying = false;
         animator.SetBool("ThrowingBomb", isFirying);
-    }
-    IEnumerator Turn()
-    {
-        Debug.Log("Turn");
-        yield return new WaitForSeconds(0.3f);
-        transform.Rotate(0f, 180f, 0f);
     }
 }

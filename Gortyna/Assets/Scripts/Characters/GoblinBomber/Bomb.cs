@@ -10,7 +10,6 @@ public class Bomb : MonoBehaviour
     Vector2 moveDirection;
     public float force = 0.9f;
     Animator animator;
-
     private void Start()
     {
         GetAnimator();
@@ -21,12 +20,10 @@ public class Bomb : MonoBehaviour
         }
         GetAnimator();
     }
-
     public void SetTarget(GameObject trgt)
     {
         target = trgt;
     }
-
     private void GetAnimator()
     {
         if (gameObject.GetComponent<Animator>())
@@ -34,7 +31,6 @@ public class Bomb : MonoBehaviour
             animator = gameObject.GetComponent<Animator>();
         }
     }
-
     public void Spawn()
     {
         if (gameObject.GetComponent<Rigidbody2D>())
@@ -47,7 +43,6 @@ public class Bomb : MonoBehaviour
             rdbody2D.velocity = new Vector2(moveDirection.x, moveDirection.y);
         }
     }
-
     void OnTriggerEnter2D(Collider2D collider2D)
     {
         if(collider2D.gameObject.CompareTag("Hero"))
@@ -57,10 +52,8 @@ public class Bomb : MonoBehaviour
         else if (collider2D.gameObject.layer == 6)
         {
             StartCoroutine ("GroundCollision");
-
         }
     }
-
     IEnumerator GroundCollision()
     {
         yield return new WaitForSeconds(0.25f);
@@ -70,7 +63,6 @@ public class Bomb : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         Destroy(this.gameObject);
     }
-
     IEnumerator Destroy()
     {
         yield return new WaitForSeconds(2.0f);
