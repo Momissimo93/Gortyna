@@ -6,6 +6,7 @@ public class Eye : MonoBehaviour
 {
     // Start is called before the first frame update
     private int ground = 1 << 6;
+    private int invisibleElement = 1 << 13;
 
     public float rayLenghtFromEye;
 
@@ -16,7 +17,7 @@ public class Eye : MonoBehaviour
     public void EmittingRay(float direction)
     {
         eye = new Vector2(transform.position.x, transform.position.y);
-        eyeRay = Physics2D.Raycast(eye, Vector2.right * direction, rayLenghtFromEye, ground);
+        eyeRay = Physics2D.Raycast(eye, Vector2.right * direction, rayLenghtFromEye,  ground + invisibleElement);
     }
     public void DrawRaysFromFeet(float direction)
     {

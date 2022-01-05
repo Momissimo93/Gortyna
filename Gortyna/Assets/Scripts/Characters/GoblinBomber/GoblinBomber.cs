@@ -17,6 +17,7 @@ public class GoblinBomber : MonoBehaviour
 
     [SerializeField] GameObject spawnPoint;
 
+    public int direction = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,15 +39,17 @@ public class GoblinBomber : MonoBehaviour
                 StartCoroutine("ThrowingBombs");
             }
         }
-        if (playerDetector_OverlapBox.direction == 1 && facingRight == false)
+        if (playerDetector_OverlapBox.direction == 1 && direction == -1)
         {
-            StartCoroutine("Turn");
-            facingRight = true; 
+            Debug.Log("Change direction");
+            transform.Rotate(0f, 180f, 0f);
+            direction *= -1;
         }
-        else if (playerDetector_OverlapBox.direction == -1 && facingRight == true)
+        else if (playerDetector_OverlapBox.direction == -1 && direction == 1)
         {
-            StartCoroutine("Turn");
-            facingRight = false; 
+            Debug.Log("Change direction");
+            transform.Rotate(0f, 180f, 0f);
+            direction *= -1;
         }
     }
 
@@ -61,7 +64,16 @@ public class GoblinBomber : MonoBehaviour
 
         if(target == null)
         {
-            b.SetTarget(oldTarget);
+            if(oldTarget == null)
+            {
+                //I force it to find the human, if not the bomb does not know where to go if i suddently exit the area 
+                GameObject gb = GameObject.FindObjectOfType<Human>().gameObject;
+                b.SetTarget(gb);
+            }
+            else
+            {
+                b.SetTarget(oldTarget);
+            }
         }
         else
         {
@@ -79,6 +91,7 @@ public class GoblinBomber : MonoBehaviour
     }
     IEnumerator Turn()
     {
+        Debug.Log("Turn");
         yield return new WaitForSeconds(0.3f);
         transform.Rotate(0f, 180f, 0f);
     }

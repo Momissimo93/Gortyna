@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Patrolling : MonoBehaviour
 {
-    public void Move(float s, RightFoot ft, float direction)
+    public void Move(float s, float direction, Transform tra )
     {
-        
-        transform.position = new Vector2(transform.position.x + (s * direction * Time.deltaTime), transform.position.y);
+        tra.position = new Vector2(tra.position.x + (s * direction * Time.deltaTime), tra.position.y);
     }
 }

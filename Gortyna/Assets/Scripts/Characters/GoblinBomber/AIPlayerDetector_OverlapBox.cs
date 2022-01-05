@@ -37,7 +37,7 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
             RaycastHit2D targetLine = Physics2D.Linecast(transform.position, Target.transform.position, (detectorLayer));
             DrawTargetLine(targetLine);
         }
-        CheckDirection();
+        
     }
     public GameObject Target
     {

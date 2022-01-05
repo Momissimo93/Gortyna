@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MoveTowardsTarget : MonoBehaviour
 {
-    public void Move(float speed, Transform trsf)
+    public void Move(float speed, Transform target, Transform current)
     {
-        transform.position = Vector2.MoveTowards(transform.position, trsf.position, speed * Time.deltaTime);
+        current.position = Vector2.MoveTowards(current.position, new Vector3 (target.position.x, current.position.y, target.position.y), speed * Time.deltaTime);
     }
 }

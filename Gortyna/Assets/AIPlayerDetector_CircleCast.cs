@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class AIPlayerDetector_CircleCast : MonoBehaviour
 {
     [SerializeField]
@@ -18,6 +17,9 @@ public class AIPlayerDetector_CircleCast : MonoBehaviour
     private int enemyLayer = 1 << 8;
     private int coinLayer = 1 << 11;
 
+    public bool attack = true;
+    public int direction = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,10 +30,37 @@ public class AIPlayerDetector_CircleCast : MonoBehaviour
     void Update()
     {
         PerformDetection();
+
         if (target)
         {
-            //RaycastHit2D targetLine = Physics2D.Linecast(transform.position, Target.transform.position);
-            //DrawTargetLine(targetLine);
+            float distance = target.transform.position.x - transform.position.x;
+            if (distance > -1 && distance < 1)
+            {
+                Rigidbody2D rb = transform.gameObject.GetComponent<Rigidbody2D>();
+                {
+                    //Debug.Log("Stop");
+                    attack = true;
+                }
+            }
+            else
+                attack = false;
+        }
+
+        CheckDirection();
+    }
+    private void CheckDirection()
+    {
+        if (target && detectorOrigin)
+        {
+            if (target.transform.position.x - detectorOrigin.transform.position.x > 0.1f)
+            {
+                direction = 1;
+            }
+            else if (target.transform.position.x - detectorOrigin.transform.position.x < 0.1f)
+            {
+                direction = -1;
+            }
+            Debug.Log("Player left or right ?" + direction);
         }
     }
     public GameObject Target
@@ -46,6 +75,7 @@ public class AIPlayerDetector_CircleCast : MonoBehaviour
             playerDetected = target != null;
         }
     }
+
 
     public void PerformDetection()
     {
@@ -64,38 +94,29 @@ public class AIPlayerDetector_CircleCast : MonoBehaviour
         {
             for (int i = 0; i < arrayOfElements.Length; i++)
             {
-
-                if (arrayOfElements[i].collider.gameObject.GetComponent<Human>())
+                RaycastHit2D targetLine = Physics2D.Linecast(transform.position, arrayOfElements[i].collider.gameObject.transform.position, ~(enemyLayer + coinLayer + groundLayer));
+                
+                if (targetLine.collider.transform.gameObject.GetComponent<Human>())
                 {
-
-                    RaycastHit2D targetLine = Physics2D.Linecast(transform.position, arrayOfElements[i].collider.gameObject.transform.position, ~(enemyLayer + coinLayer + groundLayer));
-                    DrawTargetLine(targetLine);
-
-                    if (targetLine.collider.transform.gameObject.GetComponent<Human>())
-                    {
-                        Debug.Log("I can see the player");
-                        Target = arrayOfElements[i].transform.gameObject;
-
-                    }
-                    else
-                    {
-                        Debug.Log("There is an element before the player i can not see him anymore ");
-                        Debug.Log(targetLine.collider.transform.gameObject.name);
-                        Target = null;
-                    }
-                    //DrawTargetLine(arrayOfElements[i])
+                    //Debug.Log("I can see the player");
+                    DrawTargetLine(targetLine, Color.yellow);
+                    Target = arrayOfElements[i].transform.gameObject;
+                    break;
+                }
+                else if (!targetLine.collider.transform.gameObject.GetComponent<Human>())
+                {
+                    //Debug.Log("There is an element before the player i can not see him anymore ");
+                    DrawTargetLine(targetLine, Color.red);
+                    Target = null;
                 }
                 else
-                {
-                    //Target = null;
-                    //Debug.Log("I can not see the player");
-                }
+                    Target = null;
             }
         }
         else
         {
             Target = null;
-            Debug.Log("I can not see the player");
+            //Debug.Log("I can not see the player");
         }
     }
     private void OnDrawGizmos()
@@ -103,8 +124,8 @@ public class AIPlayerDetector_CircleCast : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(detectorOrigin.transform.position, detectorRadius);
     }
-    private void DrawTargetLine(RaycastHit2D r)
+    private void DrawTargetLine(RaycastHit2D r, Color c)
     {
-        Debug.DrawLine(transform.position, r.collider.gameObject.transform.position, Color.yellow);
+        Debug.DrawLine(transform.position, r.collider.gameObject.transform.position, c);
     }
 }

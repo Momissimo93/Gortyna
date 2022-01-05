@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    Command moveLeft;
-    Command moveRight;
+    public Command moveLeft;
+    public Command moveRight;
 
-    bool facingRight = false;
-
+    [HideInInspector] public bool facingRight = false;
     [SerializeField] protected int maxLifePoints;
     public int currentLifePoints;
 
     void Start()
     {
         currentLifePoints = maxLifePoints;
-        moveLeft = new MoveLeft();
-        moveRight = new MoveRight();
-        animator.SetFloat("Speed", speed);
+
+        if(!gameObject.GetComponent<GoblinBomber>())
+        {
+            moveLeft = new MoveLeft();
+            moveRight = new MoveRight();
+            animator.SetFloat("Speed", speed);
+            Debug.Log(gameObject.name + " has loaded moving commands");
+        }
     }
 
     public void MoveLeft()
