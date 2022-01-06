@@ -33,7 +33,7 @@ public class WarmAttack : Attack
             //Debug.Log("The enemy is in range");
             if (range.collider.gameObject.CompareTag("Hero"))
             {
-                if (heartsHealthVisual && (range.collider.gameObject.GetComponent<Human>().immune == false))
+                if (heartsHealthVisual && (range.collider.gameObject.GetComponent<Human>().immune == false) && !worm.immune && !worm.isDeath)
                 {
                     //heartsHealthVisual.HeartHealthSystemOnDamaged(1);
                     SetReceiver(range.collider.gameObject.GetComponent<Human>());
@@ -50,11 +50,11 @@ public class WarmAttack : Attack
     }
     IEnumerator NotMoreDamages( float seconds)
     {
-            for (int i = 0; i < seconds; i++)
-            {
-                //it runs 3 times and at each iteration it stops for a second --> so in total the characters will blink for 3 seconds
-                yield return new WaitForSeconds(seconds);
-            }
+        for (int i = 0; i < seconds; i++)
+        {
+            //it runs 3 times and at each iteration it stops for a second --> so in total the characters will blink for 3 seconds
+            yield return new WaitForSeconds(seconds);
+        }
     }
 }
 

@@ -23,7 +23,6 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
     public LayerMask detectorLayer;
 
     public int direction; 
-
     private void Update()
     {
         PerformDetection();
@@ -63,7 +62,6 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
         PerformDetection();
         StartCoroutine(DetectionCoroutine());
     }
-
     public void PerformDetection()
     {
         Collider2D collider = Physics2D.OverlapBox((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize, 0, detectorLayer );
@@ -76,7 +74,6 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
             Target = null;
         }
     }
-
     private void CheckDirection()
     {
         if (target && detectorOrigin)
@@ -92,7 +89,6 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
             }
         }
     }
-
     private void OnDrawGizmos()
     {
         if((showGizmos && detectorOrigin != null) && target == null)

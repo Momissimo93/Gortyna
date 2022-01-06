@@ -32,7 +32,7 @@ public class SlimeAttack : Attack
             //Debug.Log("The enemy is in range");
             if (range.collider.gameObject.CompareTag("Hero"))
             {
-                if (heartsHealthVisual && (range.collider.gameObject.GetComponent<Human>().immune == false))
+                if (heartsHealthVisual && (range.collider.gameObject.GetComponent<Human>().immune == false) && !slime.immune && !slime.isDeath)
                 {
                     //heartsHealthVisual.HeartHealthSystemOnDamaged(1);
                     SetReceiver(range.collider.gameObject.GetComponent<Human>());

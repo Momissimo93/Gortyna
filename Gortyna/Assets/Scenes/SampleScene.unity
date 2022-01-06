@@ -2989,7 +2989,7 @@ MonoBehaviour:
   rangeRadius: 0.34
   detectorLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 128
   slime: {fileID: 2137036353}
 --- !u!1001 &202373745
 PrefabInstance:
@@ -51056,8 +51056,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   direction: 1
-  resistance_Horizontal: 1
-  resistance_Vertical: 1
+  resistance_Horizontal: 2
+  resistance_Vertical: 2
   immune: 0
   canMove: 1
   trans: {fileID: 0}
@@ -51066,8 +51066,9 @@ MonoBehaviour:
   boxCollider2D: {fileID: 0}
   takeDamage: {fileID: 0}
   facingRight: 1
-  maxLifePoints: 3
   currentLifePoints: 0
+  maxLifePoints: 3
+  isDeath: 0
   b: {fileID: 5251709796245298473, guid: 9ce0e4cb152f8b040b691f1041b822e7, type: 3}
   playerDetector_OverlapBox: {fileID: 2145659469}
   throwingBombs: {fileID: 600708333}
@@ -51092,7 +51093,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!61 &1044808321
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65666,8 +65667,9 @@ MonoBehaviour:
   boxCollider2D: {fileID: 0}
   takeDamage: {fileID: 0}
   facingRight: 0
-  maxLifePoints: 3
   currentLifePoints: 0
+  maxLifePoints: 3
+  isDeath: 0
   playerDetector_CircleCast: {fileID: 1513526428}
   eye: {fileID: 472743090}
 --- !u!1001 &1492941610
@@ -80457,7 +80459,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129213101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.14, y: -1.63, z: -0.25348854}
+  m_LocalPosition: {x: 0.24, y: 26.67, z: -0.25348854}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80536,8 +80538,9 @@ MonoBehaviour:
   boxCollider2D: {fileID: 0}
   takeDamage: {fileID: 0}
   facingRight: 0
-  maxLifePoints: 3
   currentLifePoints: 0
+  maxLifePoints: 3
+  isDeath: 0
   eye: {fileID: 384132259}
   head: {fileID: 2145505795}
   attack: {fileID: 202211775}
@@ -80750,7 +80753,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   enemy: {fileID: 2137036353}
-  bounce: 0.8
+  bounce: 1
 --- !u!1 &2145659468
 GameObject:
   m_ObjectHideFlags: 0

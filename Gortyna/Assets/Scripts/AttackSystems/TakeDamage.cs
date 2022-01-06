@@ -19,7 +19,6 @@ public class TakeDamage : MonoBehaviour
     [HideInInspector]
     public KnockBack knockBack;
     HeartsHealthVisual heartsHealthVisual;
-
     void Start()
     {
         knockBack = gameObject.AddComponent<KnockBack>();
@@ -42,7 +41,6 @@ public class TakeDamage : MonoBehaviour
             }
         }
     }
-
     public void DoTakeDamage(int d, Character ofd, Character rcv)
     {
         receiver = rcv;
@@ -58,6 +56,8 @@ public class TakeDamage : MonoBehaviour
 
                 if (e.currentLifePoints <= 0)
                 {
+                    //Just so it does not hurt us touching us 
+                    e.isDeath = true;
                     knockBack.DoKnockBack(offender, e);   
                     e.speed = 0;
                     e.animator.SetFloat("Speed", 0);
@@ -82,7 +82,6 @@ public class TakeDamage : MonoBehaviour
             heartsHealthVisual.HeartHealthSystemOnDamaged(damage);
         }
     }
-
     public void DoTakeDamageFromTrap(int d, Trap ofd, Character rcv)
     {
         receiver = rcv;
@@ -94,7 +93,6 @@ public class TakeDamage : MonoBehaviour
         immunity.DoImmunity(receiver, 1f);
         heartsHealthVisual.HeartHealthSystemOnDamaged(damage);
     }
-
     public IEnumerator DeathCoroutine(Enemy e)
     {
         yield return new WaitForSeconds(0.5f);

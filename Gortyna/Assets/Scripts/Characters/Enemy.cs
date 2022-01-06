@@ -8,8 +8,10 @@ public class Enemy : Character
     public Command moveRight;
 
     [HideInInspector] public bool facingRight = false;
+    [HideInInspector] public int currentLifePoints;
     [SerializeField] protected int maxLifePoints;
-    public int currentLifePoints;
+
+    public bool isDeath = false;
 
     void Start()
     {
