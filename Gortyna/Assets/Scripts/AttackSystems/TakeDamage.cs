@@ -58,7 +58,11 @@ public class TakeDamage : MonoBehaviour
 
                 if (e.currentLifePoints <= 0)
                 {
-                    Destroy(e.gameObject);
+                    knockBack.DoKnockBack(offender, e);   
+                    e.speed = 0;
+                    e.animator.SetFloat("Speed", 0);
+                    e.animator.SetTrigger("Death");
+                    StartCoroutine("DeathCoroutine", e);
                 }
 
                 else if (e.currentLifePoints > 0)
@@ -89,6 +93,12 @@ public class TakeDamage : MonoBehaviour
         knockBack.DoKnockBackFromTrap(ofd, receiver);
         immunity.DoImmunity(receiver, 1f);
         heartsHealthVisual.HeartHealthSystemOnDamaged(damage);
+    }
+
+    public IEnumerator DeathCoroutine(Enemy e)
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(e.gameObject);
     }
 }
 

@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SlimeAttack : Attack
 {
-    public float rangeRadius;
-    Vector2 rangeOrigin;
+    [SerializeField] Transform rangeOrigin;
+    [SerializeField] float rangeRadius = 0.0f;
+    [SerializeField] LayerMask detectorLayer;
+
     public Slime slime;
     HeartsHealthVisual heartsHealthVisual;
     // Start is called before the first frame update
     void Start()
     {
-        rangeOrigin = transform.position;
-        offenderLayer = 1 << 7;
         //SetOffender(worm);
         heartsHealthVisual = FindObjectOfType<HeartsHealthVisual>();
         offender = slime;
@@ -21,12 +21,11 @@ public class SlimeAttack : Attack
     // Update is called once per frame
     void Update()
     {
-        rangeOrigin = transform.position;
+        //rangeOrigin = transform.position;
     }
     public void CheckHero()
     {
-        Vector2 rangeOrigin = transform.position;
-        RaycastHit2D range = Physics2D.CircleCast(rangeOrigin, rangeRadius, Vector2.zero, 1, offenderLayer);
+        RaycastHit2D range = Physics2D.CircleCast(rangeOrigin.transform.position, rangeRadius, Vector2.zero, 1, detectorLayer);
 
         if (range)
         {
@@ -43,10 +42,10 @@ public class SlimeAttack : Attack
             }
         }
     }
-    public void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(rangeOrigin, rangeRadius);
+        Gizmos.DrawWireSphere(rangeOrigin.transform.position, rangeRadius);
     }
     IEnumerator NotMoreDamages(float seconds)
     {

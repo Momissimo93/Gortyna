@@ -20,7 +20,7 @@ public class Enemy : Character
             moveLeft = new MoveLeft();
             moveRight = new MoveRight();
             animator.SetFloat("Speed", speed);
-            Debug.Log(gameObject.name + " has loaded moving commands");
+            //Debug.Log(gameObject.name + " has loaded moving commands");
         }
     }
 

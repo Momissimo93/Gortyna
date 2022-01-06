@@ -5,10 +5,12 @@ using UnityEngine;
 public class Slime : Enemy
 {
     public Eye eye;
+    public Head head;
     public SlimeAttack attack;
 
     void Update()
     {
+        head.PerformDetection();
         eye.EmittingRay(direction);
         eye.DrawRaysFromFeet(direction);
         GroundCheck();

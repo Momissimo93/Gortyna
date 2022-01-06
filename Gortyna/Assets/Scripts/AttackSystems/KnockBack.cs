@@ -81,7 +81,6 @@ public class KnockBack : MonoBehaviour
     {
         offenderTrap = o;
         receiver = r;
-
         if (receiver.rigidBody.isKinematic == false)
         {
             receiver.canMove = false;

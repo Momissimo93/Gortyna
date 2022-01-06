@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider2D: {fileID: 7014370016738316769}
-  rayLenghtFromFeet: 0.4
+  rayLenghtFromFeet: 0.2
 --- !u!1 &7014370016738316773
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
   dashPower: 10
   dashTime: 0.4
   isOnGround: 0
-  isJumping: 0
+  isHit: 0
   isDashing: 0
   isMoving: 0
   isOnPlatform: 0
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider2D: {fileID: 7014370016738316769}
-  rayLenghtFromFeet: 0.4
+  rayLenghtFromFeet: 0.2
 --- !u!1 &8815860936555146394
 GameObject:
   m_ObjectHideFlags: 0

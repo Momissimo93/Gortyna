@@ -47,6 +47,7 @@ public class HumanInputs : MonoBehaviour
             if (Input.GetButtonDown("Jump") && human.isOnGround)
             {
                 human.isMoving = true;
+                isJumping = true;
                 //direction = horizontalMove;
                 jump.Execute(human.transform, direction);
                 //human.animator.SetTrigger("IsJumping");
@@ -82,6 +83,11 @@ public class HumanInputs : MonoBehaviour
                     mainCharactersManager.SpawnBird(human.transform);
                 }
             }
+        }
+        else if (human.isOnGround)
+        {
+            isJumping = false;
+            Debug.Log("Is jumping? " + isJumping);
         }
     }
 

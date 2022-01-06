@@ -42,7 +42,7 @@ public class Goblin: Enemy
                 //This speed variable has been added just in case it get stuck 
                 speed = 1;
                 animator.SetFloat("Speed", speed);
-                Debug.Log("HorizontalMove");
+                //Debug.Log("HorizontalMove");
             }
             else if (canMove == false)
             {

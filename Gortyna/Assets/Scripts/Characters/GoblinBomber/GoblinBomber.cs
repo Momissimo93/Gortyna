@@ -47,7 +47,7 @@ public class GoblinBomber : Enemy
         isFirying = true;
         animator.SetBool("ThrowingBomb", isFirying);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
 
         target = playerDetector_OverlapBox.GetTarget();
 
@@ -70,12 +70,12 @@ public class GoblinBomber : Enemy
             oldTarget = target;
         }
 
-        animator.SetBool("ThrowingBomb", true);
+        animator.SetBool("ThrowingBomb", false);
         throwingBombs.Fire(b, spawnPoint);
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         isFirying = false;
-        animator.SetBool("ThrowingBomb", isFirying);
+        //animator.SetBool("ThrowingBomb", isFirying);
     }
 }

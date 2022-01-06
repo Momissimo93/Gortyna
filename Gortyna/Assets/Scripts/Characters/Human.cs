@@ -13,7 +13,8 @@ public class Human : Character
     public float dashTime;
 
     [HideInInspector] public bool isOnGround;
-    [HideInInspector] public bool isJumping;
+    [HideInInspector] public bool isHit;
+    //[HideInInspector] public bool isJumping;
     [HideInInspector] public bool isDashing = false;
     [HideInInspector] public bool isMoving = false;
     [HideInInspector] public bool isOnPlatform = false;
@@ -23,13 +24,9 @@ public class Human : Character
 
     void Start()
     {
-
         SetDirection();
-
         canMutate_Bunny = false;
-
         boxC2D = boxCollider2D;
-
         trans = gameObject.GetComponent<Transform>();
     }
     void Update()
@@ -87,16 +84,26 @@ public class Human : Character
     }
     public void IsOnGround()
     {
-        if (leftFoot.IsOnGround() == true || rightFoot.IsOnGround() == true)
+        if(canMove)
         {
-            isOnGround = true;
-            animator.SetBool("isJumping", false);
+            if (leftFoot.IsOnGround() == true || rightFoot.IsOnGround() == true && canMove)
+            {
+                isOnGround = true;
+                animator.SetBool("isJumping", false);
 
+            }
+            else if (leftFoot.IsOnGround() == false || rightFoot.IsOnGround() == false && canMove)
+            {
+                isOnGround = false;
+                animator.SetBool("isJumping", true);
+            }
         }
-        else if (leftFoot.IsOnGround() == false || rightFoot.IsOnGround() == false)
+        //When we get hit we want to stop the jumping animation. Also we set the bool variable isOnGround to be false so that we can use it to tell wheter or not we are jumping on the enemey
+        else if (!canMove)
         {
             isOnGround = false;
-            animator.SetBool("isJumping", true);
+            animator.SetBool("isJumping", false);
+            Debug.Log("I have been hit");
         }
     }
 }
