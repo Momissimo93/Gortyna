@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class Bomb : Trap
 {
     public float speed;
     Rigidbody2D rdbody2D;
     public GameObject target;
     Vector2 moveDirection;
     public float force = 0.9f;
-    Animator animator;
+    //Animator animator;
+    //public int direction;
+
     private void Start()
     {
         GetAnimator();
@@ -41,13 +43,24 @@ public class Bomb : MonoBehaviour
         {
             moveDirection = (target.transform.position - transform.position).normalized * speed;
             rdbody2D.velocity = new Vector2(moveDirection.x, moveDirection.y);
+            if (moveDirection.x > 0 )
+            {
+                Debug.Log("Direction is positive");
+                direction = 1;
+            }
+            else if (moveDirection.x < 0)
+            {
+                Debug.Log("Direction is negative");
+                direction = - 1;
+            }
         }
     }
     void OnTriggerEnter2D(Collider2D collider2D)
     {
         if(collider2D.gameObject.CompareTag("Hero"))
         {
-            //StartCoroutine("DestroyImmediately");
+            Human humam = collider2D.gameObject.GetComponent<Human>();
+            trapsAttack.Attack(damages, humam, this.gameObject.GetComponent<Bomb>());
         }
         else if (collider2D.gameObject.layer == 6)
         {

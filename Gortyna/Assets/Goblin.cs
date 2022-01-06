@@ -1,9 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class Goblin: Enemy
 {
     public AIPlayerDetector_CircleCast playerDetector_CircleCast;
     public Eye eye;
+    private bool isAttacking = false;
 
     void Update()
     {
@@ -12,21 +15,42 @@ public class Goblin: Enemy
         GroundCheck();
         PlayerCheck();
 
-        if (playerDetector_CircleCast.playerDetected)
+        if (playerDetector_CircleCast.playerDetected && canMove)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector3(playerDetector_CircleCast.Target.transform.position.x, transform.position.y, playerDetector_CircleCast.Target.transform.position.y), speed * Time.deltaTime);
             if (playerDetector_CircleCast.attack == true)
             {
-                speed = 0;
+                if(isAttacking == false)
+                {
+                    speed = 0;
+                    animator.SetFloat("Speed", speed);
+                    StartCoroutine("Attack");
+                }
             }
             else
             {
                 speed = 1;
+                animator.SetBool("Attack", false);
+                animator.SetFloat("Speed", speed);
             }
         }
         else
         {
-            HorizontalMovement();
+            if (canMove)
+            {
+                HorizontalMovement();
+                //This speed variable has been added just in case it get stuck 
+                speed = 1;
+                animator.SetFloat("Speed", speed);
+                Debug.Log("HorizontalMove");
+            }
+            else if (canMove == false)
+            {
+                Debug.Log("I can not move");
+                speed = 0;
+                animator.SetFloat("Speed", speed);
+                animator.SetBool("Attack", false);
+            }
         }
     }
     void HorizontalMovement()
@@ -65,4 +89,14 @@ public class Goblin: Enemy
             }
         }
     }
+    private IEnumerator Attack()
+    {
+        isAttacking = true;
+        animator.SetBool("Attack", true);
+        yield return new WaitForSeconds(1f);
+        isAttacking = false;
+        animator.SetBool("Attack", false);
+
+    }
+
 }

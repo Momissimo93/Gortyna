@@ -5,10 +5,14 @@ public class AIPlayerDetector_CircleCast : MonoBehaviour
 {
     [SerializeField]
     private Transform detectorOrigin;
-    public Vector2 detectorOriginOffset = Vector2.zero;
-    public float detectorRadius = 0.0f;
-    public float detectorDistance = 0.0f;
-    public LayerMask detectorLayer;
+    [SerializeField]
+    private Vector2 detectorOriginOffset = Vector2.zero;
+    [SerializeField]
+    private float detectorRadius = 0.0f;
+    [SerializeField]
+    private float detectorDistance = 0.0f;
+    [SerializeField]
+    private LayerMask detectorLayer;
 
     private GameObject target;
     public bool playerDetected { get; private set; }

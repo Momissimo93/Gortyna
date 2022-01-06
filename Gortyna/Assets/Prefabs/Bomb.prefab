@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: -4550423871658992778}
   - component: {fileID: -212411457514559048}
   - component: {fileID: -1782031296267626695}
+  - component: {fileID: 8686869003192002734}
+  - component: {fileID: 3407765222527663651}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -99,6 +101,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91557e9dc4b64934c99641fbf9804c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 0
+  trans: {fileID: 0}
+  rigidBody: {fileID: 0}
+  animator: {fileID: 0}
+  boxCollider2D: {fileID: 0}
+  takeDamage: {fileID: 0}
+  trapsAttack: {fileID: 0}
+  damages: 0
   speed: 3
   target: {fileID: 0}
   force: 1
@@ -168,3 +178,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8686869003192002734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654501605990576863}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac642bd429d72c64b8d68cdbd082ef2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3407765222527663651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654501605990576863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6521ab34c68cf1a43a2ea940adbef565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

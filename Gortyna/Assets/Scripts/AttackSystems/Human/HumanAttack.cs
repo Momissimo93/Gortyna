@@ -37,8 +37,8 @@ public class HumanAttack : Attack
                     if (e.GetComponent<Enemy>().currentLifePoints > 0)
                     {
                         Enemy enemy = e.GetComponent<Enemy>();
+                        Debug.Log("We have it " + enemy.name);
                         StartCoroutine("HumanAttackCoroutine", (e.GetComponent<Enemy>()));
-                        //Debug.Log("We have it " + enemy.name);
                     }
                 }
                 else
