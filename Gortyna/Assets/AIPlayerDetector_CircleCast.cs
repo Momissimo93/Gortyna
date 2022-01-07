@@ -30,8 +30,9 @@ public class AIPlayerDetector_CircleCast : MonoBehaviour
 
         if (target)
         {
-            float distance = target.transform.position.x - transform.position.x;
-            if (distance > -1 && distance < 1)
+            float distance_x = target.transform.position.x - transform.position.x;
+
+            if (distance_x > -1 && distance_x < 1) 
             {
                 Rigidbody2D rb = transform.gameObject.GetComponent<Rigidbody2D>();
                 {

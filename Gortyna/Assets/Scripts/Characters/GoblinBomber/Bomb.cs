@@ -61,6 +61,7 @@ public class Bomb : Trap
         {
             Human humam = collider2D.gameObject.GetComponent<Human>();
             trapsAttack.Attack(damages, humam, this.gameObject.GetComponent<Bomb>());
+            StartCoroutine("HeroCollision");
         }
         else if (collider2D.gameObject.layer == 6)
         {
@@ -69,19 +70,32 @@ public class Bomb : Trap
     }
     IEnumerator GroundCollision()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.2f);
         rdbody2D.velocity = new Vector2(0, 0);
         animator.SetTrigger("Explosion");
         rdbody2D.velocity = new Vector2(0, 0);
-        yield return new WaitForSeconds(1.0f);
+        boxCollider2D.enabled = false;
+        yield return new WaitForSeconds(0.8f);
         Destroy(this.gameObject);
     }
+    IEnumerator HeroCollision()
+    {
+        yield return new WaitForSeconds(0.1f);
+        rdbody2D.velocity = new Vector2(0, 0);
+        animator.SetTrigger("Explosion");
+        rdbody2D.velocity = new Vector2(0, 0);
+        boxCollider2D.enabled = false;
+        yield return new WaitForSeconds(0.8f);
+        Destroy(this.gameObject);
+    }
+
     IEnumerator Destroy()
     {
         yield return new WaitForSeconds(2.0f);
         rdbody2D.velocity = new Vector2(0, 0);
         animator.SetTrigger("Explosion");
-        yield return new WaitForSeconds(1.0f);
+        boxCollider2D.enabled = false;
+        yield return new WaitForSeconds(0.8f);
         Destroy(this.gameObject);
     }
 }

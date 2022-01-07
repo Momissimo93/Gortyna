@@ -11,13 +11,6 @@ public class GoblinAttack : Attack
     {
         heartsHealthVisual = GameObject.FindObjectOfType<HeartsHealthVisual>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Hero"))

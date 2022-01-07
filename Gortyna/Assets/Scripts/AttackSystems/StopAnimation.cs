@@ -19,7 +19,7 @@ public class StopAnimation : MonoBehaviour
         {
             for (int i = 0; i < seconds; i++)
             {
-                //it runs 3 times and at each iteration it stops for a second --> so in total the characters will blink for 3 seconds
+               
                 yield return new WaitForSeconds(seconds);
             }
 

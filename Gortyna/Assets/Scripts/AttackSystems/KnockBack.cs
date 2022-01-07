@@ -102,14 +102,20 @@ public class KnockBack : MonoBehaviour
     private IEnumerator KnockBackCoroutine(Rigidbody2D rigidBody)
     {
         yield return new WaitForSeconds(0.8f);
-        //rigidBody.velocity = Vector2.zero;
+
+        //I have modified this
+        rigidBody.velocity = Vector2.zero;
         //rigidBody.isKinematic = true;
+
         receiver.canMove = true;
     }
     private IEnumerator KnockBackCoroutineWasKinematic(Rigidbody2D rigidBody)
     {
         yield return new WaitForSeconds(0.8f);
-        //rigidBody.velocity = Vector2.zero;
+
+        //I have modified this
+        rigidBody.velocity = Vector2.zero;
+
         rigidBody.isKinematic = true;
         receiver.canMove = true;
     }

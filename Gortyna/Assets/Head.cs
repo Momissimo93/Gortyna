@@ -21,7 +21,7 @@ public class Head : MonoBehaviour
             if (range.collider.gameObject.CompareTag("Hero"))
             {
                 Human human = range.collider.gameObject.GetComponent<Human>();
-                if (human.isOnGround == false && human.canMove == true && !enemy.immune)
+                if (human.isOnGround == false && human.canMove == true && !enemy.immune && !enemy.isDeath)
                 {
                     StartCoroutine("AddJumpingForce", human);
                 }
@@ -33,7 +33,6 @@ public class Head : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(detectorOrigin.transform.position, detectorRadius);
     }
-
     public IEnumerator AddJumpingForce (Human human)
     {
         human.rigidBody.AddForce(Vector2.up * bounce, ForceMode2D.Impulse);

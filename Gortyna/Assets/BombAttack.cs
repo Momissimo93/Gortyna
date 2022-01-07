@@ -16,6 +16,7 @@ public class BombAttack : Attack
         if (collision.gameObject.CompareTag("Hero"))
         {
             Human human = collision.gameObject.GetComponent<Human>();
+
             //Attack(1, human, this.gameObject.GetComponent<BombAttack>());
         }
         else
