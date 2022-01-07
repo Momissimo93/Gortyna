@@ -29,7 +29,7 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
         if (target)
         {
             RaycastHit2D targetLine = Physics2D.Linecast(transform.position, Target.transform.position, (detectorLayer));
-            DrawTargetLine(targetLine);
+            //DrawTargetLine(targetLine);
         }
         CheckDirection();
         
@@ -64,6 +64,7 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
     }
     public void PerformDetection()
     {
+        /*
         Collider2D collider = Physics2D.OverlapBox((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize, 0, detectorLayer );
         if(collider != null)
         {
@@ -72,6 +73,24 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
         else
         {
             Target = null;
+        }*/
+
+        Collider2D [] colliders = Physics2D.OverlapBoxAll((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize, 0, detectorLayer );
+        for(int i = 0; i < colliders.Length; i ++)
+        {
+            RaycastHit2D targetLine = Physics2D.Linecast(transform.position, colliders[i].gameObject.transform.position, (detectorLayer));
+            if(targetLine)
+            {
+                if (targetLine.collider.transform.gameObject.GetComponent<Human>())
+                {
+                    DrawTargetLine(targetLine, Color.yellow);
+                    Target = colliders[i].transform.gameObject;
+                    break;
+                }
+                else
+                    DrawTargetLine(targetLine, Color.red);
+                    Target = null;
+            }
         }
     }
     private void CheckDirection()
@@ -102,8 +121,8 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
             Gizmos.DrawCube((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize);
         }
     }
-    private void DrawTargetLine(RaycastHit2D r)
+    private void DrawTargetLine(RaycastHit2D r,Color c)
     {
-        Debug.DrawLine(transform.position, r.collider.gameObject.transform.position, Color.yellow);
+        Debug.DrawLine(transform.position, r.collider.gameObject.transform.position, c);
     }
 }
