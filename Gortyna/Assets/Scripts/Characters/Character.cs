@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
 
     [HideInInspector] public bool immune = false;
     [HideInInspector] public bool canMove = true;
+    [HideInInspector] public bool isDeath = false;
 
     [HideInInspector] public Transform trans;
     [HideInInspector] public Rigidbody2D rigidBody;

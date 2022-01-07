@@ -54,7 +54,7 @@ public class HumanInputs : MonoBehaviour
                 //human.animator.SetBool("isJumping", true);
             }
 
-            if (Input.GetButtonDown("Fire1")  && human.isOnGround)
+            if (Input.GetButtonDown("Fire1")  && human.isOnGround && !human.isDashing )
             {
                 StartCoroutine(stop.Stopping(0.35f,human));
                 human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);

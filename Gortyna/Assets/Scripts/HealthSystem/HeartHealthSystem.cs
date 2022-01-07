@@ -67,7 +67,7 @@ public class HeartHealthSystem
      
         if (IsDead())
         {
-            Debug.Log("The character " + character + " is DEAD");
+            //Debug.Log("The character " + character + " is DEAD");
         }
     }
 

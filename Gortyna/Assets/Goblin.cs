@@ -15,7 +15,8 @@ public class Goblin: Enemy
         GroundCheck();
         PlayerCheck();
 
-        if (playerDetector_CircleCast.playerDetected && canMove)
+        //With the last check we make sure that he is still alive. If not it will miss the reference 
+        if (playerDetector_CircleCast.playerDetected && canMove && playerDetector_CircleCast.Target)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector3(playerDetector_CircleCast.Target.transform.position.x, transform.position.y, playerDetector_CircleCast.Target.transform.position.y), speed * Time.deltaTime);
             if (playerDetector_CircleCast.attack == true)

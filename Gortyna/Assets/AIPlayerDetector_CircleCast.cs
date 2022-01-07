@@ -32,7 +32,8 @@ public class AIPlayerDetector_CircleCast : MonoBehaviour
         {
             float distance_x = target.transform.position.x - transform.position.x;
 
-            if (distance_x > -1 && distance_x < 1) 
+            //If the distance between the Goblin and the hero is between 0.7 and -0.7 he will attack 
+            if (distance_x > -0.7 && distance_x < 0.7) 
             {
                 Rigidbody2D rb = transform.gameObject.GetComponent<Rigidbody2D>();
                 {

@@ -11,8 +11,6 @@ public class Enemy : Character
     [HideInInspector] public int currentLifePoints;
     [SerializeField] protected int maxLifePoints;
 
-    public bool isDeath = false;
-
     void Start()
     {
         currentLifePoints = maxLifePoints;

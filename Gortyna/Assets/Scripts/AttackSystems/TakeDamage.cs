@@ -64,7 +64,6 @@ public class TakeDamage : MonoBehaviour
                     e.animator.SetTrigger("Death");
                     StartCoroutine("DeathCoroutine", e);
                 }
-
                 else if (e.currentLifePoints > 0)
                 {
                     stopAnimation.DoStopAnimation(e, 1f);
@@ -74,12 +73,40 @@ public class TakeDamage : MonoBehaviour
             }
         }
         //If it is the Bird or the Human
-        else 
+        else if (receiver.gameObject.GetComponent<Human>())
         {
+            Human human = gameObject.GetComponent<Human>();
+
+            if(human.immune == false)
+            {
+                heartsHealthVisual.HeartHealthSystemOnDamaged(damage);
+
+                if(heartsHealthVisual.CheckLifePoint() == 0)
+                {
+                    human.isDeath = true;
+                    knockBack.DoKnockBack(offender, human);
+                    human.speed = 0;
+                    human.animator.SetFloat("Speed", 0);
+                    human.animator.SetTrigger("Death");
+                    StartCoroutine("DeathCoroutine", human);
+                }
+                else
+                {
+                    stopAnimation.DoStopAnimation(receiver, 1f);
+                    knockBack.DoKnockBack(offender, receiver);
+                    immunity.DoImmunity(receiver, 1f);
+                }
+            }
+        }
+        else if (receiver.gameObject.GetComponent<Bird>())
+        {
+
+            /*if ( )
             stopAnimation.DoStopAnimation(receiver, 1f);
             knockBack.DoKnockBack(offender, receiver);
             immunity.DoImmunity(receiver, 1f);
-            heartsHealthVisual.HeartHealthSystemOnDamaged(damage);
+            heartsHealthVisual.HeartHealthSystemOnDamaged(damage);*/
+
         }
     }
     public void DoTakeDamageFromTrap(int d, Trap ofd, Character rcv)
@@ -92,11 +119,15 @@ public class TakeDamage : MonoBehaviour
         knockBack.DoKnockBackFromTrap(ofd, receiver);
         immunity.DoImmunity(receiver, 1f);
         heartsHealthVisual.HeartHealthSystemOnDamaged(damage);
+        if (heartsHealthVisual.CheckLifePoint() == 0)
+        {
+            Debug.Log("NOW DEATH");
+        }
     }
-    public IEnumerator DeathCoroutine(Enemy e)
+    public IEnumerator DeathCoroutine(Character c)
     {
         yield return new WaitForSeconds(0.5f);
-        Destroy(e.gameObject);
+        Destroy(c.gameObject);
     }
 }
 
