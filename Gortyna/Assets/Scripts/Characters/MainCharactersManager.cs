@@ -28,7 +28,8 @@ public class MainCharactersManager : MonoBehaviour
             {
                 human = characters[i].gameObject.GetComponent<Human>();
                 Instantiate(human, transform.position, transform.rotation);
-                heartHealthVisual.SetCurrentCharacter(bird);
+                //There is something wrong, before it was bird...Check it later
+                heartHealthVisual.SetCurrentCharacter(human);
             }
         }
     }

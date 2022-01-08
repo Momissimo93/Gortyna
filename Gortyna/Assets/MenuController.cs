@@ -9,6 +9,7 @@ using TMPro;
 
 public class MenuController : MonoBehaviour
 {
+
     [Header("Levels To Load")]
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
@@ -24,6 +25,7 @@ public class MenuController : MonoBehaviour
     {
         SceneManager.LoadScene(_newGameLevel);
     }
+
     public void LoadGameDialogYes()
     {
         if (PlayerPrefs.HasKey("SavedLevel"))

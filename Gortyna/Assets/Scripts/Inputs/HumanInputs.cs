@@ -6,8 +6,10 @@ public class HumanInputs : MonoBehaviour
 {
     public Human human;
     public MainCharactersManager mainCharactersManager;
-
     public HumanAttack attack;
+
+    [SerializeField] private PauseMenu pauseMenu;
+
     Command moveLeft;
     Command moveRight;
     Command jump;
@@ -34,12 +36,13 @@ public class HumanInputs : MonoBehaviour
 
         human = GameObject.FindObjectOfType<Human>();
         mainCharactersManager = GameObject.FindObjectOfType<MainCharactersManager>();
+        pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
         human.canMove = true;
     }
     // Update is called once per frame
     void Update()
     {
-        if (human && human.canMove)
+        if (human && human.canMove && pauseMenu.gameIsPause == false)
         {
             horizontalMove = Input.GetAxisRaw("Horizontal");
             direction = horizontalMove;
