@@ -100,6 +100,7 @@ public class TakeDamage : MonoBehaviour
         }
         else if (receiver.gameObject.GetComponent<Bird>())
         {
+            //da controllare come mai prende lo stesso i danni....
 
             /*if ( )
             stopAnimation.DoStopAnimation(receiver, 1f);
@@ -115,14 +116,22 @@ public class TakeDamage : MonoBehaviour
         offenderTrap = ofd;
         int damage = d;
 
-        stopAnimation.DoStopAnimation(receiver, 1f);
-        knockBack.DoKnockBackFromTrap(ofd, receiver);
-        immunity.DoImmunity(receiver, 1f);
         heartsHealthVisual.HeartHealthSystemOnDamaged(damage);
+
         if (heartsHealthVisual.CheckLifePoint() == 0)
         {
             Debug.Log("NOW DEATH");
+            receiver.animator.SetTrigger("Death");
+            StartCoroutine("DeathCoroutine", receiver);
         }
+
+        else
+        {
+            stopAnimation.DoStopAnimation(receiver, 1f);
+            knockBack.DoKnockBackFromTrap(ofd, receiver);
+            immunity.DoImmunity(receiver, 1f);
+        }
+
     }
     public IEnumerator DeathCoroutine(Character c)
     {

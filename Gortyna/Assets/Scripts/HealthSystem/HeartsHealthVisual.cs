@@ -116,7 +116,7 @@ public class HeartsHealthVisual : MonoBehaviour
 
         //Locate and Size heart 
         heartGameObject.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
-        heartGameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(20, 20);
+        heartGameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(40, 40);
 
         //Set heart sprite
         Image hearthImageUI = heartGameObject.GetComponent<Image>();

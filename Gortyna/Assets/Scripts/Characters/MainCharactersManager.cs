@@ -112,7 +112,8 @@ public class MainCharactersManager : MonoBehaviour
 
         for (int i = 0; i < characters.Count; i++)
         {
-            if (characters[i].name == "Hero")
+            //Funziona ma non so perchè (domani bisogna indagare)
+            if (characters[i].name == "Hero" && heartHealthVisual.CheckLifePoint() > 0)
             {
                 human = characters[i].gameObject.GetComponent<Human>();
                 Instantiate(human, tr.position, transform.rotation);
