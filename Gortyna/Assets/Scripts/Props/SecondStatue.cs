@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SecondStatue : MonoBehaviour
 {
-    public MainCharactersManager mainCharactersManager;
+    [SerializeField] private MainCharactersManager mainCharactersManager;
     Human human;
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)

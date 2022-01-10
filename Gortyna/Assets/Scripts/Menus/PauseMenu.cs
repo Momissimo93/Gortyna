@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     //Static as we want do not want to reference this specific pause menu script-we want to check from other script if the game is pause or not
-    public bool gameIsPause = false;
+    [HideInInspector] public bool gameIsPause = false;
+    [SerializeField] private HeartsHealthVisual heartsHealthVisual;
     public GameObject pauseMenuUI;
-    // Update is called once per frame
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && heartsHealthVisual.CheckLifePoint() > 0)
         {
             if (gameIsPause)
             {
@@ -38,11 +39,11 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quitting the game");
         Time.timeScale = 1f;
+        OrbTextScript.OrbAmount = 0;
+        ScoreTextScript.coinAmount = 0;
         SceneManager.LoadScene("MainMenu");
     }
-
     IEnumerator ResumeCoroutine()
     {
         pauseMenuUI.SetActive(false);

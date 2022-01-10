@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bird : Character
-{
+{ 
+    //All these variables are used in the Fly class: this is why they are public
     public float flyingPower;
     public LeftFoot leftFoot;
     public RightFoot rightFoot;
@@ -17,7 +18,6 @@ public class Bird : Character
         rightFoot.EmittingRay();
         rightFoot.DrawRaysFromFeet();
     }
-
     private void FixedUpdate()
     {
         if(leftFoot && rightFoot)
@@ -25,7 +25,6 @@ public class Bird : Character
             IsOnGround();
         }
     }
-
     public void SetTransform(Transform tr)
     {
         trans = tr;
@@ -53,7 +52,6 @@ public class Bird : Character
             }
         }
     }
-
     public void IsOnGround()
     {
         if (leftFoot.IsOnGround() == true || rightFoot.IsOnGround() == true)

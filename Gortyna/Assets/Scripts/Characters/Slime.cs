@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Slime : Enemy
 {
-    public Eye eye;
-    public Head head;
-    public SlimeAttack attack;
-
+    [SerializeField] private Eye eye;
+    [SerializeField] private Head head;
+    [SerializeField] private SlimeAttack attack;
     void Update()
     {
         head.PerformDetection();

@@ -11,7 +11,6 @@ public class TrapsAttack: Attack
         heartsHealthVisual = GameObject.FindObjectOfType<HeartsHealthVisual>();
     }
 
-    ///RISOLVERE QUESTA FACCENDA 
     public void Attack(int damages, Character rcv, Trap ofend)
     {
         receiver = rcv;

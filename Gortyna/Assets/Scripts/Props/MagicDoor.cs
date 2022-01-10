@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class MagicDoor : MonoBehaviour
 {
-    public bool open = false;
-    Animator animator;
+    [HideInInspector] public bool open;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        open = false;
         animator = gameObject.GetComponent<Animator>(); 
     }
 

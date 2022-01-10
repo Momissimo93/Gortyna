@@ -4,37 +4,37 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    public Command moveLeft;
-    public Command moveRight;
+    private Command moveLeft;
+    private Command moveRight;
 
     [HideInInspector] public bool facingRight = false;
-    [HideInInspector] public int currentLifePoints;
-    [SerializeField] protected int maxLifePoints;
 
     void Start()
     {
+        //The maxLifePoints are set in the inspector. Then the currentLifePoints are equalized to be equal to the maxLifePoints
         currentLifePoints = maxLifePoints;
 
+        //We want all the enemies apart from the GoblinBomber to have the following attributes 
         if(!gameObject.GetComponent<GoblinBomber>())
         {
             moveLeft = new MoveLeft();
             moveRight = new MoveRight();
             animator.SetFloat("Speed", speed);
-            //Debug.Log(gameObject.name + " has loaded moving commands");
         }
     }
 
-    public void MoveLeft()
+    //Public methods used 
+    protected void MoveLeft()
     {
         moveLeft.Execute(trans, -1);
     }
 
-    public void MoveRight()
+    protected void MoveRight()
     {
         moveRight.Execute(trans, 1);
     }
 
-    public void SetRotation(int s)
+    protected void SetRotation(int s)
     {
         if (s == 1)
         {

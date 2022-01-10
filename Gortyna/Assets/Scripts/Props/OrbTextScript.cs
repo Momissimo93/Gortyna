@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class OrbTextScript : MonoBehaviour
 {
-    Text text;
+    private Text text;
     public static int OrbAmount;
     void Start()
     {

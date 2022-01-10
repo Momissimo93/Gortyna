@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FirstStatue : MonoBehaviour
 {
-    public MainCharactersManager mainCharactersManager;
+    [SerializeField] private MainCharactersManager mainCharactersManager;
     Human human;
 
     private void OnTriggerEnter2D(Collider2D collision)

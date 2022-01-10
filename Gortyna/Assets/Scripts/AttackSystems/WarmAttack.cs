@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class WarmAttack : Attack
 {
-    public float rangeRadius;
+    [SerializeField] private Worm worm;
+    [SerializeField] private HeartsHealthVisual heartsHealthVisual;
+    [SerializeField] private float rangeRadius;
     Vector2 rangeOrigin;
-    public Worm worm;
-    HeartsHealthVisual heartsHealthVisual;
 
     private void Start()
     {

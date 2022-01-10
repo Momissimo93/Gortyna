@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    public GameObject mainChar;
-    Camera cam;
-    //public GameObject backGround;
-
-    float verExtent;
-    float horExtent;
-
-    float leftB;
-    float rightB;
-    float topB;
-    float bottomB;
-
+    [SerializeField] private GameObject mainChar;
     [SerializeField] float interpolationSpeed = 5f;
     [SerializeField] Vector2 offset;
+
+    private Camera cam;
+    private float verExtent;
+    private float horExtent;
+    private float leftB;
+    private float rightB;
+    private float topB;
+    private float bottomB;
     private enum TypeOfCharacter {Human, Bunny, Bird};
     private TypeOfCharacter typeOfChar;
-
     private Human human;
     private Bunny bunny;
     private Bird bird;
-
-    Bounds sceneBounds;
+    private Bounds sceneBounds;
 
     void Start()
     {

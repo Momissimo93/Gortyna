@@ -4,8 +4,8 @@ using System.Collections;
 
 public class Goblin: Enemy
 {
-    public AIPlayerDetector_CircleCast playerDetector_CircleCast;
-    public Eye eye;
+    [SerializeField] private AIPlayerDetector_CircleCast playerDetector_CircleCast;
+    [SerializeField] private Eye eye;
     private bool isAttacking = false;
 
     void Update()
@@ -13,7 +13,7 @@ public class Goblin: Enemy
         eye.EmittingRay(direction);
         eye.DrawRaysFromFeet(direction);
         GroundCheck();
-        PlayerCheck();
+        SetDirection();
 
         //With the last check we make sure that he is still alive. If not it will miss the reference 
         if (playerDetector_CircleCast.playerDetected && canMove && playerDetector_CircleCast.Target)
@@ -43,11 +43,9 @@ public class Goblin: Enemy
                 //This speed variable has been added just in case it get stuck 
                 speed = 1;
                 animator.SetFloat("Speed", speed);
-                //Debug.Log("HorizontalMove");
             }
             else if (canMove == false)
             {
-                Debug.Log("I can not move");
                 speed = 0;
                 animator.SetFloat("Speed", speed);
                 animator.SetBool("Attack", false);
@@ -63,7 +61,6 @@ public class Goblin: Enemy
         else
             MoveRight();
     }
-
     void GroundCheck()
     {
         if (eye.eyeRay)
@@ -72,7 +69,7 @@ public class Goblin: Enemy
             direction *= -1;
         }
     }
-    void PlayerCheck()
+    void SetDirection()
     {
         if (playerDetector_CircleCast.playerDetected)
         {
@@ -80,13 +77,11 @@ public class Goblin: Enemy
             {
                 transform.Rotate(0f, 180f, 0f);
                 direction *= -1;
-                Debug.Log("Player Check");
             }
             else if (playerDetector_CircleCast.direction == -1 && direction == 1)
             {
                 transform.Rotate(0f, 180f, 0f);
                 direction *= -1;
-                Debug.Log("Player Check");
             }
         }
     }
@@ -97,7 +92,5 @@ public class Goblin: Enemy
         yield return new WaitForSeconds(1f);
         isAttacking = false;
         animator.SetBool("Attack", false);
-
     }
-
 }

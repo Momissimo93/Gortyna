@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class HumanAttack : Attack
 {
-    // Start is called before the first frame update
-    public float rangeRadius;
-    Vector2 rangeOrigin;
-    Human human;
+    [SerializeField] private float rangeRadius;
+    private Vector2 rangeOrigin;
+    private Human human;
 
-    //KnockBack knockBack;
     void Start()
     {
-
         rangeOrigin = transform.position;
         offenderLayer = 1 << 8;
-        //SetOffender(human);
-
     }
     void Update()
     {
@@ -37,7 +32,6 @@ public class HumanAttack : Attack
                     if (e.GetComponent<Enemy>().currentLifePoints > 0)
                     {
                         Enemy enemy = e.GetComponent<Enemy>();
-                        Debug.Log("We have it " + enemy.name);
                         StartCoroutine("HumanAttackCoroutine", (e.GetComponent<Enemy>()));
                     }
                 }
@@ -48,14 +42,12 @@ public class HumanAttack : Attack
             }
         }
     }
-
     private IEnumerator HumanAttackCoroutine(Enemy enemy)
     {
         if(human!= null)
         {
             yield return new WaitForSeconds(0.15f);
             enemy.GetComponent<Enemy>().TakeDamage(1, human, enemy);
-            //knockBack.DoKnockBack(human, enemy);
         }
     }
     private void OnDrawGizmos()

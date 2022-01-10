@@ -6,15 +6,14 @@ public class Human : Character
 {
     protected bool facingRight;
 
-    public int jumpForce;
-    public LeftFoot leftFoot;
-    public RightFoot rightFoot;
-    public float dashPower;
-    public float dashTime;
+    [SerializeField] public int jumpForce;
+    [SerializeField] public float dashPower;
+    [SerializeField] public float dashTime;
+    [SerializeField] private LeftFoot leftFoot;
+    [SerializeField] private RightFoot rightFoot;
 
     [HideInInspector] public bool isOnGround;
     [HideInInspector] public bool isHit;
-    //[HideInInspector] public bool isJumping;
     [HideInInspector] public bool isDashing = false;
     [HideInInspector] public bool isMoving = false;
     [HideInInspector] public bool isOnPlatform = false;
@@ -103,7 +102,6 @@ public class Human : Character
         {
             isOnGround = false;
             animator.SetBool("isJumping", false);
-            Debug.Log("I have been hit");
         }
     }
 }

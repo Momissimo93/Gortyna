@@ -6,11 +6,11 @@ public class BirdInput : MonoBehaviour
 {
     public Bird bird;
     private float horizontalMove = 0;
-    float direction;
-    Rigidbody2D rb;
-    Command moveRigth;
-    Command moveLeft;
-    Command fly;
+    private float direction;
+    private Rigidbody2D rb;
+    private Command moveRigth;
+    private Command moveLeft;
+    private Command fly;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +49,7 @@ public class BirdInput : MonoBehaviour
                 bird.SetRotation("right");
                 if (bird.isOnGround == true)
                 {
-                    bird.animator.SetFloat("Bird_Speed", bird.speed);
+                    bird.animator.SetFloat("Speed", bird.speed);
                 }
             }
             else if (horizontalMove < 0f)
@@ -58,7 +58,7 @@ public class BirdInput : MonoBehaviour
                 bird.SetRotation("left");
                 if (bird.isOnGround == true)
                 {
-                    bird.animator.SetFloat("Bird_Speed", bird.speed);
+                    bird.animator.SetFloat("Speed", bird.speed);
                 }
             }
             else 
@@ -66,7 +66,7 @@ public class BirdInput : MonoBehaviour
                 bird.rigidBody.velocity = new Vector2(0f, bird.rigidBody.velocity.y);
                 if (bird.isOnGround == true)
                 {
-                    bird.animator.SetFloat("Bird_Speed", 0f);
+                    bird.animator.SetFloat("Speed", 0f);
                 }
             }
         }

@@ -4,35 +4,30 @@ using UnityEngine;
 
 public class AIPlayerDetector_OverlapBox : MonoBehaviour
 {
-    [field: SerializeField]
     public bool playerDetected { get; private set;}
 
-    [SerializeField]
-    private Transform detectorOrigin;
-    public Vector2 detectorSize = Vector2.one;
-    public Vector2 detectorOriginOffset = Vector2.zero;
+    [SerializeField] private Transform detectorOrigin;
+    [SerializeField] private Vector2 detectorSize = Vector2.one;
+    [SerializeField] private Vector2 detectorOriginOffset = Vector2.zero;
+    [SerializeField] private Color gizmoIdleColor = Color.green;
+    [SerializeField] private Color gizmoDetectedColor = Color.red;
+    [SerializeField] private bool showGizmos = true;
+    [SerializeField] private LayerMask detectorLayer;
+    [SerializeField] private float detectionDelay;
 
-    public Color gizmoIdleColor = Color.green;
-    public Color gizmoDetectedColor = Color.red;
-    public bool showGizmos = true;
-
-    public float detectionDelay;
+    public int direction;
 
     private GameObject target;
 
-    public LayerMask detectorLayer;
-
-    public int direction; 
     private void Update()
     {
         PerformDetection();
         if (target)
         {
             RaycastHit2D targetLine = Physics2D.Linecast(transform.position, Target.transform.position, (detectorLayer));
-            //DrawTargetLine(targetLine);
+            DrawTargetLine(targetLine, Color.red);
         }
         CheckDirection();
-        
     }
     public GameObject Target
     {
@@ -55,7 +50,6 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
         else 
             return null;
     }
-
     IEnumerator DetectionCoroutine()
     {
         yield return new WaitForSeconds(detectionDelay);
@@ -64,17 +58,6 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
     }
     public void PerformDetection()
     {
-        /*
-        Collider2D collider = Physics2D.OverlapBox((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize, 0, detectorLayer );
-        if(collider != null)
-        {
-            Target = collider.gameObject;
-        }
-        else
-        {
-            Target = null;
-        }*/
-
         Collider2D [] colliders = Physics2D.OverlapBoxAll((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize, 0, detectorLayer );
         for(int i = 0; i < colliders.Length; i ++)
         {
@@ -97,7 +80,6 @@ public class AIPlayerDetector_OverlapBox : MonoBehaviour
     {
         if (target && detectorOrigin)
         {
-            //Debug.Log(target.transform.position.x - detectorOrigin.transform.position.x);
             if (target.transform.position.x - detectorOrigin.transform.position.x > 1f)
             {
                 direction = 1;

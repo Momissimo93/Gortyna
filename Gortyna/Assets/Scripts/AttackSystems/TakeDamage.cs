@@ -18,7 +18,9 @@ public class TakeDamage : MonoBehaviour
     public StopAnimation stopAnimation;
     [HideInInspector]
     public KnockBack knockBack;
-    HeartsHealthVisual heartsHealthVisual;
+    
+    private HeartsHealthVisual heartsHealthVisual;
+
     void Start()
     {
         knockBack = gameObject.AddComponent<KnockBack>();
@@ -56,7 +58,6 @@ public class TakeDamage : MonoBehaviour
 
                 if (e.currentLifePoints <= 0)
                 {
-                    //Just so it does not hurt us touching us 
                     e.isDeath = true;
                     knockBack.DoKnockBack(offender, e);   
                     e.speed = 0;
@@ -81,7 +82,7 @@ public class TakeDamage : MonoBehaviour
             {
                 heartsHealthVisual.HeartHealthSystemOnDamaged(damage);
 
-                if(heartsHealthVisual.CheckLifePoint() == 0)
+                if(heartsHealthVisual.CheckLifePoint() <= 0)
                 {
                     human.isDeath = true;
                     knockBack.DoKnockBack(offender, human);
@@ -98,18 +99,9 @@ public class TakeDamage : MonoBehaviour
                 }
             }
         }
-        else if (receiver.gameObject.GetComponent<Bird>())
-        {
-            //da controllare come mai prende lo stesso i danni....
-
-            /*if ( )
-            stopAnimation.DoStopAnimation(receiver, 1f);
-            knockBack.DoKnockBack(offender, receiver);
-            immunity.DoImmunity(receiver, 1f);
-            heartsHealthVisual.HeartHealthSystemOnDamaged(damage);*/
-
-        }
     }
+
+
     public void DoTakeDamageFromTrap(int d, Trap ofd, Character rcv)
     {
         receiver = rcv;
@@ -118,15 +110,20 @@ public class TakeDamage : MonoBehaviour
 
         heartsHealthVisual.HeartHealthSystemOnDamaged(damage);
 
-        if (heartsHealthVisual.CheckLifePoint() == 0)
+        if (heartsHealthVisual.CheckLifePoint() <= 0)
         {
-            Debug.Log("NOW DEATH");
+
+            receiver.isDeath = true;
+            //knockBack.DoKnockBack(offender, receiver);
+            receiver.speed = 0;
+            receiver.animator.SetFloat("Speed", 0);
             receiver.animator.SetTrigger("Death");
             StartCoroutine("DeathCoroutine", receiver);
         }
 
         else
         {
+            Debug.Log("I am taking damage from a trap");
             stopAnimation.DoStopAnimation(receiver, 1f);
             knockBack.DoKnockBackFromTrap(ofd, receiver);
             immunity.DoImmunity(receiver, 1f);

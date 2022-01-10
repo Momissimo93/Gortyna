@@ -4,24 +4,20 @@ using UnityEngine;
 
 public class HumanInputs : MonoBehaviour
 {
-    public Human human;
-    public MainCharactersManager mainCharactersManager;
-    public HumanAttack attack;
+    [SerializeField] private Human human;
+    [SerializeField] private HumanAttack attack;
 
-    [SerializeField] private PauseMenu pauseMenu;
-
-    Command moveLeft;
-    Command moveRight;
-    Command jump;
-    Command hero_Attack;
-    Dash dash;
-    Stop stop;
-    //HumanAttack attack;
-
+    private MainCharactersManager mainCharactersManager;
+    private PauseMenu pauseMenu;
+    private Command moveLeft;
+    private Command moveRight;
+    private Command jump;
+    private Command hero_Attack;
+    private Dash dash;
+    private Stop stop;
     private float horizontalMove = 0;
-    float direction;
-
-    bool isJumping;
+    private float direction;
+    private bool isJumping;
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +28,6 @@ public class HumanInputs : MonoBehaviour
         hero_Attack = new Hero_Attack();
         dash = gameObject.AddComponent<Dash>();
         stop = gameObject.AddComponent<Stop>();
-        //attack = gameObject.AddComponent<HumanAttack>();
-
         human = GameObject.FindObjectOfType<Human>();
         mainCharactersManager = GameObject.FindObjectOfType<MainCharactersManager>();
         pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
@@ -51,10 +45,7 @@ public class HumanInputs : MonoBehaviour
             {
                 human.isMoving = true;
                 isJumping = true;
-                //direction = horizontalMove;
                 jump.Execute(human.transform, direction);
-                //human.animator.SetTrigger("IsJumping");
-                //human.animator.SetBool("isJumping", true);
             }
 
             if (Input.GetButtonDown("Fire1")  && human.isOnGround && !human.isDashing )
@@ -69,8 +60,6 @@ public class HumanInputs : MonoBehaviour
             {
                 if (!human.isDashing)
                 {
-                    //human.animator.SetBool("Dash",true);
-                    //human.animator.SetBool("isJumping", false);
                     StartCoroutine(dash.Dashing(human));
                 }
             }
@@ -90,10 +79,8 @@ public class HumanInputs : MonoBehaviour
         else if (human.isOnGround)
         {
             isJumping = false;
-            Debug.Log("Is jumping? " + isJumping);
         }
     }
-
     private void FixedUpdate()
     {
         if (human && human.canMove)
@@ -122,8 +109,6 @@ public class HumanInputs : MonoBehaviour
             }
             else if (horizontalMove == 0 && !human.isDashing)
             {
-                //human.isMoving = false;
-
                 if (human.rigidBody)
                 {
                     human.rigidBody.velocity = new Vector2(0, human.rigidBody.velocity.y);

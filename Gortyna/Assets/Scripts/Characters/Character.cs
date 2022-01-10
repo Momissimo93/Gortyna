@@ -2,12 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* 
+ * The class is the parent of the Enemy, Human, Bunny and Bird
+ */
+
 public class Character : MonoBehaviour
 {
     [SerializeField] public float speed;
     [SerializeField] public float direction;
     [SerializeField] public float resistance_Horizontal;
     [SerializeField] public float resistance_Vertical;
+
+    //[SerializeField] public float resistance_Vertical;
+    [HideInInspector] public int currentLifePoints;
+    [SerializeField] protected int maxLifePoints;
 
     [HideInInspector] public bool immune = false;
     [HideInInspector] public bool canMove = true;
@@ -18,8 +26,6 @@ public class Character : MonoBehaviour
     [HideInInspector] public Animator animator;
     [HideInInspector] public BoxCollider2D boxCollider2D;
     [HideInInspector] public TakeDamage takeDamage;
-
-    //protected Input moveLeft;
 
     void Awake()
     {
@@ -58,7 +64,6 @@ public class Character : MonoBehaviour
             rigidBody = gameObject.GetComponent<Rigidbody2D>();
         }
     }
-
     public void TakeDamage(int damage, Character offender, Character receiver)
     {
         if(takeDamage)
@@ -74,6 +79,7 @@ public class Character : MonoBehaviour
         }
     }
 
+    //Check these two. They might not be used
     public float GetTransfromPositionX()
     {
         if(this.trans!=null)

@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Bomb : Trap
 {
-    public float speed;
+    [SerializeField] private float speed;
+    [SerializeField] private float force = 0.9f;
     Rigidbody2D rdbody2D;
-    public GameObject target;
     Vector2 moveDirection;
-    public float force = 0.9f;
-    //Animator animator;
-    //public int direction;
+    public GameObject target;
 
     private void Start()
     {
         GetAnimator();
         StartCoroutine("Destroy");
+
         if(target)
         {
             Spawn();
@@ -45,12 +44,10 @@ public class Bomb : Trap
             rdbody2D.velocity = new Vector2(moveDirection.x, moveDirection.y);
             if (moveDirection.x > 0 )
             {
-                Debug.Log("Direction is positive");
                 direction = 1;
             }
             else if (moveDirection.x < 0)
             {
-                Debug.Log("Direction is negative");
                 direction = - 1;
             }
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GoblinAttack : Attack
 {
-    HeartsHealthVisual heartsHealthVisual;
+    private HeartsHealthVisual heartsHealthVisual;
     [SerializeField] private Character goblin;
 
     void Start()

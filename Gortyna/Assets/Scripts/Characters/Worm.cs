@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Worm: Enemy
 {
-    public LeftFoot leftFoot;
-    public RightFoot rightFoot;
-    public Eye eye;
-    public WarmAttack attack;
+    [SerializeField] private LeftFoot leftFoot;
+    [SerializeField] private RightFoot rightFoot;
+    [SerializeField] private Eye eye;
+    [SerializeField] private WarmAttack attack;
 
     void Update()
     {
@@ -23,8 +23,6 @@ public class Worm: Enemy
         GroundCheck();
 
         attack.CheckHero();
-
-        //HorizontalMovement();
     }
     private void FixedUpdate()
     {
@@ -36,6 +34,7 @@ public class Worm: Enemy
 
     void GroundCheck()
     {
+        //Some worms only check with the Eye other with th LeftFoot or the RightFoot
         if((!leftFoot.leftFootRays) || (!rightFoot.rightFootRays))
         {
             transform.Rotate(0f, 180f, 0f);

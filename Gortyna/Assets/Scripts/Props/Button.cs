@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    Animator animator;
-    //public VerticalPlaform verticalPlatform;
-    public GameObject gObj;
+    private Animator animator;
+    [HideInInspector] public GameObject gObj;
     private void Awake()
     {
         if (gameObject.GetComponent<Animator>())

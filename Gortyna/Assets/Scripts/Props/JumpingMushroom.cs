@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class JumpingMushroom : MonoBehaviour
 {
-    Animator animator;
-    private float bounce = 15f;
-    // Start is called before the first frame update
+    private Animator animator;
+    [SerializeField] private float bounce = 15f;
 
     private void Start()
     {
@@ -15,7 +14,8 @@ public class JumpingMushroom : MonoBehaviour
             animator = gameObject.GetComponent<Animator>();
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Hero"))
         {

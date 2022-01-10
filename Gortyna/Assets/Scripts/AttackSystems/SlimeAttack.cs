@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class SlimeAttack : Attack
 {
-    [SerializeField] Transform rangeOrigin;
-    [SerializeField] float rangeRadius = 0.0f;
-    [SerializeField] LayerMask detectorLayer;
+    [SerializeField] private Transform rangeOrigin;
+    [SerializeField] private float rangeRadius = 0.0f;
+    [SerializeField] private LayerMask detectorLayer;
+    [SerializeField] private Slime slime;
 
-    public Slime slime;
-    HeartsHealthVisual heartsHealthVisual;
+    private HeartsHealthVisual heartsHealthVisual;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,10 @@ public class SlimeAttack : Attack
         heartsHealthVisual = FindObjectOfType<HeartsHealthVisual>();
         offender = slime;
     }
-
     // Update is called once per frame
     void Update()
     {
-        //rangeOrigin = transform.position;
+
     }
     public void CheckHero()
     {
@@ -29,12 +29,10 @@ public class SlimeAttack : Attack
 
         if (range)
         {
-            //Debug.Log("The enemy is in range");
             if (range.collider.gameObject.CompareTag("Hero"))
             {
                 if (heartsHealthVisual && (range.collider.gameObject.GetComponent<Human>().immune == false) && !slime.immune && !slime.isDeath)
                 {
-                    //heartsHealthVisual.HeartHealthSystemOnDamaged(1);
                     SetReceiver(range.collider.gameObject.GetComponent<Human>());
                     receiver.TakeDamage(1, offender, receiver);
                     StartCoroutine(NotMoreDamages(1));

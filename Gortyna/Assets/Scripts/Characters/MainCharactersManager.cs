@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class MainCharactersManager : MonoBehaviour
 {
-    public List<Character> characters;
-    public CameraControl cameraControl;
+    [SerializeField] private List<Character> characters;
+    [SerializeField] private CameraControl cameraControl;
+
     private HeartsHealthVisual heartHealthVisual;
-    Bunny bunny;
-    Bird bird;
-    Human human;
+    private Bunny bunny;
+    private Bird bird;
+    private Human human;
 
     void Awake()
     {
@@ -20,8 +21,6 @@ public class MainCharactersManager : MonoBehaviour
     //Mehotd Called only the game start 
     public void SpawnHuman()
     {
-        //GameObject human;
-
         for (int i = 0; i < characters.Count; i++)
         {
             if(characters[i].name == "Hero")
@@ -81,7 +80,6 @@ public class MainCharactersManager : MonoBehaviour
             }
         }
         Instantiate(bird, transform.position, transform.rotation);
-        //bird.SetLifePoint(lifePoints);
         cameraControl.SetCameraBird();
         heartHealthVisual.SetCurrentCharacter(bird);
     }

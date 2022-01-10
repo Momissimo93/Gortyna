@@ -43,7 +43,7 @@ public class VerticalPlaform : MonoBehaviour
             collision.transform.SetParent(null);
             collision.gameObject.GetComponent<Human>().isOnPlatform = false;
             //collision.gameObject.GetComponent<Human>().isNotOnPlatform = true;
-            Debug.Log("Exit");
+           
         }
     }
 }

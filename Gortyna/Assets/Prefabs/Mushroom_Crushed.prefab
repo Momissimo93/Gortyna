@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418169d05cd7eae438851b9e2a79e40d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bounce: 22
 --- !u!61 &942942828
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: eaed29be3325c084e81d2b9b0e449aae, type: 2}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.016339064, y: 0.20015287}

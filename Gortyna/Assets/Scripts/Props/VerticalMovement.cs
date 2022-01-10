@@ -22,7 +22,6 @@ public class VerticalMovement : MonoBehaviour
         if (direction == -1 && transform.position.y <= originalPosition.y - distance || direction == 1 && transform.position.y >= originalPosition.y )
         {
             direction *= -1;
-            Debug.Log("LET'S CHANGE");
         }
     }
 }

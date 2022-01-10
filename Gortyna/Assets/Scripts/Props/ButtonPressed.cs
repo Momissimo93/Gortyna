@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ButtonPressed : MonoBehaviour
 {
-    Animator animator;
-    bool collider = false;
-    BoxCollider2D boxCollider2D;
-    public MagicDoor magicDoor;
-    bool isRock;
+    private Animator animator;
+    //private bool collider = false;
+    private bool isRock;
+    private BoxCollider2D boxCollider2D;
+    [SerializeField] private  MagicDoor magicDoor;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +44,7 @@ public class ButtonPressed : MonoBehaviour
         Debug.Log("Exit");
         if(!isRock)
         {
-            if ( collision.gameObject.CompareTag("Hero"))
+            if (collision.gameObject.CompareTag("Hero"))
             {
                 animator.SetTrigger("ButtonUnPressed");
                 magicDoor.CloseDoor();

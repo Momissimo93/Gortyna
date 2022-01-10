@@ -6,22 +6,18 @@ public class Spike : Trap
 {
     private Vector2 observerLeft;
     private RaycastHit2D observerRayLeft;
-
     private Vector2 observerRight;
     private RaycastHit2D observerRayRight;
-
-    public float rayLenght;
     private int hero = 1 << 7;
-    bool canMove;
+    private bool canMove;
 
-    // Start is called before the first frame update
+    [SerializeField] private float rayLenght;
+
     void Start()
     {
         damages = 1;
         canMove = false;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if(canMove == false)
@@ -34,7 +30,6 @@ public class Spike : Trap
         }
         DrawRaysFromFeet();
     }
-
     public bool EmittingRay()
     {
         observerLeft = new Vector2(boxCollider2D.bounds.min.x, boxCollider2D.bounds.min.y);
@@ -43,7 +38,6 @@ public class Spike : Trap
         observerRight = new Vector2(boxCollider2D.bounds.max.x, boxCollider2D.bounds.min.y);
         observerRayRight = Physics2D.Raycast(observerRight, Vector2.down, rayLenght, hero);
 
-
         if (observerRayLeft || observerRayRight)
         {
             return true;
@@ -51,7 +45,6 @@ public class Spike : Trap
 
         return false;
     }
-
     public void Move()
     {
         if (canMove)
@@ -59,19 +52,17 @@ public class Spike : Trap
             boxCollider2D.transform.position = new Vector2(boxCollider2D.transform.position.x, boxCollider2D.transform.position.y + (-1 * 4 * Time.deltaTime));
         }
     }
-
     public void DrawRaysFromFeet()
     {
         Debug.DrawRay(observerRight, Vector2.down * rayLenght, Color.blue);
         Debug.DrawRay(observerLeft, Vector2.down * rayLenght, Color.blue);
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Hero"))
         {
             Human humam = collision.gameObject.GetComponent<Human>();
-            //Like that the human is pushed back on the opposite site(i hope)
+            //Like that the human is pushed back on the opposite site
             direction = humam.direction * -1;
             trapsAttack.Attack(damages, humam, gameObject.GetComponent<Spike>() );
         }

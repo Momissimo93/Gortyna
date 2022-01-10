@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 public class AIPlayerDetector_CircleCast : MonoBehaviour
 {
-    [SerializeField]
-    private Transform detectorOrigin;
-    [SerializeField]
-    private Vector2 detectorOriginOffset = Vector2.zero;
-    [SerializeField]
-    private float detectorRadius = 0.0f;
-    [SerializeField]
-    private float detectorDistance = 0.0f;
-    [SerializeField]
-    private LayerMask detectorLayer;
+    [SerializeField] private Transform detectorOrigin;
+    [SerializeField] private Vector2 detectorOriginOffset = Vector2.zero;
+    [SerializeField] private float detectorRadius = 0.0f;
+    [SerializeField] private float detectorDistance = 0.0f;
+    //[SerializeField] private LayerMask detectorLayer;
 
     private GameObject target;
     public bool playerDetected { get; private set; }
@@ -73,16 +68,6 @@ public class AIPlayerDetector_CircleCast : MonoBehaviour
     }
     public void PerformDetection()
     {
-        //RaycastHit2D circleCast  = Physics2D.CircleCast((Vector2)detectorOrigin.position + detectorOriginOffset, detectorRadius, Vector2.zero, detectorDistance, detectorLayer);
-
-        /*if (circleCast.collider != null)
-        {
-            Target = circleCast.collider.gameObject;
-        }
-        else
-        {
-            Target = null;
-        }*/
         RaycastHit2D[] arrayOfElements = Physics2D.CircleCastAll((Vector2)detectorOrigin.position + detectorOriginOffset, detectorRadius, Vector2.zero, 1, ~(enemyLayer + coinLayer + groundLayer));
         if(arrayOfElements.Length > 0)
         {
